@@ -714,6 +714,16 @@
     document.querySelectorAll('[data-cfg="mes"]').forEach(function (el) {
       el.textContent = cfg.mesCampanhaLabel || cfg.mesCampanha;
     });
+
+    document.querySelectorAll('a[href*="go.hotmart.com"]').forEach(function (link) {
+      link.addEventListener('click', function () {
+        gtag('event', 'conversion', {
+          send_to: 'AW-17785213808/1767CKLKhM0cEPCm06BC',
+          value: 1.0,
+          currency: 'BRL'
+        });
+      });
+    });
   })();
 </script>
 </body>
