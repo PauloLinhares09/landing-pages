@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.paulolinhares-mrcoder.com.br/sitemap.xml
