@@ -245,6 +245,9 @@
   .list--check li::before{content:"✓";position:absolute;left:12px;color:var(--color-green);font-weight:900}
   .pill-row{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0 8px}
   .pill{border:1px solid var(--color-card-border);background:rgba(255,255,255,.06);border-radius:14px;padding:12px 16px;font-weight:800;color:#fff;font-size:14px}
+  .pill--highlight{border-color:var(--color-green);box-shadow:0 0 0 1px rgba(110,204,60,.35),0 0 22px rgba(110,204,60,.22);background:rgba(110,204,60,.1);color:#c8f5a8;animation:pill-pulse 2.4s ease-in-out infinite}
+  @keyframes pill-pulse{0%,100%{opacity:.72;box-shadow:0 0 0 1px rgba(110,204,60,.25),0 0 12px rgba(110,204,60,.12)}50%{opacity:1;box-shadow:0 0 0 2px rgba(110,204,60,.55),0 0 28px rgba(110,204,60,.35)}}
+  @media(prefers-reduced-motion:reduce){.pill--highlight{animation:none;opacity:1}}
   .hero{min-height:72vh;display:flex;align-items:center;background:linear-gradient(135deg,rgba(0,0,0,.96),rgba(9,15,20,.92))}
   .pullquote{margin:20px 0 0;padding:18px 20px;border-left:4px solid var(--color-gold);background:rgba(192,168,122,.06);border-radius:0 14px 14px 0;font-size:clamp(17px,2vw,20px);font-weight:600;color:#fff}
   .pullquote + .pullquote{margin-top:10px}
@@ -690,6 +693,7 @@
           <span class="pill">Até 4 funcionários digitais</span>
           <span class="pill">Instalação com Paulo na call</span>
           <span class="pill">Sem equipe de TI</span>
+          <span class="pill pill--highlight">6 meses WhatsApp direto com Paulo</span>
         </div>
         <p class="offer-lead">Configuração completa com chamada de vídeo individual com Paulo Linhares, + Curso online completo (Para caso você também queira aprender a fazer).</p>
         <h2 style="text-transform:uppercase;letter-spacing:.02em">Programa Prático Empresa Clone Digital: <span class="gold">Seu Exército de Funcionários Digitais</span></h2>
@@ -706,11 +710,17 @@
 
         <ul class="offer-stack">
           <li><strong>Configuração completa</strong> com chamada individual com Paulo Linhares — até 4 funcionários digitais na sua operação</li>
+          <li><strong>6 meses de suporte por WhatsApp com Paulo Linhares</strong> — após a compra ele compartilha o WhatsApp pessoal. Canal direto com o dono, não só equipe. Quando precisar, pede call. Ele quer acompanhar seu resultado e compartilhar com o grupo.</li>
           <li><strong>Curso online completo</strong> (para caso você também queira aprender a fazer) — Método Empresa Clone Digital passo a passo</li>
           <li><strong>Até 4 funcionários digitais</strong> customizados para sua operação (programador, SDR, gerente, contexto clínico…)</li>
           <li><strong>6 módulos</strong> + Biblioteca Templates No-Code + Roteiro secretária</li>
           <li><strong>Paulo como seu TI</strong> — eu monto, eu conecto, você supervisiona</li>
         </ul>
+
+        <div class="anchor-note">
+          <strong>Proximidade com o dono — não curso faceless.</strong>
+          <p style="margin:12px 0 0">Eu já comprei produto digital e nunca vi a cara do dono. Aqui é o contrário: você fica com meu WhatsApp pessoal por 6 meses. Se precisar, a gente marca uma call. Quero ver o seu resultado e compartilhar — assim mais gente entra no nosso grupo.</p>
+        </div>
 
         <h3 style="margin:28px 0 8px;font-size:clamp(18px,2vw,22px)">6 módulos <span class="gold">+ 2 bônus</span></h3>
         
@@ -791,7 +801,7 @@
           <figcaption>Paulo instala a Empresa Clone Digital com você na call de configuração</figcaption>
         </figure>
 
-        <p class="pullquote" style="margin-top:24px">Eu vou instalar a Empresa Clone Digital para você. <span class="gold">Aguardo você em nossa call de configuração.</span></p>
+        <p class="pullquote" style="margin-top:24px">Eu vou instalar a Empresa Clone Digital para você — <span class="gold">em nossas calls.</span> E no meu WhatsApp pessoal, por 6 meses, quantas vezes você achar que precisa. Você não fica sozinho: eu quero ver o seu resultado.</p>
 
         <div class="cta-center">
           <a class="btn" href="https://pay.hotmart.com/S106176787G?sck=HOTMART_PRODUCT_PAGE&off=7sqltrf6&hotfeature=32" style="width:min(100%,640px);min-height:60px;font-size:clamp(15px,1.8vw,18px)">Garantir minha vaga no 2º lote</a>
