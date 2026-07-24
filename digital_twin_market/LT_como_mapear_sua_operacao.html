@@ -236,7 +236,15 @@
             "name": "Vocês vão instalar os robôs por R$ 38?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Não. Neste produto nós montamos o mapa e a documentação dos funcionários — prontos para dar vida. Ligar as máquinas (construir/instalar) é o próximo degrau, depois que o organograma está claro. Assim você não improvisa ferramenta sem planta."
+              "text": "Não. Neste produto nós montamos o mapa e a documentação dos funcionários — prontos para dar vida. O bônus Desenvolvedor Full Stack Web é o pacote (guia + arquivos) desse profissional digital para quando for a hora de dar vida ao time do mapa — não é nós instalando robôs por R$ 38. Ligar as máquinas (construir/instalar) é o próximo degrau, depois que o organograma está claro."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "O que é o bônus Desenvolvedor Full Stack Web?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "É o guia + pacote instalável do profissional digital especializado em web: landing pages, GitHub, deploy, DNS, tracking (Meta, GA4, GTM, UTMs), performance e QA. Você recebe a documentação e os arquivos para configurar esse profissional na sua estrutura — não é instalação feita por nós nesta etapa de R$ 38. O produto principal continua sendo o mapa e até 4 funcionários documentados."
             }
           },
           {
@@ -355,6 +363,17 @@
   .offer-stack li{position:relative;padding:10px 0 10px 26px;color:var(--color-muted);font-size:15px;line-height:1.5;border-bottom:1px solid rgba(192,168,122,.14)}
   .offer-stack li::before{content:"✓";position:absolute;left:0;color:var(--color-green);font-weight:900}
   .offer-stack li strong{color:#fff}
+  .bonus-feature{display:grid;gap:20px;margin:0 0 24px;padding:20px;border:1px solid rgba(192,168,122,.35);border-radius:14px;background:linear-gradient(135deg,rgba(192,168,122,.08),rgba(255,255,255,.02))}
+  .bonus-feature__media{margin:0}
+  .bonus-feature__media img{display:block;width:100%;height:auto;border-radius:10px}
+  .bonus-feature__eyebrow{display:inline-block;margin:0 0 8px;padding:4px 10px;border-radius:999px;border:1px solid rgba(217,181,95,.45);background:rgba(217,181,95,.12);color:var(--color-gold-light);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+  .bonus-feature h3{margin:0 0 6px;font-size:clamp(18px,2.4vw,22px);color:#fff}
+  .bonus-feature__sub{margin:0 0 14px;font-size:15px;color:var(--color-gold-light);line-height:1.45}
+  .bonus-feature__list{list-style:none;margin:0 0 14px;padding:0}
+  .bonus-feature__list li{position:relative;padding:6px 0 6px 18px;font-size:14px;line-height:1.5;color:var(--color-muted)}
+  .bonus-feature__list li::before{content:"·";position:absolute;left:4px;color:var(--color-gold);font-weight:900}
+  .bonus-feature__note{margin:0;font-size:13px;line-height:1.5;color:#999}
+  @media(min-width:720px){.bonus-feature{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);align-items:center}}
   .spots{margin-bottom:24px;padding:18px 20px;border:1px solid rgba(217,181,95,.4);border-radius:12px;background:linear-gradient(180deg,rgba(217,181,95,.1),rgba(217,181,95,.03))}
   .spots-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
   .spots-tag{display:inline-block;padding:6px 12px;border-radius:999px;background:rgba(217,181,95,.16);border:1px solid rgba(217,181,95,.5);color:var(--color-gold-light);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
@@ -847,8 +866,28 @@
           <li><strong>Até 4 funcionários digitais personalizados</strong> — cada um com papel, skill e personalidade, documentado e estruturado</li>
           <li><strong>Plano de encaixe na operação real</strong> — como esses funcionários passam a atuar junto da equipe (ou com o dono, em empresa de uma pessoa só)</li>
           <li><strong>Bônus · Template do Organograma</strong> — modelo pronto para preencher e sair com a planta na mão</li>
+          <li><strong>Bônus · Desenvolvedor Full Stack Web</strong> — guia + pacote instalável do profissional digital para landing pages, GitHub, deploy, DNS, tracking e QA (quando for a hora de dar vida ao time do mapa)</li>
           <li><strong>Acesso imediato e vitalício</strong> às aulas — você assiste no seu ritmo</li>
         </ul>
+
+        <aside class="bonus-feature" aria-labelledby="bonus-fs-heading">
+          <figure class="bonus-feature__media">
+            <img src="https://lh3.googleusercontent.com/d/1E8JBGB1YRf2lDBkYjJdt6KThBq76lMj7=w1200" width="1200" height="900" alt="Pacote bônus Desenvolvedor Full Stack Web — profissional digital para páginas, GitHub, deploy, DNS e tracking" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+          </figure>
+          <div>
+            <span class="bonus-feature__eyebrow">Bônus incluso</span>
+            <h3 id="bonus-fs-heading">Desenvolvedor Full Stack Web</h3>
+            <p class="bonus-feature__sub">Guia de instalação, uso e raio X do profissional digital</p>
+            <ul class="bonus-feature__list">
+              <li>Transforma demandas de negócio em páginas, formulários e ativos digitais publicados</li>
+              <li>Landing pages com HTML, CSS, JavaScript, responsividade e design aplicado</li>
+              <li>GitHub, branches, Pull Requests, deploy e documentação</li>
+              <li>Rastreamento: Meta Pixel, Google Ads, GA4, GTM, UTMs</li>
+              <li>Diagnóstico, testes, performance e QA — com roadmap de skills</li>
+            </ul>
+            <p class="bonus-feature__note">Pacote de documentação e configuração do profissional — suporte de instalação via WhatsApp, caso necessário.</p>
+          </div>
+        </aside>
 
         <div class="anchor-note">
           <strong>O que você leva pra casa (entrega completa deste produto).</strong>
@@ -923,7 +962,11 @@
         </details>
         <details>
           <summary>Vocês vão instalar os robôs por R$ 38?</summary>
-          <div class="faq-body">Não. Neste produto nós montamos o mapa e a documentação dos funcionários — prontos para dar vida. Ligar as máquinas (construir/instalar) é o próximo degrau, depois que o organograma está claro. Assim você não improvisa ferramenta sem planta.</div>
+          <div class="faq-body">Não. Neste produto nós montamos o mapa e a documentação dos funcionários — prontos para dar vida. O bônus Desenvolvedor Full Stack Web é o pacote (guia + arquivos) desse profissional digital para quando for a hora de dar vida ao time do mapa — não é nós instalando robôs por R$ 38. Ligar as máquinas (construir/instalar) é o próximo degrau, depois que o organograma está claro.</div>
+        </details>
+        <details>
+          <summary>O que é o bônus Desenvolvedor Full Stack Web?</summary>
+          <div class="faq-body">É o guia + pacote instalável do profissional digital especializado em web: landing pages, GitHub, deploy, DNS, tracking (Meta, GA4, GTM, UTMs), performance e QA. Você recebe a documentação e os arquivos para configurar esse profissional na sua estrutura — não é instalação feita por nós nesta etapa de R$ 38. O produto principal continua sendo o mapa e até 4 funcionários documentados.</div>
         </details>
         <details>
           <summary>Ainda não entendi 100% o que é Empresa Gêmea Digital. Posso entrar mesmo assim?</summary>
