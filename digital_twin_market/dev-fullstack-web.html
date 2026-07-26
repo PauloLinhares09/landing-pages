@@ -21,7 +21,10 @@
   (NÃO usar o label do mapa AW-17785213808/1767CKLKhM0cEPCm06BC — contaminaria o learning da outra campanha).
   OG image: digital_twin_market/assets/og-dev-fullstack-web.jpg (PENDENTE gerar/upload 1200×630)
   Screen-recording demo (W6): slot comentado no bloco 2 — inserir quando gravado
-  VSL áudio 2min (hero autoplay): ./voice/vsl-dev-fullstack-web-2min.mp3 — Drive Assets upload manual se publicar via hotlink
+  VSL áudio ~7min (hero, FL fake-seekbar + Clique para ouvir): ./voice/vsl-dev-fullstack-web-6min.mp3
+  Player SSOT: package-source/fl-tools/player-vsl/ · cópia deploy: ./player-vsl/
+  Poster 9:16: ./voice/paulo-linhares-vsl-poster.jpg
+  Teaser mudo: digital_twin_market/assets/paulo-linhares-retrato.mp4 (data-start-mode=click-to-listen)
   Depoimento verificado: NENHUM na página até existir (guardrail: não inventar prova)
   Guardrail naming: nunca OpenClaw / OpenCloud / Claw3D / Mr Coder / VPS na página
   Guardrail oferta: sem mentoria, sem 6 meses, sem R$ 497, sem preço riscado, sem countdown, sem vagas fake
@@ -257,11 +260,11 @@
   @keyframes pill-pulse{0%,100%{opacity:.72;box-shadow:0 0 0 1px rgba(110,204,60,.25),0 0 12px rgba(110,204,60,.12)}50%{opacity:1;box-shadow:0 0 0 2px rgba(110,204,60,.55),0 0 28px rgba(110,204,60,.35)}}
   @media(prefers-reduced-motion:reduce){.pill--highlight{animation:none;opacity:1}}
   .hero{min-height:72vh;display:flex;align-items:center;background:linear-gradient(135deg,rgba(0,0,0,.96),rgba(9,15,20,.92))}
-  .vsl-audio{margin:0 0 18px;padding:12px 14px;border:1px solid rgba(192,168,122,.4);border-radius:14px;background:linear-gradient(135deg,rgba(192,168,122,.1),rgba(9,15,20,.55))}
-  .vsl-audio__label{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 8px;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--color-gold-light)}
-  .vsl-audio__status{font-size:11px;font-weight:700;letter-spacing:.02em;text-transform:none;color:#c8f5a8}
-  .vsl-audio__status.is-blocked{color:#f0c674}
-  .vsl-audio audio{width:100%;height:40px;display:block;accent-color:var(--color-green)}
+  .vsl-player-wrap{margin:0 0 18px;max-width:280px}
+  .vsl-player-wrap .fl-vsl{max-width:100%;border:1px solid rgba(192,168,122,.4);box-shadow:0 12px 40px rgba(0,0,0,.35)}
+  .vsl-player-label{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 8px;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--color-gold-light)}
+  .vsl-player-status{font-size:11px;font-weight:700;letter-spacing:.02em;text-transform:none;color:#c8f5a8}
+  .vsl-player-status.is-blocked{color:#f0c674}
   .pullquote{margin:20px 0 0;padding:18px 20px;border-left:4px solid var(--color-gold);background:rgba(192,168,122,.06);border-radius:0 14px 14px 0;font-size:clamp(17px,2vw,20px);font-weight:600;color:#fff}
   .pullquote + .pullquote{margin-top:10px}
   .tool-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:20px}
@@ -336,6 +339,7 @@
   .author-byline{margin-top:14px;font-size:14px;color:#888}
   @media(max-width:860px){.grid{grid-template-columns:1fr}.hero{min-height:auto}.btn{width:100%}.cta-row{display:grid}.tool-grid{grid-template-columns:1fr}.pill-row{display:grid}.page{padding-bottom:76px}.sticky-cta .btn{width:auto}}
   </style>
+  <link rel="stylesheet" href="./player-vsl/player-vsl.css">
 </head>
 <body>
 <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=534601092992376&ev=PageView&noscript=1"></noscript>
@@ -345,16 +349,27 @@
   <section class="hero">
     <div class="container grid">
       <div>
-        <div class="vsl-audio" id="vsl-audio-wrap" data-asset="vsl-dev-fullstack-web-2min">
-          <p class="vsl-audio__label">
-            <span>Ouça a apresentação · ~2 min</span>
-            <span class="vsl-audio__status" id="vsl-audio-status" aria-live="polite">Iniciando…</span>
+        <div class="vsl-player-wrap" id="vsl-audio-wrap" data-asset="vsl-dev-fullstack-web-6min">
+          <p class="vsl-player-label">
+            <span>Ouça a apresentação · ~7 min</span>
+            <span class="vsl-player-status" id="vsl-audio-status" aria-live="polite">Clique para ouvir</span>
           </p>
-          <audio id="vsl-audio" controls preload="auto" playsinline
-            src="./voice/vsl-dev-fullstack-web-2min.mp3"
-            title="VSL — Contrate seu Desenvolvedor Digital">
-            Seu navegador não reproduz áudio HTML5.
-          </audio>
+          <div
+            class="fl-vsl"
+            id="vsl-player"
+            data-mode="audio"
+            data-src="./voice/vsl-dev-fullstack-web-6min.mp3"
+            data-poster="./voice/paulo-linhares-vsl-poster.jpg"
+            data-teaser-src="https://www.paulolinhares-mrcoder.com.br/digital_twin_market/assets/paulo-linhares-retrato.mp4"
+            data-start-mode="click-to-listen"
+            data-listen-label="Clique para ouvir"
+            data-volume-nudge="on"
+            data-min-volume="0.40"
+            data-title="VSL — Contrate seu Desenvolvedor Digital"
+            data-hinge-real="0.40"
+            data-hinge-visual="0.68"
+            data-accent="#6ecc3c">
+          </div>
         </div>
         <span class="eyebrow">Para o dono de PME · Paulo Linhares · 17 anos de TI</span>
         <h1>Contrate seu <span class="gold">Desenvolvedor Digital</span> — o profissional web completo da sua empresa, sem salário e sem mensalidade</h1>
@@ -678,6 +693,7 @@
     </div>
   </div>
 
+<script src="./player-vsl/player-vsl.js"></script>
 <script>
   /* Config operacional: SEO e contato */
   var MAQUETE_PAGE_CFG = {
@@ -694,10 +710,12 @@
       price: 47.0,
       currency: 'BRL'
     },
-    /* Após upload no Drive Assets, trocar por:
-       https://drive.google.com/uc?export=download&id=FILE_ID
-       Ou hospedar em: …/digital_twin_market/assets/vsl-dev-fullstack-web-2min.mp3 */
-    vslAudioUrl: './voice/vsl-dev-fullstack-web-2min.mp3'
+    /* Após upload no Drive Assets, trocar por URL hospedada.
+       Player SSOT: package-source/fl-tools/player-vsl/ */
+    vslAudioUrl: './voice/vsl-dev-fullstack-web-6min.mp3',
+    vslPosterUrl: './voice/paulo-linhares-vsl-poster.jpg',
+    /* Teaser mudo (click-to-listen). Local fallback: ../../assets/paulo-linhares-retrato.mp4 */
+    vslTeaserUrl: 'https://www.paulolinhares-mrcoder.com.br/digital_twin_market/assets/paulo-linhares-retrato.mp4'
   };
 
   (function () {
@@ -726,15 +744,15 @@
       }
     }
 
-    /* VSL áudio — autoplay com som + unlock no primeiro gesto se o browser bloquear */
-    (function initVslAudio() {
-      var audio = document.getElementById('vsl-audio');
+    /* VSL — FL fake-seekbar player (áudio + poster 9:16). Milestones usam realRatio. */
+    (function initVslPlayer() {
+      var root = document.getElementById('vsl-player');
       var statusEl = document.getElementById('vsl-audio-status');
-      if (!audio) return;
+      if (!root || typeof FLVslPlayer === 'undefined') return;
 
-      if (cfg.vslAudioUrl && audio.getAttribute('src') !== cfg.vslAudioUrl) {
-        audio.src = cfg.vslAudioUrl;
-      }
+      if (cfg.vslAudioUrl) root.setAttribute('data-src', cfg.vslAudioUrl);
+      if (cfg.vslPosterUrl) root.setAttribute('data-poster', cfg.vslPosterUrl);
+      if (cfg.vslTeaserUrl) root.setAttribute('data-teaser-src', cfg.vslTeaserUrl);
 
       function setStatus(text, blocked) {
         if (!statusEl) return;
@@ -742,51 +760,32 @@
         statusEl.classList.toggle('is-blocked', !!blocked);
       }
 
-      function markStart() {
+      FLVslPlayer.init(root);
+
+      root.addEventListener('flvsl:blocked', function () {
+        setStatus('Clique para ouvir', true);
+      });
+      root.addEventListener('flvsl:engage', function () {
+        setStatus('Tocando');
+        track('vsl_engage', { media: 'audio', start_mode: 'click-to-listen' });
+      });
+      root.addEventListener('flvsl:start', function (e) {
         if (tracked.vsl_start) return;
         tracked.vsl_start = true;
-        track('vsl_start', { media: 'audio', duration_s: Math.round(audio.duration || 0) });
-        setStatus('Tocando');
-      }
-
-      function tryPlay() {
-        var p = audio.play();
-        if (p && typeof p.then === 'function') {
-          return p.then(function () {
-            markStart();
-            setStatus('Tocando');
-            return true;
-          }).catch(function () {
-            setStatus('Toque na página para ouvir', true);
-            return false;
-          });
-        }
-        markStart();
-        return Promise.resolve(true);
-      }
-
-      var unlockBound = false;
-      function bindUnlock() {
-        if (unlockBound) return;
-        unlockBound = true;
-        var events = ['pointerdown', 'touchstart', 'keydown', 'scroll'];
-        function unlock() {
-          tryPlay().then(function (ok) {
-            if (!ok) return;
-            events.forEach(function (ev) {
-              window.removeEventListener(ev, unlock, true);
-            });
-          });
-        }
-        events.forEach(function (ev) {
-          window.addEventListener(ev, unlock, { capture: true, passive: true, once: false });
+        track('vsl_start', {
+          media: 'audio',
+          duration_s: Math.round((e.detail && e.detail.duration) || 0)
         });
-      }
-
-      audio.addEventListener('play', markStart);
-      audio.addEventListener('timeupdate', function () {
-        if (!audio.duration || !isFinite(audio.duration)) return;
-        var ratio = audio.currentTime / audio.duration;
+        setStatus('Tocando');
+      });
+      root.addEventListener('flvsl:play', function () {
+        setStatus('Tocando');
+      });
+      root.addEventListener('flvsl:pause', function () {
+        if (!tracked.vsl_complete) setStatus('Pausado');
+      });
+      root.addEventListener('flvsl:progress', function (e) {
+        var ratio = (e.detail && e.detail.realRatio) || 0;
         if (ratio >= 0.25 && !tracked.vsl_25) {
           tracked.vsl_25 = true;
           track('vsl_progress_25', { media: 'audio' });
@@ -800,15 +799,11 @@
           track('vsl_progress_75', { media: 'audio' });
         }
       });
-      audio.addEventListener('ended', function () {
+      root.addEventListener('flvsl:ended', function () {
         if (tracked.vsl_complete) return;
         tracked.vsl_complete = true;
         track('vsl_complete', { media: 'audio' });
         setStatus('Concluído — contrate abaixo');
-      });
-
-      tryPlay().then(function (ok) {
-        if (!ok) bindUnlock();
       });
     })();
 
