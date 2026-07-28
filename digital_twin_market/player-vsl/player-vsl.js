@@ -307,25 +307,16 @@
   };
 
   Player.prototype._showGate = function (withTeaserClass) {
-    if (this.els.gate) this.els.gate.hidden = false;
     this.root.classList.add('is-gated');
     if (withTeaserClass) this.root.classList.add('is-teaser');
     else this.root.classList.remove('is-teaser');
+    if (this.els.gate) this.els.gate.hidden = false;
   };
 
   Player.prototype._hideGate = function () {
     this.root.classList.remove('is-gated');
     this.root.classList.remove('is-teaser');
-    /* keep in DOM for fade-out; visibility/opacity handled by CSS */
-    var gate = this.els.gate;
-    if (!gate) return;
-    clearTimeout(this._gateHideTimer);
-    this._gateHideTimer = setTimeout(function () {
-      /* only hide if still not gated (user may have reopened) */
-      if (!gate.closest || !gate.closest('.fl-vsl.is-gated, .fl-vsl.is-blocked')) {
-        gate.hidden = true;
-      }
-    }, 450);
+    if (this.els.gate) this.els.gate.hidden = true;
   };
 
   Player.prototype._enterTeaserGate = function () {
@@ -462,11 +453,7 @@
       text.textContent = message || 'Aumente o volume do celular para ouvir bem';
     }
     this.els.nudge.hidden = false;
-    /* next frame so opacity transition runs after unhiding */
-    var root = this.root;
-    requestAnimationFrame(function () {
-      root.classList.add('is-nudge');
-    });
+    this.root.classList.add('is-nudge');
     emit(this.root, 'flvsl:volume-nudge', { volume: this.media ? this.media.volume : 0 });
     var self = this;
     clearTimeout(this._nudgeTimer);
@@ -478,14 +465,8 @@
   Player.prototype.hideVolumeNudge = function () {
     clearTimeout(this._nudgeTimer);
     this._nudgeTimer = null;
+    if (this.els.nudge) this.els.nudge.hidden = true;
     this.root.classList.remove('is-nudge');
-    var nudge = this.els.nudge;
-    if (!nudge) return;
-    /* allow fade-out before [hidden] */
-    clearTimeout(this._nudgeHideTimer);
-    this._nudgeHideTimer = setTimeout(function () {
-      nudge.hidden = true;
-    }, 420);
   };
 
   Player.prototype.setVolume = function (vol, silent) {
@@ -598,8 +579,6 @@
     if (this._destroyed) return;
     this._destroyed = true;
     clearTimeout(this._nudgeTimer);
-    clearTimeout(this._nudgeHideTimer);
-    clearTimeout(this._gateHideTimer);
     this._stopTeaser();
     if (this.media) {
       this.media.pause();
