@@ -14,6 +14,7 @@
   Suporte: packapps.br@gmail.com
   Privacidade: https://www.paulolinhares-mrcoder.com.br/digital_twin_market/institucional/politica-de-privacidade.html
   Visual autoridade: ./assets/conhecimento-para-produto.png
+  Lottie: ./assets/lottie/{web-design,ecommerce,shop} — ver assets/lottie/README.md
 -->
 <!doctype html>
 <html lang="pt-BR">
@@ -183,7 +184,86 @@
     box-shadow: 0 10px 28px rgba(255,90,47,.28);
     transition: background .2s ease, transform .2s ease;
   }
-  .btn:hover { background: var(--signal-hover); }
+  .btn:hover { background: var(--signal-hover); transform: translateY(-1px); }
+
+  /* Hotmart-style hero kicker + rotating word */
+  .hero-kicker {
+    margin: 0 0 6px;
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 700;
+    letter-spacing: -.03em;
+    line-height: 1.05;
+    color: var(--text-on-dark);
+  }
+  .hero-rotate {
+    position: relative;
+    /* Height must match word size — previous 1.15em used body font (~16px) and clipped orange text */
+    font-size: clamp(32px, 5vw, 48px);
+    height: 1.2em;
+    margin: 0 0 18px;
+    overflow: hidden;
+  }
+  .hero-rotate__word {
+    position: absolute;
+    left: 0; top: 0;
+    font-size: 1em;
+    font-weight: 800;
+    letter-spacing: -.03em;
+    line-height: 1.15;
+    color: var(--signal);
+    opacity: 0;
+    transform: translateY(45%);
+    transition: opacity .45s ease, transform .45s ease;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+  .hero-rotate__word.is-active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .hero-rotate__word.is-exit {
+    opacity: 0;
+    transform: translateY(-40%);
+  }
+
+  /* Scroll reveals */
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity .55s ease, transform .55s ease;
+  }
+  .reveal.is-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-delay-1 { transition-delay: .05s; }
+  .reveal-delay-2 { transition-delay: .1s; }
+  .reveal-delay-3 { transition-delay: .15s; }
+  .reveal-delay-4 { transition-delay: .2s; }
+  .reveal-delay-5 { transition-delay: .25s; }
+
+  /* Lottie slots — never put .reveal on the wrapper (opacity:0 hid animations) */
+  .lottie-slot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: min(100%, 260px);
+    min-height: 220px;
+    height: 220px;
+    margin: 0 auto 12px;
+    filter: saturate(1.15) hue-rotate(-8deg);
+  }
+  .lottie-slot--dark { filter: saturate(1.2) hue-rotate(-12deg) brightness(1.05); }
+  .lottie-slot svg {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+  }
+  .lottie-row {
+    display: flex;
+    justify-content: center;
+    margin: 8px 0 16px;
+  }
   .btn:focus-visible { outline: 3px solid rgba(255,90,47,.55); outline-offset: 3px; }
   .btn--ghost {
     background: transparent;
@@ -240,6 +320,11 @@
     border-radius: 18px;
     padding: 14px;
     box-shadow: 0 24px 60px rgba(0,0,0,.45);
+    animation: mockup-float 5.5s ease-in-out infinite;
+  }
+  @keyframes mockup-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
   }
   .mockup__chrome {
     display: flex; gap: 6px; margin-bottom: 12px;
@@ -285,8 +370,14 @@
     background: #252a36; overflow: hidden;
   }
   .mockup__progress > i {
-    display: block; width: 72%; height: 100%;
+    display: block; width: 0%; height: 100%;
     background: linear-gradient(90deg, var(--signal), #ff8a5c);
+    animation: progress-fill 3.2s ease-in-out infinite;
+  }
+  @keyframes progress-fill {
+    0% { width: 18%; }
+    55% { width: 86%; }
+    100% { width: 18%; }
   }
   .status-row {
     display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px;
@@ -297,8 +388,15 @@
     background: rgba(39,193,125,.12);
     color: #7ee0b0;
     border: 1px solid rgba(39,193,125,.35);
+    animation: pill-in .6s ease both;
   }
-
+  .status-pill:nth-child(1) { animation-delay: .15s; }
+  .status-pill:nth-child(2) { animation-delay: .35s; }
+  .status-pill:nth-child(3) { animation-delay: .55s; }
+  @keyframes pill-in {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
   /* Cards */
   .card-grid {
     display: grid;
@@ -525,7 +623,17 @@
     color: var(--signal); margin-bottom: 10px;
   }
   .price-card .price { font-size: 56px; font-weight: 800; line-height: 1; margin: 0; }
-  .price-card .price-sub { margin: 6px 0 18px; color: rgba(248,247,244,.6); font-size: 15px; }
+  .price-card .price-sub { margin: 6px 0 10px; color: rgba(248,247,244,.6); font-size: 15px; }
+  .urgency {
+    display: inline-block;
+    margin: 0 0 16px;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: .02em;
+    color: var(--signal);
+  }
+  .section--dark .urgency,
+  .price-card .urgency { color: #ff8a66; }
   .price-card ul { list-style: none; padding: 0; margin: 0 0 22px; display: grid; gap: 8px; }
   .price-card li { font-size: 15px; padding-left: 20px; position: relative; }
   .price-card li::before { content: "✓"; position: absolute; left: 0; color: var(--progress); font-weight: 800; }
@@ -619,19 +727,31 @@
 
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    .trust-bar, .btn { transition: none; }
+    .trust-bar, .btn, .reveal, .hero-rotate__word { transition: none !important; }
+    .mockup, .mockup__progress > i, .status-pill { animation: none !important; }
+    .reveal { opacity: 1; transform: none; }
+    .hero-rotate__word { opacity: 0; transform: none; }
+    .hero-rotate__word.is-active { opacity: 1; }
+    .btn:hover { transform: none; }
   }
   </style>
 </head>
 <body>
   <div class="page" id="top">
-    <div class="trust-bar" id="trustBar">Produto-base criado na Hotmart · Pagamento único de R$ 67 · Garantia de 7 dias</div>
+    <div class="trust-bar" id="trustBar">R$ 67 agora · Esse preço não vai durar · Garantia de 7 dias</div>
 
     <!-- 1 Hero -->
     <header class="hero">
       <div class="container hero-grid">
         <div>
           <p class="eyebrow">Você já sabe o que ensinar. O que falta é o produto no ar — sem mais um curso de lançamento.</p>
+          <p class="hero-kicker">Acontece aqui</p>
+          <p class="hero-rotate" aria-live="polite" id="heroRotate">
+            <span class="hero-rotate__word is-active">publicado.</span>
+            <span class="hero-rotate__word">estruturado.</span>
+            <span class="hero-rotate__word">no ar.</span>
+            <span class="hero-rotate__word">em 12h.</span>
+          </p>
           <h1>Seu conhecimento deixa de ser ideia e vira <span class="signal">produto publicado</span> — método, módulos e aulas — em até <span class="signal">12 horas</span> de produção. Feito por nós, não por você.</h1>
           <p class="lead">Você participa de uma entrevista. Nós organizamos o método, criamos até 6 módulos e 24 aulas em texto, preparamos capa e banner e publicamos o produto-base. Você revisa uma vez e autoriza.</p>
           <ul class="hero-bullets">
@@ -643,6 +763,7 @@
           </ul>
           <div class="cta-wrap">
             <a class="btn js-checkout-ena12h" href="https://pay.hotmart.com/R106938053M" data-cta="hero">Quero meu produto no ar por R$ 67</a>
+            <p class="urgency">Corre — esse preço de R$ 67 não vai durar muito tempo.</p>
             <p class="micro">Pagamento único · 7 dias de garantia · As 12 horas começam depois da entrevista, dos acessos e do checklist de prontidão.</p>
           </div>
         </div>
@@ -679,12 +800,12 @@
         <h2>Talvez o seu infoproduto não esteja parado por falta de conhecimento.</h2>
         <p class="lead">Eu também já paguei caro por mais teoria — quase 5 mil reais no mesmo tipo de curso que muita gente já comprou. O que me faltava não era aula. Era alguém para estruturar e publicar a primeira versão.</p>
         <div class="card-grid card-grid--3">
-          <article class="card"><h3>“Eu não sei por onde começar.”</h3><p>Tem conhecimento, mas não consegue enxergar a sequência das aulas.</p></article>
-          <article class="card"><h3>“Eu não tenho tempo.”</h3><p>O projeto sempre fica para depois das demandas dos clientes.</p></article>
-          <article class="card"><h3>“Eu não quero gravar.”</h3><p>A câmera virou uma barreira antes mesmo de o produto existir.</p></article>
-          <article class="card"><h3>“A parte técnica me trava.”</h3><p>Plataforma, capa, módulos e configurações parecem outro negócio.</p></article>
-          <article class="card"><h3>“Ainda não está perfeito.”</h3><p>A busca pela versão definitiva impede a primeira versão de nascer.</p></article>
-          <article class="card"><h3>“Já comprei cursos, mas não executei.”</h3><p>O problema agora não é acesso a mais informação.</p></article>
+          <article class="card reveal"><h3>“Eu não sei por onde começar.”</h3><p>Tem conhecimento, mas não consegue enxergar a sequência das aulas.</p></article>
+          <article class="card reveal reveal-delay-1"><h3>“Eu não tenho tempo.”</h3><p>O projeto sempre fica para depois das demandas dos clientes.</p></article>
+          <article class="card reveal reveal-delay-2"><h3>“Eu não quero gravar.”</h3><p>A câmera virou uma barreira antes mesmo de o produto existir.</p></article>
+          <article class="card reveal reveal-delay-3"><h3>“A parte técnica me trava.”</h3><p>Plataforma, capa, módulos e configurações parecem outro negócio.</p></article>
+          <article class="card reveal reveal-delay-4"><h3>“Ainda não está perfeito.”</h3><p>A busca pela versão definitiva impede a primeira versão de nascer.</p></article>
+          <article class="card reveal reveal-delay-5"><h3>“Já comprei cursos, mas não executei.”</h3><p>O problema agora não é acesso a mais informação.</p></article>
         </div>
         <p class="fecho">Isso não é um curso de Lançamento de Infoproduto ou 6em7. Isso é um convite prático: seu produto no ar em até 12 HORAS.</p>
       </div>
@@ -696,7 +817,7 @@
         <h2>Você fala o que sabe numa entrevista. Nós organizamos, escrevemos e publicamos o produto-base.</h2>
         <p class="lead">Você não estuda Hotmart. Você revisa uma vez e autoriza.</p>
         <div class="compare">
-          <div class="compare-col compare-col--old">
+          <div class="compare-col compare-col--old reveal">
             <h3>Modelo convencional</h3>
             <ul>
               <li>Estudar como criar</li>
@@ -706,7 +827,7 @@
               <li>Esperar a versão perfeita</li>
             </ul>
           </div>
-          <div class="compare-col compare-col--new">
+          <div class="compare-col compare-col--new reveal reveal-delay-2">
             <h3>Expert no Ar 12H</h3>
             <ul>
               <li>Ser entrevistado</li>
@@ -729,16 +850,19 @@
       <div class="container">
         <p class="eyebrow">Como funciona</p>
         <h2>Da entrevista ao produto na Hotmart</h2>
+        <div class="lottie-row">
+          <div class="lottie-slot" id="lottieComoFunciona" data-lottie="./assets/lottie/web-design.json" aria-hidden="true"></div>
+        </div>
         <div class="steps">
-          <article class="step">
+          <article class="step reveal">
             <h3>Conte o que você sabe</h3>
             <p class="muted">Você responde ao intake e participa de uma entrevista de até 45 minutos. Extraímos transformação, público, sequência e exemplos.</p>
           </article>
-          <article class="step">
+          <article class="step reveal reveal-delay-1">
             <h3>Nós estruturamos</h3>
             <p class="muted">Transformamos sua experiência em proposta de produto, método, módulos e até 24 aulas em texto.</p>
           </article>
-          <article class="step">
+          <article class="step reveal reveal-delay-2">
             <h3>Seu produto vai para a Hotmart</h3>
             <p class="muted">Criamos capa, banner, organizamos a área de membros e publicamos o conteúdo. A propriedade do produto é sua — transferimos para a sua conta quando você quiser.</p>
           </article>
@@ -843,12 +967,12 @@
         <h2>O relógio de 12 horas só começa quando a entrevista e os acessos estão ok</h2>
         <p class="lead">São horas de produção da equipe — não o tempo em que você fica esperando resposta ou aprovando detalhes.</p>
         <div class="timeline">
-          <div class="tl-item"><strong>Hora 0</strong><span>Checklist de prontidão concluído</span></div>
-          <div class="tl-item"><strong>Hora 1–Hora 2</strong><span>Entrevista analisada e proposta estruturada</span></div>
-          <div class="tl-item"><strong>Hora 3–Hora 5</strong><span>Método, módulos e sequência de aulas</span></div>
-          <div class="tl-item"><strong>Hora 6–Hora 9</strong><span>Produção e tratamento das aulas em texto</span></div>
-          <div class="tl-item"><strong>Hora 10–Hora 11</strong><span>Capa, banner e configuração</span></div>
-          <div class="tl-item"><strong>Hora 12</strong><span>Revisão, publicação e entrega</span></div>
+          <div class="tl-item reveal"><strong>Hora 0</strong><span>Checklist de prontidão concluído</span></div>
+          <div class="tl-item reveal reveal-delay-1"><strong>Hora 1–Hora 2</strong><span>Entrevista analisada e proposta estruturada</span></div>
+          <div class="tl-item reveal reveal-delay-2"><strong>Hora 3–Hora 5</strong><span>Método, módulos e sequência de aulas</span></div>
+          <div class="tl-item reveal reveal-delay-3"><strong>Hora 6–Hora 9</strong><span>Produção e tratamento das aulas em texto</span></div>
+          <div class="tl-item reveal reveal-delay-4"><strong>Hora 10–Hora 11</strong><span>Capa, banner e configuração</span></div>
+          <div class="tl-item reveal reveal-delay-5"><strong>Hora 12</strong><span>Revisão, publicação e entrega</span></div>
         </div>
         <div class="cta-center">
           <a class="btn js-checkout-ena12h" href="https://pay.hotmart.com/R106938053M" data-cta="timeline">Quero entrar na esteira 12H</a>
@@ -929,19 +1053,23 @@
       <div class="container">
         <h2>Em vez de montar sozinho, você contrata a esteira que entrega o produto-base.</h2>
         <p class="lead">Sem contratar separadamente estrategista, redator, designer e operador de plataforma para criar a primeira versão — por R$ 67, pagamento único.</p>
+        <div class="lottie-row">
+          <div class="lottie-slot" id="lottieOferta" data-lottie="./assets/lottie/ecommerce.json" aria-hidden="true"></div>
+        </div>
         <div class="offer-grid">
           <div class="offer-groups">
-            <div class="offer-group"><strong>Extração</strong><span>Intake + entrevista de até 45 minutos</span></div>
-            <div class="offer-group"><strong>Posicionamento</strong><span>Público, transformação, nome provisório e promessa</span></div>
-            <div class="offer-group"><strong>Arquitetura</strong><span>Método, até 6 módulos e sequência de aulas</span></div>
-            <div class="offer-group"><strong>Conteúdo</strong><span>Até 24 aulas + 1 rodada factual</span></div>
-            <div class="offer-group"><strong>Publicação</strong><span>Capa, banner e produto publicado (transferência sob demanda)</span></div>
-            <div class="offer-group"><strong>Suporte</strong><span>WhatsApp ilimitado — você não fica sozinho no processo</span></div>
+            <div class="offer-group reveal"><strong>Extração</strong><span>Intake + entrevista de até 45 minutos</span></div>
+            <div class="offer-group reveal reveal-delay-1"><strong>Posicionamento</strong><span>Público, transformação, nome provisório e promessa</span></div>
+            <div class="offer-group reveal reveal-delay-2"><strong>Arquitetura</strong><span>Método, até 6 módulos e sequência de aulas</span></div>
+            <div class="offer-group reveal reveal-delay-3"><strong>Conteúdo</strong><span>Até 24 aulas + 1 rodada factual</span></div>
+            <div class="offer-group reveal reveal-delay-4"><strong>Publicação</strong><span>Capa, banner e produto publicado (transferência sob demanda)</span></div>
+            <div class="offer-group reveal reveal-delay-5"><strong>Suporte</strong><span>WhatsApp ilimitado — você não fica sozinho no processo</span></div>
           </div>
           <aside class="price-card" id="checkout-card">
             <div class="label">Acesso à esteira Expert no Ar 12H</div>
             <p class="price">R$ 67</p>
-            <p class="price-sub">pagamento único</p>
+            <p class="price-sub">pagamento único · condição de entrada</p>
+            <p class="urgency">Corre — esse preço não vai durar muito tempo.</p>
             <ul>
               <li>um produto-base</li>
               <li>até 6 módulos</li>
@@ -951,8 +1079,8 @@
               <li>uma rodada de correções factuais</li>
               <li>suporte ilimitado por WhatsApp</li>
             </ul>
-            <a class="btn js-checkout-ena12h" href="https://pay.hotmart.com/R106938053M" data-cta="offer">Quero meu produto no ar</a>
-            <p class="micro">Compra processada em ambiente seguro · Garantia de 7 dias · Vagas sujeitas à capacidade real de produção.</p>
+            <a class="btn js-checkout-ena12h" href="https://pay.hotmart.com/R106938053M" data-cta="offer">Garantir meu lugar por R$ 67</a>
+            <p class="micro">Compra segura · Garantia de 7 dias · Vagas sujeitas à capacidade real de produção — quando encher, o jogo muda.</p>
           </aside>
         </div>
       </div>
@@ -1043,7 +1171,11 @@
           </details>
           <details data-faq>
             <summary>Existe limite de vagas?</summary>
-            <p>A venda respeita a capacidade de produção da equipe. Qualquer limite divulgado precisa refletir uma limitação operacional real.</p>
+            <p>Sim. A venda respeita a capacidade real de produção da equipe. Quando a fila enche, o acesso à condição de entrada pode mudar — por isso o preço de R$ 67 não é para “deixar para depois”.</p>
+          </details>
+          <details data-faq>
+            <summary>Esse preço de R$ 67 vai continuar?</summary>
+            <p>Não conte com isso. R$ 67 é a condição de entrada atual para validar a esteira e criar os primeiros cases. Corre — esse preço não vai durar muito tempo.</p>
           </details>
           <details data-faq>
             <summary>E se meu conhecimento não estiver pronto?</summary>
@@ -1059,14 +1191,18 @@
     <!-- 15 Fechamento -->
     <section class="section section--dark close-section">
       <div class="container center">
+        <div class="lottie-row">
+          <div class="lottie-slot lottie-slot--dark" id="lottieFechamento" data-lottie="./assets/lottie/shop.json" aria-hidden="true"></div>
+        </div>
         <h2>Três caminhos. Só um coloca o produto no ar.</h2>
         <p class="lead">Continuar só na cabeça. Tentar montar sozinho de novo. Ou pagar R$ 67 e deixar a gente entregar o produto-base. Sem promessa de faturamento — com promessa de execução.</p>
         <p style="font-size:22px;font-weight:800;margin:20px 0 8px">R$ 67 · pagamento único</p>
+        <p class="urgency">Corre — esse preço não vai durar muito tempo.</p>
         <div class="cta-center" style="margin-top:18px">
-          <a class="btn js-checkout-ena12h" href="https://pay.hotmart.com/R106938053M" data-cta="close">Quero colocar meu produto no ar</a>
-          <p class="micro">Até 6 módulos e 24 aulas · Capa e banner · 12 horas de produção após o checklist de prontidão.</p>
+          <a class="btn js-checkout-ena12h" href="https://pay.hotmart.com/R106938053M" data-cta="close">Garantir meu produto no ar agora</a>
+          <p class="micro">Até 6 módulos e 24 aulas · Capa e banner · Suporte WhatsApp · Capacidade de produção limitada.</p>
         </div>
-        <p class="lead" style="margin-top:40px;font-weight:600">Você entra com o conhecimento. A Expert no Ar 12H transforma esse conhecimento em um produto real. Feito por nós, não por você.</p>
+        <p class="lead" style="margin-top:40px;font-weight:600">Você entra com o conhecimento. A Expert no Ar 12H transforma esse conhecimento em um produto real. Feito por nós, não por você. Mas o valor de entrada de R$ 67 é condição de agora — não conte que ele vai ficar.</p>
       </div>
     </section>
 
@@ -1090,14 +1226,107 @@
   </div>
 
   <div class="sticky-cta" id="stickyCta" aria-hidden="true">
-    <a class="btn js-checkout-ena12h" href="https://pay.hotmart.com/R106938053M" data-cta="sticky">Quero meu produto no ar — R$ 67</a>
+    <a class="btn js-checkout-ena12h" href="https://pay.hotmart.com/R106938053M" data-cta="sticky">Corre — R$ 67 não vai durar</a>
   </div>
 
+  <!-- Lottie: Google/LottieFiles pattern — library + container + loadAnimation (local JSON) -->
+  <script src="./assets/js/lottie.min.js"></script>
   <script>
   (function () {
     var CHECKOUT = 'https://pay.hotmart.com/R106938053M';
     var scroll50 = false;
     var scroll90 = false;
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* Hotmart-style rotating orange words */
+    (function initHeroRotate() {
+      var root = document.getElementById('heroRotate');
+      if (!root || reduceMotion) return;
+      var words = root.querySelectorAll('.hero-rotate__word');
+      if (words.length < 2) return;
+      var i = 0;
+      setInterval(function () {
+        var cur = words[i];
+        var next = words[(i + 1) % words.length];
+        cur.classList.remove('is-active');
+        cur.classList.add('is-exit');
+        next.classList.add('is-active');
+        next.classList.remove('is-exit');
+        setTimeout(function () { cur.classList.remove('is-exit'); }, 450);
+        i = (i + 1) % words.length;
+      }, 2200);
+    })();
+
+    /* Scroll reveals */
+    (function initReveals() {
+      var nodes = document.querySelectorAll('.reveal');
+      if (!nodes.length) return;
+      if (reduceMotion || !('IntersectionObserver' in window)) {
+        nodes.forEach(function (n) { n.classList.add('is-in'); });
+        return;
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -24px 0px' });
+      nodes.forEach(function (n) { io.observe(n); });
+    })();
+
+    /* Lottie via lottie-web (bodymovin): Include library → container → loadAnimation */
+    (function initLotties() {
+      var slots = document.querySelectorAll('.lottie-slot[data-lottie]');
+      if (!slots.length) return;
+      if (typeof lottie === 'undefined') {
+        console.warn('[ENA12H] lottie.min.js not loaded');
+        return;
+      }
+      if (reduceMotion) {
+        slots.forEach(function (s) { s.style.display = 'none'; });
+        return;
+      }
+
+      function mount(slot) {
+        if (slot.dataset.mounted) return;
+        var path = slot.getAttribute('data-lottie');
+        if (!path) return;
+        slot.dataset.mounted = '1';
+        slot.innerHTML = '';
+        try {
+          lottie.loadAnimation({
+            container: slot,
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: path,
+            rendererSettings: { preserveAspectRatio: 'xMidYMid meet' }
+          });
+        } catch (err) {
+          console.warn('[ENA12H] Lottie failed', path, err);
+          slot.dataset.mounted = '';
+        }
+      }
+
+      /* Eager first (Como funciona) so it paints without scroll */
+      if (slots[0]) mount(slots[0]);
+
+      if (!('IntersectionObserver' in window)) {
+        slots.forEach(mount);
+        return;
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            mount(entry.target);
+            io.unobserve(entry.target);
+          }
+        });
+      }, { rootMargin: '240px 0px', threshold: 0.01 });
+      for (var i = 1; i < slots.length; i++) io.observe(slots[i]);
+    })();
 
     function withUtm(base) {
       try {
