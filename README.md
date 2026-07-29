@@ -83,6 +83,7 @@ Do **not** push to `master` unless the user explicitly asks. Do **not** force-pu
 | `digital_twin_market/raiz_page_no_video.html` | Main Maquete Digital landing page |
 | `digital_twin_market/institucional/` | Institutional pages (e.g. privacy policy) |
 | `digital_twin_market/assets/` | Images, video, OG assets |
+| `products/expert-no-ar-12h/lt_expert_no_ar_12h.html` | Expert no Ar 12H low-ticket (R$ 67) |
 | `sitemap.xml` | Site URLs for SEO |
 
 Site domain: `https://www.paulolinhares-mrcoder.com.br`
