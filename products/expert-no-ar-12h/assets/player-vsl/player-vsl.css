@@ -1,0 +1,438 @@
+/* FL VSL Fake-Seekbar Player — zero deps */
+
+.fl-vsl {
+  --fl-vsl-accent: #6ecc3c;
+  --fl-vsl-bg: #0a0e12;
+  --fl-vsl-fg: #ffffff;
+  --fl-vsl-muted: rgba(255, 255, 255, 0.72);
+  --fl-vsl-chrome: rgba(0, 0, 0, 0.55);
+  --fl-vsl-bar-track: rgba(255, 255, 255, 0.22);
+  --fl-vsl-radius: 14px;
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  border-radius: var(--fl-vsl-radius);
+  overflow: hidden;
+  background: var(--fl-vsl-bg);
+  color: var(--fl-vsl-fg);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+.fl-vsl[data-mode="audio"] {
+  max-width: 320px;
+}
+
+.fl-vsl__stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.fl-vsl[data-mode="audio"] .fl-vsl__stage {
+  aspect-ratio: 9 / 16;
+}
+
+.fl-vsl__media,
+.fl-vsl__teaser {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  background: #000;
+}
+
+.fl-vsl__teaser {
+  display: none;
+  z-index: 1;
+}
+
+.fl-vsl.is-teaser .fl-vsl__teaser {
+  display: block;
+}
+
+/* Attention: stronger zoom in/out while waiting for Clique para ouvir */
+.fl-vsl.is-gated.is-teaser .fl-vsl__teaser,
+.fl-vsl.is-blocked.is-teaser .fl-vsl__teaser {
+  animation: fl-vsl-ken 3.6s ease-in-out infinite alternate;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.fl-vsl.is-gated:not(.is-teaser) .fl-vsl__poster,
+.fl-vsl.is-blocked:not(.is-teaser) .fl-vsl__poster {
+  animation: fl-vsl-ken 3.6s ease-in-out infinite alternate;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+@keyframes fl-vsl-ken {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.22); }
+}
+
+.fl-vsl__media--audio {
+  /* visually hidden; still in DOM for playback */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.fl-vsl__poster {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.fl-vsl.is-teaser .fl-vsl__poster {
+  opacity: 0;
+}
+
+.fl-vsl.is-playing[data-mode="video"] .fl-vsl__poster {
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.fl-vsl[data-mode="video"] .fl-vsl__media {
+  z-index: 1;
+}
+
+.fl-vsl.is-gated[data-mode="video"] .fl-vsl__media {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.fl-vsl__wave {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 52px;
+  height: 48px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 3px;
+  padding: 0 16px 8px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.55), transparent);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 2;
+}
+
+.fl-vsl[data-mode="audio"].is-playing .fl-vsl__wave {
+  opacity: 1;
+}
+
+.fl-vsl__wave-bar {
+  width: 3px;
+  height: 20%;
+  border-radius: 2px;
+  background: var(--fl-vsl-accent);
+  transform-origin: bottom center;
+  animation: fl-vsl-wave 1.05s ease-in-out infinite;
+}
+
+.fl-vsl__wave-bar:nth-child(1) { animation-delay: 0s; height: 28%; }
+.fl-vsl__wave-bar:nth-child(2) { animation-delay: 0.08s; height: 55%; }
+.fl-vsl__wave-bar:nth-child(3) { animation-delay: 0.16s; height: 40%; }
+.fl-vsl__wave-bar:nth-child(4) { animation-delay: 0.24s; height: 72%; }
+.fl-vsl__wave-bar:nth-child(5) { animation-delay: 0.04s; height: 48%; }
+.fl-vsl__wave-bar:nth-child(6) { animation-delay: 0.2s; height: 85%; }
+.fl-vsl__wave-bar:nth-child(7) { animation-delay: 0.12s; height: 36%; }
+.fl-vsl__wave-bar:nth-child(8) { animation-delay: 0.28s; height: 62%; }
+.fl-vsl__wave-bar:nth-child(9) { animation-delay: 0.06s; height: 44%; }
+.fl-vsl__wave-bar:nth-child(10) { animation-delay: 0.18s; height: 70%; }
+.fl-vsl__wave-bar:nth-child(11) { animation-delay: 0.1s; height: 32%; }
+.fl-vsl__wave-bar:nth-child(12) { animation-delay: 0.22s; height: 58%; }
+.fl-vsl__wave-bar:nth-child(13) { animation-delay: 0.14s; height: 78%; }
+.fl-vsl__wave-bar:nth-child(14) { animation-delay: 0.02s; height: 42%; }
+.fl-vsl__wave-bar:nth-child(15) { animation-delay: 0.26s; height: 66%; }
+.fl-vsl__wave-bar:nth-child(16) { animation-delay: 0.09s; height: 50%; }
+.fl-vsl__wave-bar:nth-child(17) { animation-delay: 0.17s; height: 38%; }
+.fl-vsl__wave-bar:nth-child(18) { animation-delay: 0.25s; height: 74%; }
+.fl-vsl__wave-bar:nth-child(19) { animation-delay: 0.05s; height: 46%; }
+.fl-vsl__wave-bar:nth-child(20) { animation-delay: 0.19s; height: 60%; }
+
+@keyframes fl-vsl-wave {
+  0%, 100% { transform: scaleY(0.35); opacity: 0.65; }
+  50% { transform: scaleY(1); opacity: 1; }
+}
+
+.fl-vsl__gate {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.45);
+  text-align: center;
+  cursor: pointer;
+}
+
+.fl-vsl.is-gated .fl-vsl__gate,
+.fl-vsl.is-blocked .fl-vsl__gate {
+  display: flex;
+}
+
+.fl-vsl__gate-hint {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: 0.02em;
+}
+
+.fl-vsl__volume-nudge {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  top: 10px;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.35;
+  pointer-events: auto;
+}
+
+.fl-vsl__volume-nudge[hidden] {
+  display: none !important;
+}
+
+.fl-vsl__nudge-dismiss {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  margin-left: auto;
+  padding: 0 2px;
+  opacity: 0.8;
+}
+
+.fl-vsl__unlock-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  background: rgba(0, 0, 0, 0.4);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+}
+
+.fl-vsl.is-gated .fl-vsl__unlock-icon,
+.fl-vsl.is-blocked .fl-vsl__unlock-icon {
+  animation: fl-vsl-pulse 1.25s ease-in-out infinite;
+}
+
+.fl-vsl.is-gated .fl-vsl__unlock-text,
+.fl-vsl.is-blocked .fl-vsl__unlock-text {
+  animation: fl-vsl-text-pulse 1.25s ease-in-out infinite;
+}
+
+@keyframes fl-vsl-pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35), 0 0 0 0 rgba(110, 204, 60, 0.45);
+  }
+  50% {
+    transform: scale(1.18);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 0 14px rgba(110, 204, 60, 0);
+  }
+}
+
+@keyframes fl-vsl-text-pulse {
+  0%, 100% { opacity: 0.85; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.06); }
+}
+
+.fl-vsl__unlock-icon svg {
+  width: 30px;
+  height: 30px;
+  fill: #fff;
+  margin-left: 3px;
+}
+
+.fl-vsl__unlock-text {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: #fff;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+.fl-vsl__chrome {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px 12px 12px;
+  background: linear-gradient(to top, var(--fl-vsl-chrome), transparent);
+  pointer-events: none;
+}
+
+.fl-vsl__controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  pointer-events: auto;
+}
+
+.fl-vsl__btn {
+  appearance: none;
+  border: 0;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.15s ease;
+}
+
+.fl-vsl__btn:hover,
+.fl-vsl__btn:focus-visible {
+  background: rgba(255, 255, 255, 0.22);
+  outline: none;
+}
+
+.fl-vsl__btn svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.fl-vsl__btn--play .fl-vsl__icon-pause { display: none; }
+.fl-vsl__btn--play .fl-vsl__icon-play { display: block; margin-left: 2px; }
+.fl-vsl.is-playing .fl-vsl__btn--play .fl-vsl__icon-pause { display: block; }
+.fl-vsl.is-playing .fl-vsl__btn--play .fl-vsl__icon-play { display: none; }
+
+.fl-vsl__rate {
+  appearance: none;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(0, 0, 0, 0.35);
+  color: #fff;
+  min-width: 44px;
+  height: 32px;
+  padding: 0 8px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.fl-vsl__rate:hover,
+.fl-vsl__rate:focus-visible {
+  border-color: var(--fl-vsl-accent);
+  outline: none;
+}
+
+.fl-vsl__spacer {
+  flex: 1;
+}
+
+.fl-vsl__vol {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.fl-vsl__vol-range {
+  display: none;
+  width: 72px;
+  accent-color: var(--fl-vsl-accent);
+  cursor: pointer;
+}
+
+.fl-vsl.is-vol-open .fl-vsl__vol-range {
+  display: block;
+}
+
+.fl-vsl.is-low-volume .fl-vsl__btn--vol {
+  box-shadow: 0 0 0 2px rgba(240, 198, 116, 0.7);
+}
+
+.fl-vsl__seek {
+  width: 100%;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--fl-vsl-bar-track);
+  overflow: hidden;
+  pointer-events: none; /* fake seekbar — never seekable */
+}
+
+.fl-vsl__seek-fill {
+  display: block;
+  height: 100%;
+  width: 0%;
+  border-radius: inherit;
+  background: var(--fl-vsl-accent);
+  transition: width 0.1s linear;
+}
+
+.fl-vsl.is-ended .fl-vsl__seek-fill {
+  width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fl-vsl__wave-bar {
+    animation: none;
+    transform: scaleY(0.7);
+    opacity: 0.8;
+  }
+  .fl-vsl.is-gated.is-teaser .fl-vsl__teaser,
+  .fl-vsl.is-blocked.is-teaser .fl-vsl__teaser,
+  .fl-vsl.is-gated:not(.is-teaser) .fl-vsl__poster,
+  .fl-vsl.is-blocked:not(.is-teaser) .fl-vsl__poster,
+  .fl-vsl.is-gated .fl-vsl__unlock-icon,
+  .fl-vsl.is-blocked .fl-vsl__unlock-icon,
+  .fl-vsl.is-gated .fl-vsl__unlock-text,
+  .fl-vsl.is-blocked .fl-vsl__unlock-text {
+    animation: none;
+    transform: none;
+  }
+  .fl-vsl__seek-fill {
+    transition: none;
+  }
+}
