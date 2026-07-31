@@ -6,6 +6,8 @@
 
   Princípios aplicados (herdados da V3/W1 §5): hero=oferta · prova no topo · disclaimer 1x (FAQ) ·
   concretude sem tecnicozês · 6 blocos · checklist §7.1.
+  CRO mobile 2026-07-31 (HOLD path): H1 curto · lead curto · price+CTA above-fold · callout ambiente
+  perto do CTA · sticky após 150px · FAB z-index abaixo sticky / desvia do CTA · secundário abaixo.
   Garantia: 30 DIAS incondicional (padrão low ticket desde a W1.1).
 
   PROMESSA CALIBRADA (README §3.1): profissional COMPLETO, DOCUMENTADO e PRONTO PARA INSTALAR.
@@ -267,17 +269,35 @@
   @keyframes pill-pulse{0%,100%{opacity:.72;box-shadow:0 0 0 1px rgba(110,204,60,.25),0 0 12px rgba(110,204,60,.12)}50%{opacity:1;box-shadow:0 0 0 2px rgba(110,204,60,.55),0 0 28px rgba(110,204,60,.35)}}
   @media(prefers-reduced-motion:reduce){.pill--highlight{animation:none;opacity:1}}
   .hero{min-height:72vh;display:flex;align-items:center;background:linear-gradient(135deg,rgba(0,0,0,.96),rgba(9,15,20,.92))}
+  .hero-prereq{margin:14px 0 0;padding:12px 14px;border-radius:12px;border:1px solid rgba(192,168,122,.35);background:rgba(192,168,122,.08);font-size:13px;line-height:1.45;color:#e8e4d8}
+  .hero-prereq strong{color:#fff;font-weight:800}
+  .hero-prereq a{color:var(--color-gold-light);font-weight:700}
+  .hero-more{margin:18px 0 0}
+  .hero-more summary{cursor:pointer;font-size:14px;font-weight:800;color:var(--color-gold-light);list-style:none}
+  .hero-more summary::-webkit-details-marker{display:none}
+  .hero-more summary::after{content:" ▾";font-weight:900}
+  .hero-more[open] summary::after{content:" ▴"}
+  .hero-more .lead,.hero-more .muted{margin-top:12px;font-size:15px;line-height:1.5}
+  .hero .cta-row--secondary{margin-top:12px}
   /* Selo V03 ads — prova/#sobre (Érico: matar objeção no peito, não no topo) */
   .trust-seal{margin:18px 0 4px;max-width:148px}
   .trust-seal img{width:100%;height:auto;display:block;filter:drop-shadow(0 8px 20px rgba(0,0,0,.45))}
   .trust-seal__caption{margin:8px 0 0;font-size:12px;font-weight:700;line-height:1.35;color:var(--color-gold-light);letter-spacing:.02em}
-  @media(max-width:860px){.trust-seal{max-width:120px}}
+  @media(max-width:860px){
+    .trust-seal{max-width:120px}
+    .hero{min-height:auto;align-items:flex-start;padding-top:8px;padding-bottom:28px}
+    .hero h1{font-size:clamp(28px,7.2vw,36px);line-height:1.05;margin:12px 0 10px}
+    .hero .lead--short{font-size:16px;line-height:1.4;max-width:100%;margin:0 0 12px}
+    .hero .price-cue{margin-top:0}
+    .hero .cta-row{margin-top:12px}
+    .hero .cta-row--secondary .btn--secondary{width:100%}
+  }
   /* VSL FAB — floating bottom-right (ENA12H / SDR pattern) */
   .vsl-fab {
     position: fixed;
     right: 16px;
     bottom: calc(20px + env(safe-area-inset-bottom));
-    z-index: 60;
+    z-index: 35;
     width: 148px;
     margin: 0;
     filter: drop-shadow(0 10px 28px rgba(0, 0, 0, .45));
@@ -323,12 +343,19 @@
   .vsl-fab .vsl-player-status.is-blocked { color: #f0c674; }
   @media (max-width: 860px) {
     .vsl-fab {
-      width: 118px;
-      right: 12px;
-      bottom: calc(16px + env(safe-area-inset-bottom));
+      width: 96px;
+      right: 10px;
+      bottom: calc(88px + env(safe-area-inset-bottom));
     }
     body:has(.sticky-cta.is-visible) .vsl-fab {
-      bottom: calc(78px + env(safe-area-inset-bottom));
+      bottom: calc(96px + env(safe-area-inset-bottom));
+    }
+    /* Keep FAB clear of hero CTA / sticky — left side on very small path */
+    .vsl-fab.is-clear-cta {
+      right: auto;
+      left: 10px;
+      width: 88px;
+      opacity: .92;
     }
   }
   @media (min-width: 900px) {
@@ -418,21 +445,28 @@
 <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=534601092992376&ev=PageView&noscript=1"></noscript>
 <main class="page">
 
-  <!-- 1. HERO — a oferta no primeiro scroll -->
+  <!-- 1. HERO — oferta no 1º ecrã mobile (CRO 2026-07-31: preço+CTA above-fold) -->
   <section class="hero">
     <div class="container grid">
       <div>
         <span class="eyebrow">Para PME · MEI · empresa de uma pessoa · Paulo Linhares</span>
-        <h1>Contrate seu <span class="gold">Desenvolvedor Digital</span> — o profissional web completo da sua empresa, sem salário e sem mensalidade</h1>
+        <h1>Contrate seu <span class="gold">Desenvolvedor Digital</span> — sem salário e sem mensalidade</h1>
         <p class="author-byline">Por <a href="#sobre" rel="author">Paulo Linhares</a> · 17 anos de TI (Globo, Santander, SKY)</p>
-        <p class="lead">Você faz quase tudo sozinho. Queria ter site, aplicativo, página de venda e domínio apontando certo — e nunca contratou um desenvolvedor porque parece coisa de empresa grande. Improvisou com sobrinho, freelancer ou ferramenta cara que quase não usa. O gargalo não é falta de vontade: é falta de um profissional web dentro de casa — <strong>sem a folha que você não aguenta</strong>.</p>
-        <p class="muted">Você recebe o pacote completo dele — documentado e pronto para instalar — com guia, técnicas e ferramentas gratuitas que eu mostro. Pede em português. Contratado <strong>uma única vez</strong>, por menos do que um rodízio de pizza. Sem salário todo mês, sem mensalidade de software.</p>
+        <p class="lead lead--short">Profissional web completo da sua empresa — documentado e pronto para instalar. Site, página e domínio, <strong>sem folha de pagamento</strong>.</p>
         <p class="price-cue"><strong>R$ 47</strong> · pagamento único · acesso imediato · garantia incondicional de 30 dias · sem cobrança recorrente</p>
         <div class="cta-row">
           <a class="btn js-checkout-dev" href="https://pay.hotmart.com/T106883841N" data-cta-location="hero">Quero contratar meu desenvolvedor agora</a>
-          <a class="btn btn--secondary" href="#oferta">Ver tudo o que está incluso</a>
         </div>
         <p class="small" style="margin-top:12px">Checkout seguro Hotmart · acesso imediato · 30 dias de garantia, o risco é todo meu</p>
+        <p class="hero-prereq"><strong>Onde instala?</strong> Num ambiente de agentes de IA (o mesmo ecossistema da Maquete Digital).<br><strong>Ainda não tem?</strong> Pode comprar agora e montar com o guia + suporte WhatsApp se precisar. <a href="#faq">Ver FAQ</a></p>
+        <details class="hero-more">
+          <summary>Por que isso importa pra PME / MEI</summary>
+          <p class="lead">Você faz quase tudo sozinho. Queria ter site, aplicativo, página de venda e domínio apontando certo — e nunca contratou um desenvolvedor porque parece coisa de empresa grande. Improvisou com sobrinho, freelancer ou ferramenta cara que quase não usa. O gargalo não é falta de vontade: é falta de um profissional web dentro de casa — <strong>sem a folha que você não aguenta</strong>.</p>
+          <p class="muted">Você recebe o pacote completo dele — documentado e pronto para instalar — com guia, técnicas e ferramentas gratuitas que eu mostro. Pede em português. Contratado <strong>uma única vez</strong>, por menos do que um rodízio de pizza. Sem salário todo mês, sem mensalidade de software.</p>
+        </details>
+        <div class="cta-row cta-row--secondary">
+          <a class="btn btn--secondary" href="#oferta">Ver tudo o que está incluso</a>
+        </div>
       </div>
       <figure class="img-placeholder img-placeholder--product" data-asset="dev-fullstack-cover">
         <img src="https://lh3.googleusercontent.com/d/1E8JBGB1YRf2lDBkYjJdt6KThBq76lMj7=w1200" alt="Pacote do Desenvolvedor Full Stack Web digital" loading="eager" width="1200" height="1200">
@@ -752,7 +786,7 @@
 
   <div class="sticky-cta" id="sticky-cta" role="region" aria-label="Compra rápida">
     <div class="sticky-cta__inner">
-      <p class="sticky-cta__price"><strong>R$ 47,00</strong> Pagamento único · garantia 30 dias</p>
+      <p class="sticky-cta__price"><strong>R$ 47,00</strong> Pagamento único · Hotmart seguro</p>
       <a class="btn js-checkout-dev" href="https://pay.hotmart.com/T106883841N" data-cta-location="sticky_mobile">Contratar agora</a>
     </div>
   </div>
@@ -964,33 +998,54 @@
       if (priceEl) io.observe(priceEl);
 
       var sticky = document.getElementById('sticky-cta');
+      var fab = document.querySelector('.vsl-fab');
+      var heroCta = document.querySelector('.hero a.js-checkout-dev');
+      var STICKY_AFTER = 150; /* CRO 2026-07-31: sticky cedo (era 420) */
       var hideWhenVisible = [offerEl, document.querySelector('footer.footer')].filter(Boolean);
+
+      function syncFabClearance() {
+        if (!fab || !heroCta || !window.matchMedia('(max-width:860px)').matches) {
+          if (fab) fab.classList.remove('is-clear-cta');
+          return;
+        }
+        var ctaRect = heroCta.getBoundingClientRect();
+        var fabRect = fab.getBoundingClientRect();
+        var overlaps = ctaRect.bottom > fabRect.top && ctaRect.top < fabRect.bottom &&
+          ctaRect.right > fabRect.left && ctaRect.left < fabRect.right;
+        var nearCta = ctaRect.top < window.innerHeight && ctaRect.bottom > 0;
+        fab.classList.toggle('is-clear-cta', overlaps || (nearCta && ctaRect.bottom > window.innerHeight * 0.55));
+      }
+
       if (sticky && hideWhenVisible.length) {
         var stickyIo = new IntersectionObserver(function (entries) {
           var anyVisible = entries.some(function (e) { return e.isIntersecting; });
           if (anyVisible) {
             sticky.classList.remove('is-visible');
-          } else if (window.matchMedia('(max-width:860px)').matches && window.scrollY > 420) {
+          } else if (window.matchMedia('(max-width:860px)').matches && window.scrollY > STICKY_AFTER) {
             sticky.classList.add('is-visible');
           }
+          syncFabClearance();
         }, { threshold: 0.08 });
         hideWhenVisible.forEach(function (el) { stickyIo.observe(el); });
         window.addEventListener('scroll', function () {
           if (!window.matchMedia('(max-width:860px)').matches) {
             sticky.classList.remove('is-visible');
+            if (fab) fab.classList.remove('is-clear-cta');
             return;
           }
-          if (window.scrollY > 420 && !sticky.classList.contains('is-visible')) {
+          if (window.scrollY > STICKY_AFTER && !sticky.classList.contains('is-visible')) {
             var offerRect = offerEl ? offerEl.getBoundingClientRect() : null;
             var footer = document.querySelector('footer.footer');
             var footerRect = footer ? footer.getBoundingClientRect() : null;
             var offerInView = offerRect && offerRect.top < window.innerHeight && offerRect.bottom > 0;
             var footerInView = footerRect && footerRect.top < window.innerHeight && footerRect.bottom > 0;
             if (!offerInView && !footerInView) sticky.classList.add('is-visible');
-          } else if (window.scrollY <= 420) {
+          } else if (window.scrollY <= STICKY_AFTER) {
             sticky.classList.remove('is-visible');
           }
+          syncFabClearance();
         }, { passive: true });
+        syncFabClearance();
       }
     }
   })();
