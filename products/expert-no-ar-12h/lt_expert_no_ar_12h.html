@@ -13,10 +13,11 @@
   Share square: products/expert-no-ar-12h/assets/ena12h-og-share-600.png
   Empresa: Mr. Coder · CNPJ 33.376.085/0001-66
   Privacidade: https://www.paulolinhares-mrcoder.com.br/digital_twin_market/institucional/politica-de-privacidade.html
-  Visual autoridade: ./assets/conhecimento-para-produto.png
+  Visual autoridade / esteira: ./assets/ena12h-time-openclaw-paulo.jpg (#esteira-time)
   Lottie: ./assets/lottie/{web-design,ecommerce,shop} — ver assets/lottie/README.md
   VSL FAB (fixed BR): ./assets/voice/vsl-ena12h-lt67-5min.mp3 (~5:16) · Player: ./assets/player-vsl/
   Poster estático: ./assets/ena12h-hotmart-cover-600.jpg · start-mode=attempt · sem teaser vídeo
+  Hero #heroListenBtn → mesmo FLVslPlayer do FAB (engage/play/pause; sem segundo áudio)
   SSOT VSL: ./copy/VSL_copy_ena12h_lt67_5min.md · ElevenLabs: ./assets/voice/vsl-ena12h-lt67-5min.elevenlabs.md
 -->
 <!doctype html>
@@ -167,6 +168,14 @@
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Não. A entrega de R$ 67 cria o produto-base. Vendas dependem de oferta, mercado, audiência, tráfego, investimento, execução comercial e otimização."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Como funciona o pagamento? Dá para parcelar?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "O investimento é R$ 67, pagamento único (não é assinatura). No checkout Hotmart você pode pagar no Pix ou no cartão — o parcelamento no cartão aparece conforme as opções disponíveis na plataforma no momento da compra."
         }
       },
       {
@@ -399,6 +408,10 @@
     box-shadow: none;
   }
   .btn--ghost:hover { background: rgba(255,255,255,.06); }
+  .btn--ghost.is-playing {
+    border-color: rgba(255, 90, 47, .55);
+    color: var(--signal);
+  }
   .cta-wrap { margin-top: 22px; }
   .micro { margin-top: 12px; font-size: 13px; font-weight: 500; color: var(--muted); max-width: 520px; }
   .section--dark .micro { color: rgba(248,247,244,.6); }
@@ -438,6 +451,44 @@
     border-radius: 50%;
     background: var(--progress);
     flex-shrink: 0;
+  }
+
+  /* Hero listen — controls FAB VSL (same player, no second audio) */
+  .hero-visual { display: grid; gap: 16px; }
+  .hero-listen {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 14px;
+    border: 1px solid var(--border-dark);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, .03);
+  }
+  .hero-listen__cover {
+    width: 64px;
+    height: 64px;
+    border-radius: 12px;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 1px solid rgba(255, 255, 255, .08);
+  }
+  .hero-listen__body { min-width: 0; flex: 1; }
+  .hero-listen__kicker {
+    margin: 0 0 8px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: rgba(248, 247, 244, .62);
+  }
+  .hero-listen .btn {
+    min-height: 48px;
+    padding: 12px 18px;
+    font-size: 15px;
+    width: 100%;
+  }
+  @media (min-width: 520px) {
+    .hero-listen .btn { width: auto; }
   }
 
   /* Mockup */
@@ -652,6 +703,94 @@
     padding: 6px 10px; border-radius: 8px;
   }
 
+  /* Hotmart marketplace proofs — horizontal loop carousel */
+  .proof-carousel {
+    margin-top: 28px;
+    overflow: hidden;
+    mask-image: linear-gradient(90deg, transparent 0, #000 3%, #000 97%, transparent 100%);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 3%, #000 97%, transparent 100%);
+  }
+  .proof-track {
+    display: flex;
+    gap: 16px;
+    width: max-content;
+    will-change: transform;
+    animation: proof-marquee 42s linear infinite;
+  }
+  .proof-carousel:hover .proof-track,
+  .proof-carousel:focus-within .proof-track {
+    animation-play-state: paused;
+  }
+  @keyframes proof-marquee {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(-50%, 0, 0); }
+  }
+  .proof-card {
+    flex: 0 0 min(78vw, 360px);
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border: 1px solid var(--border-light);
+    border-radius: 16px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color .2s ease;
+  }
+  @media (min-width: 900px) {
+    .proof-card { flex-basis: 420px; }
+  }
+  .proof-card:hover {
+    border-color: rgba(255, 90, 47, .45);
+  }
+  .proof-card__media {
+    aspect-ratio: 16 / 9;
+    background: #eceae6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .proof-card__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center top;
+  }
+  .proof-card__body {
+    padding: 14px 16px 16px;
+    display: grid;
+    gap: 6px;
+  }
+  .proof-card__title {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.35;
+    color: var(--text);
+  }
+  .proof-card__price {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--signal);
+  }
+  .proof-card__link {
+    margin: 4px 0 0;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--muted);
+  }
+  .proof-card:hover .proof-card__link { color: var(--signal); }
+  .proof-note {
+    display: block;
+    margin-top: 18px;
+    font-size: 13px;
+    color: var(--muted);
+    text-align: center;
+  }
+
   /* Timeline */
   .timeline { display: grid; gap: 12px; margin-top: 28px; }
   @media (min-width: 900px) {
@@ -677,7 +816,7 @@
   .amber-box h3 { font-size: 16px; margin-bottom: 8px; }
   .amber-box p { margin: 0; font-size: 15px; color: #3d3428; }
 
-  /* Who */
+  /* Who / esteira-time */
   .split { display: grid; gap: 28px; align-items: start; }
   @media (min-width: 900px) { .split { grid-template-columns: 1fr 1fr; gap: 40px; } }
   .who-photo {
@@ -704,6 +843,85 @@
     width: 8px; height: 8px; border-radius: 50%;
     background: var(--signal);
   }
+  .esteira-intro { max-width: 820px; margin: 0 auto 32px; text-align: center; }
+  .esteira-intro .lead { margin: 16px auto 0; max-width: 720px; }
+  .esteira-visual {
+    margin: 0 auto 36px;
+    max-width: 920px;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    border: 1px solid var(--border-dark);
+    background: #0d1016;
+  }
+  .esteira-visual img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .esteira-visual figcaption {
+    margin: 0;
+    padding: 12px 16px 14px;
+    font-size: 13px;
+    color: rgba(248,247,244,.65);
+    border-top: 1px solid var(--border-dark);
+  }
+  .role-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 28px;
+    display: grid;
+    gap: 12px;
+  }
+  @media (min-width: 640px) {
+    .role-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1000px) {
+    .role-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  .role-grid li {
+    background: var(--surface-dark);
+    border: 1px solid var(--border-dark);
+    border-radius: 16px;
+    padding: 16px 18px;
+    border-top: 3px solid var(--signal);
+  }
+  .role-grid strong {
+    display: block;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-on-dark);
+    margin-bottom: 4px;
+  }
+  .role-grid span {
+    font-size: 14px;
+    color: rgba(248,247,244,.72);
+    line-height: 1.45;
+  }
+  .openclaw-note {
+    max-width: 820px;
+    margin: 0 auto 28px;
+    padding: 18px 20px;
+    border-radius: 16px;
+    border: 1px solid var(--border-dark);
+    background: rgba(255,90,47,.08);
+  }
+  .openclaw-note p {
+    margin: 0;
+    font-size: 15px;
+    color: rgba(248,247,244,.82);
+  }
+  .openclaw-note ul {
+    margin: 12px 0 0;
+    padding-left: 18px;
+    color: rgba(248,247,244,.72);
+    font-size: 14px;
+  }
+  .openclaw-note li { margin-top: 4px; }
+  .esteira-footer {
+    max-width: 820px;
+    margin: 0 auto;
+    text-align: center;
+  }
 
   /* Scope table */
   .scope-table {
@@ -722,6 +940,119 @@
   .scope-col li { font-size: 15px; padding-left: 20px; position: relative; }
   .scope-col--in li::before { content: "✓"; position: absolute; left: 0; color: var(--progress); font-weight: 800; }
   .scope-col--out li::before { content: "→"; position: absolute; left: 0; color: var(--muted); }
+
+  /* Value stack (H07 ancoragem) */
+  .value-stack {
+    margin: 32px 0 8px;
+    max-width: 720px;
+  }
+  .value-stack__hook {
+    font-size: clamp(1.15rem, 2.4vw, 1.45rem);
+    font-weight: 800;
+    line-height: 1.25;
+    color: var(--ink);
+    margin: 0 0 18px;
+  }
+  .value-stack__hook .badge-12h {
+    display: inline-block;
+    background: var(--signal);
+    color: #fff;
+    padding: 2px 10px;
+    border-radius: 6px;
+    font-size: 0.92em;
+    letter-spacing: 0.02em;
+    vertical-align: baseline;
+  }
+  .value-stack__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 8px;
+  }
+  .value-stack__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px 16px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    background: #1e222b;
+    color: #f8f7f4;
+    border: 1px solid rgba(255, 90, 47, 0.18);
+  }
+  .value-stack__name {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.35;
+    flex: 1;
+    min-width: 0;
+  }
+  .value-stack__price {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--signal);
+    text-decoration: line-through;
+    text-decoration-thickness: 2px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .value-stack__divider {
+    height: 2px;
+    background: var(--signal);
+    margin: 16px 0 14px;
+    border: 0;
+    opacity: 0.85;
+  }
+  .value-stack__totals {
+    display: grid;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .value-stack__total,
+  .value-stack__pay {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    font-weight: 800;
+  }
+  .value-stack__total {
+    font-size: 1.05rem;
+    color: var(--ink);
+  }
+  .value-stack__total strong {
+    font-size: 1.25rem;
+  }
+  .value-stack__pay {
+    font-size: 1.15rem;
+    color: var(--ink);
+  }
+  .value-stack__pay strong {
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+    color: var(--signal);
+  }
+  .value-stack__fecho {
+    font-size: 1.05rem;
+    font-weight: 800;
+    line-height: 1.35;
+    color: var(--ink);
+    margin: 14px 0 6px;
+  }
+  .value-stack__note {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0 0 8px;
+    line-height: 1.4;
+  }
+  @media (max-width: 520px) {
+    .value-stack__row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+    }
+    .value-stack__price { align-self: flex-end; }
+  }
 
   /* Offer */
   .offer-grid {
@@ -902,6 +1233,22 @@
     color: var(--progress);
   }
   .vsl-fab .vsl-player-status.is-blocked { color: #f0c674; }
+  .vsl-fab.is-spotlight .fl-vsl {
+    border-color: var(--signal);
+    box-shadow:
+      0 0 0 3px rgba(255, 90, 47, .45),
+      0 8px 28px rgba(0, 0, 0, .4);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .vsl-fab.is-spotlight .fl-vsl {
+      animation: vsl-fab-spotlight 1.5s ease-out 1;
+    }
+  }
+  @keyframes vsl-fab-spotlight {
+    0% { box-shadow: 0 0 0 0 rgba(255, 90, 47, .55), 0 8px 28px rgba(0, 0, 0, .4); }
+    40% { box-shadow: 0 0 0 6px rgba(255, 90, 47, .35), 0 8px 28px rgba(0, 0, 0, .4); }
+    100% { box-shadow: 0 0 0 3px rgba(255, 90, 47, .45), 0 8px 28px rgba(0, 0, 0, .4); }
+  }
   @media (max-width: 899px) {
     .vsl-fab {
       width: 118px;
@@ -924,7 +1271,8 @@
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     .trust-bar, .btn, .reveal, .hero-rotate__word { transition: none !important; }
-    .mockup, .mockup__progress > i, .status-pill { animation: none !important; }
+    .mockup, .mockup__progress > i, .status-pill, .proof-track, .vsl-fab.is-spotlight .fl-vsl { animation: none !important; }
+    .proof-carousel { overflow-x: auto; -webkit-overflow-scrolling: touch; mask-image: none; -webkit-mask-image: none; }
     .reveal { opacity: 1; transform: none; }
     .hero-rotate__word { opacity: 0; transform: none; }
     .hero-rotate__word.is-active { opacity: 1; }
@@ -961,10 +1309,17 @@
           <div class="cta-wrap">
             <a class="btn js-checkout-ena12h" href="https://pay.hotmart.com/R106938053M" data-cta="hero">Quero meu produto no ar por R$ 67</a>
             <p class="urgency">Corre — esse preço de R$ 67 não vai durar muito tempo.</p>
-            <p class="micro">Pagamento único · 7 dias de garantia · As 12 horas começam depois da entrevista, dos acessos e do checklist de prontidão.</p>
+            <p class="micro">Pagamento único de R$ 67 · no checkout Hotmart: Pix ou cartão (parcelamento conforme disponibilidade) · 7 dias de garantia · As 12 horas começam depois da entrevista, dos acessos e do checklist de prontidão.</p>
           </div>
         </div>
         <div class="hero-visual">
+          <div class="hero-listen" id="heroListen">
+            <img class="hero-listen__cover" src="./assets/ena12h-hotmart-cover-600.jpg" alt="Capa Expert no Ar 12H" width="64" height="64" decoding="async">
+            <div class="hero-listen__body">
+              <p class="hero-listen__kicker">Explicação em áudio · ~5 min</p>
+              <button type="button" class="btn btn--ghost" id="heroListenBtn" data-cta="hero-listen" aria-controls="vsl-player" aria-pressed="false">Ouvir a oferta</button>
+            </div>
+          </div>
           <div class="mockup" aria-hidden="true">
             <div class="mockup__chrome"><span></span><span></span><span></span></div>
             <div class="mockup__body">
@@ -1158,6 +1513,62 @@
       </div>
     </section>
 
+    <!-- 6b Provas reais — produtos na Hotmart -->
+    <section class="section section--ivory" id="provas-hotmart">
+      <div class="container">
+        <h2>Produtos reais publicados na Hotmart</h2>
+        <p class="lead">Prova de execução: produtos estruturados e no ar — o mesmo tipo de resultado que a esteira entrega.</p>
+        <div class="proof-carousel" id="proofCarousel" aria-label="Produtos publicados na Hotmart">
+          <div class="proof-track" id="proofTrack">
+            <a class="proof-card" href="https://hotmart.com/pt-br/marketplace/produtos/contrate-sara-e-maria-sdrs-digitais-para-clinicas-agenda-follow-up/T106908369B" target="_blank" rel="noopener noreferrer">
+              <div class="proof-card__media"><img class="proof-card__img" src="./assets/proof/proof-sara-maria.png" alt="Print Hotmart: Contrate Sara e Maria" width="640" height="360" loading="lazy"></div>
+              <div class="proof-card__body">
+                <h3 class="proof-card__title">Contrate Sara e Maria</h3>
+                <p class="proof-card__price">R$ 97</p>
+                <p class="proof-card__link">Ver na Hotmart →</p>
+              </div>
+            </a>
+            <a class="proof-card" href="https://hotmart.com/pt-br/marketplace/produtos/escritorio-de-agentes-ia-para-empresas-e-consultoria-by-paulo-linhares/S106176787G?sck=HOTMART_PRODUCT_PAGE" target="_blank" rel="noopener noreferrer">
+              <div class="proof-card__media"><img class="proof-card__img" src="./assets/proof/proof-gemeo-digital.png" alt="Print Hotmart: Seu Negócio Gêmeo Digital" width="640" height="360" loading="lazy"></div>
+              <div class="proof-card__body">
+                <h3 class="proof-card__title">Seu Negócio Gêmeo Digital</h3>
+                <p class="proof-card__price">R$ 2.890</p>
+                <p class="proof-card__link">Ver na Hotmart →</p>
+              </div>
+            </a>
+            <a class="proof-card" href="https://hotmart.com/pt-br/marketplace/produtos/contrate-seu-desenvolvedor-digital-profissional-web-completo-sem-salario-e-sem-mensalidade/T106883841N?sck=HOTMART_PRODUCT_PAGE" target="_blank" rel="noopener noreferrer">
+              <div class="proof-card__media"><img class="proof-card__img" src="./assets/proof/proof-dev-digital.png" alt="Print Hotmart: Contrate seu Desenvolvedor Digital" width="640" height="360" loading="lazy"></div>
+              <div class="proof-card__body">
+                <h3 class="proof-card__title">Contrate seu Desenvolvedor Digital</h3>
+                <p class="proof-card__price">R$ 47</p>
+                <p class="proof-card__link">Ver na Hotmart →</p>
+              </div>
+            </a>
+            <a class="proof-card" href="https://hotmart.com/pt-br/marketplace/produtos/mapa-completo-da-sua-empresa-gemea-digital-o-organograma-dos-seus-funcionarios-digitais-e-o-primeiro-passo-antes-dessa-nova-fase-da-sua-empresa/J106841910I?sck=HOTMART_PRODUCT_PAGE" target="_blank" rel="noopener noreferrer">
+              <div class="proof-card__media"><img class="proof-card__img" src="./assets/proof/proof-4-funcionarios.png" alt="Print Hotmart: Seus 4 Primeiros Funcionários Digitais" width="640" height="360" loading="lazy"></div>
+              <div class="proof-card__body">
+                <h3 class="proof-card__title">Seus 4 Primeiros Funcionários Digitais</h3>
+                <p class="proof-card__price">R$ 38</p>
+                <p class="proof-card__link">Ver na Hotmart →</p>
+              </div>
+            </a>
+            <a class="proof-card" href="https://hotmart.com/pt-br/marketplace/produtos/expert-no-ar-12h/R106938053M?sck=HOTMART_PRODUCT_PAGE" target="_blank" rel="noopener noreferrer">
+              <div class="proof-card__media"><img class="proof-card__img" src="./assets/proof/proof-ena12h.png" alt="Print Hotmart: Expert no Ar 12H" width="640" height="360" loading="lazy"></div>
+              <div class="proof-card__body">
+                <h3 class="proof-card__title">Expert no Ar 12H</h3>
+                <p class="proof-card__price">R$ 67</p>
+                <p class="proof-card__link">Ver na Hotmart →</p>
+              </div>
+            </a>
+          </div>
+        </div>
+        <p class="proof-note">Prints do Marketplace Hotmart. Não são depoimentos de alunos.</p>
+        <div class="cta-center">
+          <a class="btn js-checkout-ena12h" href="https://pay.hotmart.com/R106938053M" data-cta="proof-hotmart">Quero meu produto no ar por R$ 67</a>
+        </div>
+      </div>
+    </section>
+
     <!-- 7 Timeline -->
     <section class="section section--dark">
       <div class="container">
@@ -1249,6 +1660,48 @@
       <div class="container">
         <h2>Em vez de montar sozinho, você contrata a esteira que entrega o produto-base.</h2>
         <p class="lead">Sem contratar separadamente estrategista, redator, designer e operador de plataforma para criar a primeira versão — por R$ 67, pagamento único.</p>
+
+        <div class="value-stack" aria-label="Ancoragem de valor — stack Expert no Ar 12H">
+          <p class="value-stack__hook">Isso é o que vamos fazer pelo seu Conhecimento em <span class="badge-12h">12 HORAS</span>:</p>
+          <ul class="value-stack__list">
+            <li class="value-stack__row">
+              <span class="value-stack__name">Transformar seu conhecimento em produto vendável na Hotmart</span>
+              <span class="value-stack__price">R$ 2.997</span>
+            </li>
+            <li class="value-stack__row">
+              <span class="value-stack__name">Formalizar um método pra ele</span>
+              <span class="value-stack__price">R$ 1.997</span>
+            </li>
+            <li class="value-stack__row">
+              <span class="value-stack__name">Criar 6 módulos e até 24 aulas na Hotmart</span>
+              <span class="value-stack__price">R$ 4.997</span>
+            </li>
+            <li class="value-stack__row">
+              <span class="value-stack__name">Criar e configurar capa e banner do produto</span>
+              <span class="value-stack__price">R$ 997</span>
+            </li>
+            <li class="value-stack__row">
+              <span class="value-stack__name">Meta Pixel e Google Ads tracking</span>
+              <span class="value-stack__price">R$ 997</span>
+            </li>
+            <li class="value-stack__row">
+              <span class="value-stack__name">Publicar e configurar o produto na Hotmart Club</span>
+              <span class="value-stack__price">R$ 1.497</span>
+            </li>
+            <li class="value-stack__row">
+              <span class="value-stack__name">1 rodada de correções + suporte WhatsApp</span>
+              <span class="value-stack__price">R$ 497</span>
+            </li>
+          </ul>
+          <hr class="value-stack__divider" />
+          <div class="value-stack__totals">
+            <div class="value-stack__total"><span>Total:</span> <strong>R$ 13.979</strong></div>
+            <div class="value-stack__pay"><span>Você paga:</span> <strong>R$ 67</strong></div>
+          </div>
+          <p class="value-stack__note">Valores de referência de mercado das partes. Condição de entrada atual: R$ 67.</p>
+          <p class="value-stack__fecho">Não é curso! É execução. Seu produto no ar em 12 horas.</p>
+        </div>
+
         <div class="lottie-row">
           <div class="lottie-slot" id="lottieOferta" data-lottie="./assets/lottie/ecommerce.json" aria-hidden="true"></div>
         </div>
@@ -1265,6 +1718,7 @@
             <div class="label">Acesso à esteira Expert no Ar 12H</div>
             <p class="price">R$ 67</p>
             <p class="price-sub">pagamento único · condição de entrada</p>
+            <p class="micro" style="margin:0 0 10px">No checkout Hotmart: Pix ou cartão — parcelamento conforme disponibilidade.</p>
             <p class="urgency">Corre — esse preço não vai durar muito tempo.</p>
             <ul>
               <li>um produto-base</li>
@@ -1276,7 +1730,7 @@
               <li>suporte ilimitado por WhatsApp</li>
             </ul>
             <a class="btn js-checkout-ena12h" href="https://pay.hotmart.com/R106938053M" data-cta="offer">Garantir meu lugar por R$ 67</a>
-            <p class="micro">Compra segura · Garantia de 7 dias · Vagas sujeitas à capacidade real de produção — quando encher, o jogo muda.</p>
+            <p class="micro">Compra segura via Hotmart · Pix ou cartão · Garantia de 7 dias · Vagas sujeitas à capacidade real de produção — quando encher, o jogo muda.</p>
           </aside>
         </div>
       </div>
@@ -1296,23 +1750,59 @@
       </div>
     </section>
 
-    <!-- 12 Quem está por trás -->
-    <section class="section section--dark">
-      <div class="container split">
-        <div class="who-photo">
+    <!-- 12 Esteira + autoridade (mecanismo 12h) -->
+    <section class="section section--dark" id="esteira-time">
+      <div class="container">
+        <div class="esteira-intro">
+          <h2>Como conseguimos executar seu produto, com qualidade, em apenas 12 horas?</h2>
+          <p class="lead">A Mr. Coder, comandada por Paulo Linhares (17+ anos em TI · 5+ anos em vendas), opera uma esteira com 7 funções — e um time de funcionários digitais na OpenClaw trabalhando 24h para acelerar a produção. Veja quem entra em campo para deixar seu produto pronto na Hotmart.</p>
+        </div>
+
+        <figure class="esteira-visual">
           <img
-            src="./assets/conhecimento-para-produto.png"
-            alt="Do conhecimento bruto ao produto publicado: entrevista, estrutura e área de membros pronta"
-            width="1200"
-            height="675"
+            src="./assets/ena12h-time-openclaw-paulo.jpg"
+            alt="Paulo Linhares e a camada de funcionários digitais OpenClaw que aceleram a esteira Expert no Ar 12H"
+            width="1024"
+            height="576"
             loading="lazy"
             decoding="async"
           >
-        </div>
-        <div>
-          <h2>Uma operação criada para colocar experts no ar.</h2>
-          <p class="lead">A Expert no Ar 12H nasceu do mesmo travamento que a maioria dos experts sente: saber fazer — e não conseguir transformar isso em produto publicado. Operamos sob a Mr. Coder: estratégia, arquitetura de conteúdo, design e configuração de plataforma na mesma esteira. Sem prometer faturamento. Com promessa de execução do produto-base.</p>
-          <ul class="principles">
+          <figcaption>Ilustração da camada OpenClaw (funcionários digitais 24h). A entrega do Expert no Ar 12H segue as 7 funções da esteira abaixo — sob comando da Mr. Coder.</figcaption>
+        </figure>
+
+        <ul class="role-grid" aria-label="Sete funções da esteira Expert no Ar 12H">
+          <li>
+            <strong>Estrategista de entrevista</strong>
+            <span>Extrai público, transformação e promessa</span>
+          </li>
+          <li>
+            <strong>Arquiteto de método</strong>
+            <span>Organiza até 6 módulos e a sequência das aulas</span>
+          </li>
+          <li>
+            <strong>Redator de aulas</strong>
+            <span>Escreve até 24 aulas em texto</span>
+          </li>
+          <li>
+            <strong>Designer de capa e banner</strong>
+            <span>Identidade essencial do produto</span>
+          </li>
+          <li>
+            <strong>Operador Hotmart Club</strong>
+            <span>Publica e configura a área de membros</span>
+          </li>
+          <li>
+            <strong>Suporte WhatsApp</strong>
+            <span>Canal da esteira e dúvidas</span>
+          </li>
+          <li>
+            <strong>QA / Readiness Gate</strong>
+            <span>Checklist, acessos e início do relógio de 12 horas</span>
+          </li>
+        </ul>
+
+        <div class="esteira-footer">
+          <ul class="principles" style="text-align:left; max-width:560px; margin-left:auto; margin-right:auto;">
             <li>a propriedade do produto é do expert;</li>
             <li>a primeira versão deve ser simples e útil;</li>
             <li>escopo claro protege prazo e qualidade;</li>
@@ -1320,6 +1810,9 @@
             <li>a evolução acontece depois que o produto existe.</li>
           </ul>
           <p class="micro" style="margin-top:20px">Responsável operacional: Paulo Linhares · Mr. Coder · CNPJ 33.376.085/0001-66</p>
+          <div class="cta-center" style="margin-top:28px">
+            <a class="btn js-checkout-ena12h" href="https://pay.hotmart.com/R106938053M" data-cta="esteira-time">Quero meu Expert no Ar 12H</a>
+          </div>
         </div>
       </div>
     </section>
@@ -1339,7 +1832,9 @@
           </details>
           <details data-faq>
             <summary>As aulas serão gravadas?</summary>
-            <p>Não. A entrega padrão do R$ 67 é composta por aulas em texto. Áudio, voz clonada, avatar e videoaulas são evoluções opcionais — não fazem parte deste valor.</p>
+            <p>Não. A entrega padrão do R$ 67 é composta por aulas em texto. Áudio, voz clonada, avatar e videoaulas são evoluções opcionais — não fazem parte deste valor.
+              Para gravar qualquer aula em vídeo ou em áudio precisamos primeiro do script pra isso, por isso as aulas em texto são obrigatórias nessa versão do produto.
+            </p>
           </details>
           <details data-faq>
             <summary>Preciso aparecer?</summary>
@@ -1360,6 +1855,10 @@
           <details data-faq>
             <summary>Vocês garantem que o produto venderá?</summary>
             <p>Não. A entrega de R$ 67 cria o produto-base. Vendas dependem de oferta, mercado, audiência, tráfego, investimento, execução comercial e otimização.</p>
+          </details>
+          <details data-faq>
+            <summary>Como funciona o pagamento? Dá para parcelar?</summary>
+            <p>O investimento é R$ 67, pagamento único (não é assinatura). No checkout Hotmart você pode pagar no Pix ou no cartão — o parcelamento no cartão aparece conforme as opções disponíveis na plataforma no momento da compra.</p>
           </details>
           <details data-faq>
             <summary>Preciso já ter conta na Hotmart?</summary>
@@ -1393,6 +1892,7 @@
         <h2>Três caminhos. Só um coloca o produto no ar.</h2>
         <p class="lead">Continuar só na cabeça. Tentar montar sozinho de novo. Ou pagar R$ 67 e deixar a gente entregar o produto-base. Sem promessa de faturamento — com promessa de execução.</p>
         <p style="font-size:22px;font-weight:800;margin:20px 0 8px">R$ 67 · pagamento único</p>
+        <p class="micro" style="margin:0 0 10px">No checkout Hotmart: Pix ou cartão — parcelamento conforme disponibilidade.</p>
         <p class="urgency">Corre — esse preço não vai durar muito tempo.</p>
         <div class="cta-center" style="margin-top:18px">
           <a class="btn js-checkout-ena12h" href="https://pay.hotmart.com/R106938053M" data-cta="close">Garantir meu produto no ar agora</a>
@@ -1411,10 +1911,11 @@
           Mr. Coder · CNPJ 33.376.085/0001-66
         </div>
         <div>
+          <a href="#esteira-time">Esteira</a> ·
           <a href="#faq">FAQ</a> ·
           <a href="#oferta">Oferta</a><br><br>
           <a href="https://www.paulolinhares-mrcoder.com.br/digital_twin_market/institucional/politica-de-privacidade.html" target="_blank" rel="noopener">Política de privacidade</a><br>
-          Checkout seguro via Hotmart · Pagamento único R$ 67 · Garantia 7 dias
+          Checkout seguro via Hotmart · Pagamento único R$ 67 · Pix ou cartão (parcelamento conforme disponibilidade) · Garantia 7 dias
         </div>
       </div>
     </footer>
@@ -1579,11 +2080,14 @@
     }
 
     /* VSL FAB — floating BR; autoplay attempt; static poster (no teaser video).
-       MP3: ./assets/voice/vsl-ena12h-lt67-5min.mp3 (~5:16) */
+       MP3: ./assets/voice/vsl-ena12h-lt67-5min.mp3 (~5:16)
+       Hero #heroListenBtn controls the SAME player (no second audio). */
     (function initVslPlayer() {
       var cfg = ENA12H_PAGE_CFG;
       var root = document.getElementById('vsl-player');
       var statusEl = document.getElementById('vsl-audio-status');
+      var fabWrap = document.getElementById('vsl-audio-wrap');
+      var heroBtn = document.getElementById('heroListenBtn');
       if (!root || typeof FLVslPlayer === 'undefined') return;
 
       if (cfg.vslAudioUrl) root.setAttribute('data-src', cfg.vslAudioUrl);
@@ -1591,6 +2095,7 @@
       root.removeAttribute('data-teaser-src');
 
       var trackedVsl = { start: false, p25: false, p50: false, p75: false, complete: false };
+      var spotlightTimer = null;
 
       function setStatus(text, blocked) {
         if (!statusEl) return;
@@ -1598,14 +2103,93 @@
         statusEl.classList.toggle('is-blocked', !!blocked);
       }
 
-      FLVslPlayer.init(root);
+      function syncHeroListenBtn() {
+        if (!heroBtn || !player) return;
+        var media = player.media;
+        var blocked = root.classList.contains('is-blocked');
+        var engaged = !!player.engaged && !blocked;
+        var playing = engaged && media && !media.paused && !media.ended && !trackedVsl.complete;
+        var label = 'Ouvir a oferta';
+        if (trackedVsl.complete && (!media || media.paused || media.ended)) label = 'Ouvir novamente';
+        else if (playing) label = 'Ouvindo…';
+        else if (engaged && media && media.paused) label = 'Continuar ouvindo';
+        heroBtn.textContent = label;
+        heroBtn.setAttribute('aria-pressed', playing ? 'true' : 'false');
+        heroBtn.classList.toggle('is-playing', !!playing);
+      }
+
+      function spotlightFab() {
+        if (!fabWrap) return;
+        fabWrap.classList.add('is-spotlight');
+        clearTimeout(spotlightTimer);
+        spotlightTimer = setTimeout(function () {
+          fabWrap.classList.remove('is-spotlight');
+        }, 1600);
+      }
+
+      function isPlayingNow() {
+        var media = player && player.media;
+        return !!(
+          player &&
+          player.engaged &&
+          media &&
+          !media.paused &&
+          !media.ended &&
+          !root.classList.contains('is-blocked')
+        );
+      }
+
+      var player = FLVslPlayer.init(root);
+
+      if (heroBtn) {
+        heroBtn.addEventListener('click', function () {
+          if (!player) return;
+          var media = player.media;
+          var blocked = root.classList.contains('is-blocked');
+          var action = 'engage';
+          var pending = null;
+
+          /* Hero CTA = always ensure listening. Never pause here (FAB has pause).
+             If autoplay already plays, first click used to pause → "Continuar ouvindo". */
+          if (isPlayingNow()) {
+            action = 'focus';
+          } else if (!player.engaged || blocked) {
+            action = 'engage';
+            trackedVsl.complete = false;
+            pending = player.engage();
+          } else if (trackedVsl.complete || (media && media.ended)) {
+            action = 'replay';
+            trackedVsl.complete = false;
+            try { if (media) media.currentTime = 0; } catch (e) {}
+            pending = player.play();
+          } else {
+            action = 'play';
+            pending = player.play();
+          }
+
+          spotlightFab();
+          track('vsl_hero_listen_click', {
+            media: 'audio',
+            placement: 'hero',
+            action: action
+          });
+
+          if (pending && typeof pending.then === 'function') {
+            pending.then(function () { syncHeroListenBtn(); });
+          } else {
+            syncHeroListenBtn();
+          }
+        });
+      }
 
       root.addEventListener('flvsl:blocked', function () {
         setStatus('Toque p/ ouvir', true);
+        syncHeroListenBtn();
       });
       root.addEventListener('flvsl:engage', function () {
         setStatus('Tocando');
         track('vsl_engage', { media: 'audio', start_mode: 'attempt', placement: 'fab' });
+        syncHeroListenBtn();
       });
       root.addEventListener('flvsl:start', function (e) {
         if (trackedVsl.start) return;
@@ -1616,12 +2200,15 @@
           duration_s: Math.round((e.detail && e.detail.duration) || 0)
         });
         setStatus('Tocando');
+        syncHeroListenBtn();
       });
       root.addEventListener('flvsl:play', function () {
         setStatus('Tocando');
+        syncHeroListenBtn();
       });
       root.addEventListener('flvsl:pause', function () {
         if (!trackedVsl.complete) setStatus('Pausado');
+        syncHeroListenBtn();
       });
       root.addEventListener('flvsl:progress', function (e) {
         var ratio = (e.detail && e.detail.realRatio) || 0;
@@ -1643,7 +2230,10 @@
         trackedVsl.complete = true;
         track('vsl_complete', { media: 'audio', placement: 'fab' });
         setStatus('Concluído');
+        syncHeroListenBtn();
       });
+
+      syncHeroListenBtn();
     })();
 
     document.querySelectorAll('.js-checkout-ena12h').forEach(function (el) {
@@ -1724,6 +2314,20 @@
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll);
     onScroll();
+
+    /* Proof carousel: duplicate cards for seamless infinite loop */
+    (function initProofCarousel() {
+      var track = document.getElementById('proofTrack');
+      if (!track || reduceMotion) return;
+      var cards = Array.prototype.slice.call(track.children);
+      if (!cards.length) return;
+      cards.forEach(function (card) {
+        var clone = card.cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        clone.setAttribute('tabindex', '-1');
+        track.appendChild(clone);
+      });
+    })();
   })();
   </script>
 </body>
