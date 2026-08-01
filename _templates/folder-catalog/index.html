@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{FOLDER_TITLE}} — Produtos</title>
+  <meta name="description" content="{{FOLDER_DESCRIPTION}}">
+  <link rel="canonical" href="{{CATALOG_CANONICAL_URL}}">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:url" content="{{CATALOG_CANONICAL_URL}}">
+  <meta property="og:title" content="{{FOLDER_TITLE}} — Produtos">
+  <meta property="og:description" content="{{FOLDER_DESCRIPTION}}">
+  <meta property="og:image" content="{{OG_IMAGE_URL}}">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/catalog-folder.css">
+</head>
+<body>
+  <a class="skip" href="#produtos">Ir para produtos</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <div class="brand">
+        <span class="brand__mark">{{FOLDER_TITLE}}</span>
+        <span class="brand__sub">{{BRAND_SUB}}</span>
+      </div>
+      <a class="header-link" href="{{PRIVACY_HREF}}">Privacidade</a>
+    </div>
+  </header>
+
+  <section class="hero" aria-labelledby="hero-title">
+    <p class="hero__eyebrow">Catálogo</p>
+    <h1 id="hero-title">{{HERO_H1}}</h1>
+    <p>{{HERO_LEAD}}</p>
+  </section>
+
+  <section class="section" aria-labelledby="featured-title">
+    <div class="section__head">
+      <div>
+        <h2 id="featured-title">Em destaque</h2>
+        <p>Role horizontalmente ou use as setas no desktop.</p>
+      </div>
+      <div class="carousel__nav" aria-label="Controles do carrossel">
+        <button type="button" class="carousel__btn" data-carousel-prev aria-label="Anterior">‹</button>
+        <button type="button" class="carousel__btn" data-carousel-next aria-label="Próximo">›</button>
+      </div>
+    </div>
+    <div class="carousel">
+      <div class="carousel__track" data-carousel-track tabindex="0" aria-label="Produtos em destaque">
+        <!-- Duplicate each card into #produtos grid below -->
+        <a class="card" href="{{LP_FILE}}.html">
+          <div class="card__media">
+            <img src="assets/{{LP_OG}}" alt="" width="600" height="600" loading="eager">
+          </div>
+          <div class="card__body">
+            <h3 class="card__title">{{LP_TITLE}}</h3>
+            <div class="card__meta">
+              <span>{{LP_SUBTITLE}}</span>
+              <span>LP</span>
+            </div>
+            <span class="card__cta">Ver página</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="produtos" aria-labelledby="grid-title">
+    <div class="section__head">
+      <div>
+        <h2 id="grid-title">Todos os produtos</h2>
+        <p>Grade responsiva — 4 colunas no desktop, 2 no tablet, 1 no mobile.</p>
+      </div>
+    </div>
+    <div class="grid">
+      <a class="card" href="{{LP_FILE}}.html">
+        <div class="card__media">
+          <img src="assets/{{LP_OG}}" alt="" width="600" height="600" loading="lazy">
+        </div>
+        <div class="card__body">
+          <h3 class="card__title">{{LP_TITLE}}</h3>
+          <div class="card__meta">
+            <span>{{LP_SUBTITLE}}</span>
+            <span>LP</span>
+          </div>
+          <span class="card__cta">Ver página</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <p>
+      {{BRAND_SUB}}.
+      <a href="{{PRIVACY_HREF}}">Política de privacidade</a>.
+    </p>
+  </footer>
+
+  <script>
+    (function () {
+      var track = document.querySelector("[data-carousel-track]");
+      var prev = document.querySelector("[data-carousel-prev]");
+      var next = document.querySelector("[data-carousel-next]");
+      if (!track || !prev || !next) return;
+      function step() {
+        var card = track.querySelector(".card");
+        if (!card) return 280;
+        var styles = window.getComputedStyle(track);
+        var gap = parseFloat(styles.columnGap || styles.gap || "16") || 16;
+        return card.getBoundingClientRect().width + gap;
+      }
+      prev.addEventListener("click", function () {
+        track.scrollBy({ left: -step(), behavior: "smooth" });
+      });
+      next.addEventListener("click", function () {
+        track.scrollBy({ left: step(), behavior: "smooth" });
+      });
+    })();
+  </script>
+</body>
+</html>
