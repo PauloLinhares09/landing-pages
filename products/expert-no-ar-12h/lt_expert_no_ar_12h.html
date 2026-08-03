@@ -13,7 +13,7 @@
   Share square: products/expert-no-ar-12h/assets/ena12h-og-share-600.png
   Empresa: Mr. Coder · CNPJ 33.376.085/0001-66
   Privacidade: https://www.paulolinhares-mrcoder.com.br/digital_twin_market/institucional/politica-de-privacidade.html
-  Visual autoridade / esteira: ./assets/ena12h-time-openclaw-paulo.jpg (#esteira-time)
+  Visual autoridade / esteira: ./assets/ena12h-hotmart-banner-16x9.jpg (#esteira-time)
   Lottie: ./assets/lottie/{web-design,ecommerce,shop} — ver assets/lottie/README.md
   VSL FAB (fixed BR): ./assets/voice/vsl-ena12h-lt67-5min.mp3 (~5:16) · Player: ./assets/player-vsl/
   Poster estático: ./assets/ena12h-hotmart-cover-600.jpg · start-mode=attempt · sem teaser vídeo
@@ -218,7 +218,7 @@
   <link rel="preconnect" href="https://connect.facebook.net">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
   <style>
   :root {
     --bg: #0B0D12;
@@ -655,6 +655,92 @@
   }
 
   /* Stack list */
+  /* Hotmart Missão 10 em 30 — incentivo da plataforma (CSS card) */
+  .missao-wrap { margin: 28px 0 8px; max-width: 420px; }
+  .missao-card {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    padding: 36px 32px 32px;
+    border-radius: 28px;
+    background: #0B0B0B;
+    color: #fff;
+    text-decoration: none;
+    box-shadow: 0 18px 40px rgba(11, 13, 18, .18);
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .missao-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 22px 48px rgba(11, 13, 18, .24);
+  }
+  .missao-card__logo {
+    display: flex;
+    align-items: flex-end;
+    gap: .28em;
+    font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+    line-height: .9;
+  }
+  .missao-card__num {
+    font-size: clamp(56px, 10vw, 72px);
+    font-weight: 700;
+    color: #E65127;
+    letter-spacing: -.04em;
+  }
+  .missao-card__mid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: .18em;
+    min-width: 2.4em;
+  }
+  .missao-card__mission {
+    font-family: Manrope, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 2px;
+  }
+  .missao-card__em {
+    font-size: clamp(22px, 4vw, 28px);
+    font-weight: 600;
+    color: #fff;
+    font-style: italic;
+  }
+  .missao-card__headline {
+    margin: 0;
+    font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+    font-size: clamp(26px, 4.2vw, 34px);
+    font-weight: 700;
+    line-height: 1.18;
+    letter-spacing: -.02em;
+    color: #fff;
+    max-width: 14ch;
+  }
+  .missao-card__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-start;
+    min-height: 40px;
+    padding: 10px 18px;
+    border-radius: 8px;
+    background: #E65127;
+    color: #fff;
+    font-family: Manrope, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .missao-card:hover .missao-card__cta { background: #F05A30; }
+  .missao-note {
+    margin: 10px 0 0;
+    font-size: 12px;
+    color: var(--muted);
+    max-width: 420px;
+  }
+
   .stack-list { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 10px; }
   .stack-list li {
     display: flex; gap: 12px; align-items: flex-start;
@@ -790,6 +876,181 @@
     color: var(--muted);
     text-align: center;
   }
+
+  /* Hotmart Marketplace vitrine (opportunity) — not #provas-hotmart */
+  .hm-market { margin-top: 8px; }
+  .hm-market__head { max-width: 720px; margin-bottom: 36px; }
+  .hm-market__head .lead { margin: 0; color: var(--muted); }
+  .hm-block { margin-top: 36px; }
+  .hm-block__bar {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .hm-block__title {
+    margin: 0;
+    font-size: clamp(20px, 2.4vw, 26px);
+    font-weight: 800;
+    letter-spacing: -.02em;
+  }
+  .hm-block__explore {
+    flex-shrink: 0;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--signal);
+    text-decoration: none;
+  }
+  .hm-block__explore:hover { color: var(--signal-hover); text-decoration: underline; }
+
+  .hm-cat-rail {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 6px;
+    scrollbar-width: thin;
+  }
+  .hm-cat {
+    flex: 0 0 min(42vw, 180px);
+    scroll-snap-align: start;
+    position: relative;
+    aspect-ratio: 3 / 2;
+    border-radius: 14px;
+    overflow: hidden;
+    text-decoration: none;
+    color: #fff;
+    background: #1a1d24;
+  }
+  @media (min-width: 900px) {
+    .hm-cat { flex-basis: 200px; }
+  }
+  .hm-cat img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .hm-cat__label {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    padding: 10px 12px 12px;
+    background: rgba(10, 12, 16, .88);
+    font-size: 13px;
+    font-weight: 750;
+    line-height: 1.25;
+    color: #fff;
+  }
+
+  .hm-carousel {
+    position: relative;
+  }
+  .hm-carousel__track {
+    display: flex;
+    gap: 14px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    padding: 4px 2px 10px;
+    scrollbar-width: none;
+  }
+  .hm-carousel__track::-webkit-scrollbar { display: none; }
+  .hm-card {
+    flex: 0 0 min(46vw, 168px);
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-decoration: none;
+    color: inherit;
+    min-width: 0;
+  }
+  @media (min-width: 900px) {
+    .hm-card { flex-basis: 176px; }
+  }
+  .hm-card__cover {
+    aspect-ratio: 1;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #eceae6;
+    border: 1px solid var(--border-light);
+  }
+  .hm-card__cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .hm-card__rating {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .hm-card__rating span { color: #F5A623; }
+  .hm-card__title {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .hm-card__author {
+    margin: 0;
+    font-size: 12px;
+    color: var(--muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .hm-card__price {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--text);
+  }
+  .hm-card:hover .hm-card__title { color: var(--signal); }
+
+  .hm-carousel__btn {
+    position: absolute;
+    top: 68px;
+    z-index: 2;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--border-light);
+    background: #fff;
+    color: var(--text);
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(17,19,24,.12);
+    display: grid;
+    place-items: center;
+    padding: 0;
+  }
+  .hm-carousel__btn:hover { border-color: var(--signal); color: var(--signal); }
+  .hm-carousel__btn--prev { left: -6px; }
+  .hm-carousel__btn--next { right: -6px; }
+  @media (max-width: 699px) {
+    .hm-carousel__btn { display: none; }
+  }
+  .hm-market__note {
+    display: block;
+    margin: 28px auto 0;
+    max-width: 640px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.45;
+  }
+  .hm-market .cta-center { margin-top: 22px; }
 
   /* Timeline */
   .timeline { display: grid; gap: 12px; margin-top: 28px; }
@@ -1270,9 +1531,11 @@
 
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    .trust-bar, .btn, .reveal, .hero-rotate__word { transition: none !important; }
+    .trust-bar, .btn, .reveal, .hero-rotate__word, .missao-card { transition: none !important; }
+    .missao-card:hover { transform: none; }
     .mockup, .mockup__progress > i, .status-pill, .proof-track, .vsl-fab.is-spotlight .fl-vsl { animation: none !important; }
     .proof-carousel { overflow-x: auto; -webkit-overflow-scrolling: touch; mask-image: none; -webkit-mask-image: none; }
+    .hm-carousel__track, .hm-cat-rail { scroll-behavior: auto; }
     .reveal { opacity: 1; transform: none; }
     .hero-rotate__word { opacity: 0; transform: none; }
     .hero-rotate__word.is-active { opacity: 1; }
@@ -1408,7 +1671,7 @@
         <div class="steps">
           <article class="step reveal">
             <h3>Conte o que você sabe</h3>
-            <p class="muted">Você responde ao intake de entrevista, de 15 a 30 minutos. Extraímos transformação, público, sequência e exemplos.</p>
+            <p class="muted">Você responde à entrevista, de 15 a 30 minutos. Extraímos transformação, público, sequência e exemplos.</p>
           </article>
           <article class="step reveal reveal-delay-1">
             <h3>Nós estruturamos</h3>
@@ -1429,7 +1692,23 @@
     <section class="section section--ivory">
       <div class="container">
         <h2>Ao final, seu conhecimento deixa de ser apenas uma ideia.</h2>
-        <p class="lead">Você recebe um ativo concreto: produto-base estruturado, não uma maratona de aulas sobre “como criar”.</p>
+        <p class="lead">E pode, em apenas 30 dias, entrar para o grupo que fatura mais de R$ 30 mil/mês com infoproduto na Hotmart. Veja o incentivo da plataforma:</p>
+        <div class="missao-wrap">
+          <a class="missao-card" href="https://signup.hotmart.com/pt-br/missao-10-em-30" target="_blank" rel="noopener noreferrer" aria-label="Missão 10 em 30 Hotmart — Saber mais">
+            <div class="missao-card__logo" aria-hidden="true">
+              <span class="missao-card__num">10</span>
+              <span class="missao-card__mid">
+                <span class="missao-card__mission">Missão</span>
+                <span class="missao-card__em">em</span>
+              </span>
+              <span class="missao-card__num">30</span>
+            </div>
+            <p class="missao-card__headline">Fature R$ 10 mil em 30 dias e desbloqueie benefícios exclusivos</p>
+            <span class="missao-card__cta">Saber mais</span>
+          </a>
+          <p class="missao-note">Incentivo oficial da Hotmart — não é uma promessa de faturamento do Expert no Ar 12H.</p>
+        </div>
+        <p class="lead" style="margin-top:36px">Você recebe um ativo concreto: produto-base estruturado, não uma maratona de aulas sobre “como criar”.</p>
         <ul class="stack-list">
           <li>entrevista de extração de de 15 à 30 minutos</li>
           <li>definição inicial do público e da transformação</li>
@@ -1486,42 +1765,189 @@
       </div>
     </section>
 
-    <!-- 6 Prova de processo -->
-    <section class="section section--white">
-      <div class="container">
-        <h2>Veja o que acontece entre a entrevista e o produto publicado.</h2>
-        <p class="lead">Da fala do expert para uma experiência organizada de aprendizagem.</p>
-        <div class="process-grid">
-          <article class="process-card">
-            <div class="process-card__label">1. Fala</div>
-            <p>“Meu aluno trava na hora de precificar e não sabe por onde começar o método…”</p>
-          </article>
-          <article class="process-card">
-            <div class="process-card__label">2. Método</div>
-            <p>Transformação → etapas → critérios de progresso → escopo da primeira versão.</p>
-          </article>
-          <article class="process-card">
-            <div class="process-card__label">3. Módulos</div>
-            <p>Lista clara de módulos e aulas em texto, prontos para publicação.</p>
-          </article>
-          <article class="process-card">
-            <div class="process-card__label">4. Produto</div>
-            <p>Capa, banner e área de membros configurados — propriedade do Expert, com transferência sob demanda.</p>
-          </article>
+    <!-- 6 Marketplace Hotmart — oportunidade (vitrine ilustrativa) -->
+    <section class="section section--white" id="marketplace-hotmart">
+      <div class="container hm-market">
+        <div class="hm-market__head">
+          <h2>Seu produto também pode estar nesse marketplace</h2>
+          <p class="lead">A Hotmart já vende cursos em dezenas de nichos. O Expert no Ar 12H coloca o seu no ar — método, módulos e aulas — em até 12 horas.</p>
         </div>
-        <span class="demo-note">Exemplo visual de entrega — não é case de cliente</span>
+
+        <div class="hm-block">
+          <div class="hm-block__bar">
+            <h3 class="hm-block__title">Conteúdos mais acessados</h3>
+            <a class="hm-block__explore" href="https://hotmart.com/pt-br/marketplace" target="_blank" rel="noopener noreferrer">Explorar todos →</a>
+          </div>
+          <div class="hm-cat-rail" aria-label="Categorias do Marketplace Hotmart">
+            <a class="hm-cat" href="https://hotmart.com/pt-br/marketplace" target="_blank" rel="noopener noreferrer"><img src="./assets/marketplace/cat-marketing.jpg" alt="" width="480" height="320" loading="lazy"><span class="hm-cat__label">Marketing Digital</span></a>
+            <a class="hm-cat" href="https://hotmart.com/pt-br/marketplace" target="_blank" rel="noopener noreferrer"><img src="./assets/marketplace/cat-empreendedorismo.jpg" alt="" width="480" height="320" loading="lazy"><span class="hm-cat__label">Empreendedorismo</span></a>
+            <a class="hm-cat" href="https://hotmart.com/pt-br/marketplace" target="_blank" rel="noopener noreferrer"><img src="./assets/marketplace/cat-maquiagem.jpg" alt="" width="480" height="320" loading="lazy"><span class="hm-cat__label">Maquiagem</span></a>
+            <a class="hm-cat" href="https://hotmart.com/pt-br/marketplace" target="_blank" rel="noopener noreferrer"><img src="./assets/marketplace/cat-investimentos.jpg" alt="" width="480" height="320" loading="lazy"><span class="hm-cat__label">Investimentos</span></a>
+            <a class="hm-cat" href="https://hotmart.com/pt-br/marketplace" target="_blank" rel="noopener noreferrer"><img src="./assets/marketplace/cat-saude.jpg" alt="" width="480" height="320" loading="lazy"><span class="hm-cat__label">Saúde e Esportes</span></a>
+            <a class="hm-cat" href="https://hotmart.com/pt-br/marketplace" target="_blank" rel="noopener noreferrer"><img src="./assets/marketplace/cat-culinaria.jpg" alt="" width="480" height="320" loading="lazy"><span class="hm-cat__label">Culinária e Gastronomia</span></a>
+            <a class="hm-cat" href="https://hotmart.com/pt-br/marketplace" target="_blank" rel="noopener noreferrer"><img src="./assets/marketplace/cat-idiomas.jpg" alt="" width="480" height="320" loading="lazy"><span class="hm-cat__label">Idiomas</span></a>
+            <a class="hm-cat" href="https://hotmart.com/pt-br/marketplace" target="_blank" rel="noopener noreferrer"><img src="./assets/marketplace/cat-ingles.jpg" alt="" width="480" height="320" loading="lazy"><span class="hm-cat__label">Inglês</span></a>
+            <a class="hm-cat" href="https://hotmart.com/pt-br/marketplace" target="_blank" rel="noopener noreferrer"><img src="./assets/marketplace/cat-concursos.jpg" alt="" width="480" height="320" loading="lazy"><span class="hm-cat__label">Concursos</span></a>
+            <a class="hm-cat" href="https://hotmart.com/pt-br/marketplace" target="_blank" rel="noopener noreferrer"><img src="./assets/marketplace/cat-estetica.jpg" alt="" width="480" height="320" loading="lazy"><span class="hm-cat__label">Estética</span></a>
+            <a class="hm-cat" href="https://hotmart.com/pt-br/marketplace" target="_blank" rel="noopener noreferrer"><img src="./assets/marketplace/cat-meditar.jpg" alt="" width="480" height="320" loading="lazy"><span class="hm-cat__label">Meditar</span></a>
+            <a class="hm-cat" href="https://hotmart.com/pt-br/marketplace" target="_blank" rel="noopener noreferrer"><img src="./assets/marketplace/cat-fotografia.jpg" alt="" width="480" height="320" loading="lazy"><span class="hm-cat__label">Fotografia</span></a>
+            <a class="hm-cat" href="https://hotmart.com/pt-br/marketplace" target="_blank" rel="noopener noreferrer"><img src="./assets/marketplace/cat-desenho.jpg" alt="" width="480" height="320" loading="lazy"><span class="hm-cat__label">Desenho</span></a>
+            <a class="hm-cat" href="https://hotmart.com/pt-br/marketplace" target="_blank" rel="noopener noreferrer"><img src="./assets/marketplace/cat-artesanato.jpg" alt="" width="480" height="320" loading="lazy"><span class="hm-cat__label">Artesanato</span></a>
+          </div>
+        </div>
+
+        <div class="hm-block">
+          <div class="hm-block__bar">
+            <h3 class="hm-block__title">Produtos bem avaliados</h3>
+            <a class="hm-block__explore" href="https://hotmart.com/pt-br/marketplace" target="_blank" rel="noopener noreferrer">Explorar todos →</a>
+          </div>
+          <div class="hm-carousel" data-hm-carousel>
+            <button type="button" class="hm-carousel__btn hm-carousel__btn--prev" data-hm-prev aria-label="Anterior">←</button>
+            <div class="hm-carousel__track" data-hm-track>
+              <a class="hm-card" href="https://hotmart.com/pt-br/marketplace/produtos/enquanto-isso-ebook/W22621184Q" target="_blank" rel="noopener noreferrer">
+                <div class="hm-card__cover"><img src="./assets/marketplace/mkt-enquanto-isso.jpg" alt="Capa: Enquanto Isso" width="300" height="300" loading="lazy"></div>
+                <p class="hm-card__rating"><span>★</span> 5.0 (470)</p>
+                <h4 class="hm-card__title">Enquanto Isso</h4>
+                <p class="hm-card__author">Fernanda Witwytzky</p>
+                <p class="hm-card__price">R$ 24,90</p>
+              </a>
+              <a class="hm-card" href="https://hotmart.com/pt-br/marketplace/produtos/aulas-de-manicure-e-pedicure-2021-com-faby-cardoso/E45853768C" target="_blank" rel="noopener noreferrer">
+                <div class="hm-card__cover"><img src="./assets/marketplace/mkt-manicure-faby.jpg" alt="Capa: Cutilagem Faby Cardoso" width="300" height="300" loading="lazy"></div>
+                <p class="hm-card__rating"><span>★</span> 4.9 (5.558)</p>
+                <h4 class="hm-card__title">Aulas de Manicure — Faby Cardoso</h4>
+                <p class="hm-card__author">CoEditora</p>
+                <p class="hm-card__price">R$ 59,00</p>
+              </a>
+              <a class="hm-card" href="https://hotmart.com/pt-br/marketplace/produtos/especialista-em-designer-de-unhas/R56728350D" target="_blank" rel="noopener noreferrer">
+                <div class="hm-card__cover"><img src="./assets/marketplace/mkt-unhas-mariah.jpg" alt="Capa: Designer de Unhas" width="300" height="300" loading="lazy"></div>
+                <p class="hm-card__rating"><span>★</span> 5.0 (1.143)</p>
+                <h4 class="hm-card__title">Especialista em Designer de Unhas</h4>
+                <p class="hm-card__author">Mariah Carla</p>
+                <p class="hm-card__price">R$ 47,00</p>
+              </a>
+              <a class="hm-card" href="https://hotmart.com/pt-br/marketplace/produtos/natural-bodybuilding-o-guia-completo-de-treino/Q4993268N" target="_blank" rel="noopener noreferrer">
+                <div class="hm-card__cover"><img src="./assets/marketplace/mkt-natural-bb.jpg" alt="Capa: Natural Bodybuilding" width="300" height="300" loading="lazy"></div>
+                <p class="hm-card__rating"><span>★</span> 4.8 (546)</p>
+                <h4 class="hm-card__title">Natural Bodybuilding</h4>
+                <p class="hm-card__author">Caio Bottura</p>
+                <p class="hm-card__price">R$ 67,90</p>
+              </a>
+              <a class="hm-card" href="https://hotmart.com/pt-br/marketplace/produtos/dieta-flexivel-e-nutricao-2a-edicao/P5449475G" target="_blank" rel="noopener noreferrer">
+                <div class="hm-card__cover"><img src="./assets/marketplace/mkt-dieta-flexivel.jpg" alt="Capa: Dieta Flexível" width="300" height="300" loading="lazy"></div>
+                <p class="hm-card__rating"><span>★</span> 4.8 (1.077)</p>
+                <h4 class="hm-card__title">Dieta Flexível e Nutrição</h4>
+                <p class="hm-card__author">Caio Bottura</p>
+                <p class="hm-card__price">R$ 57,90</p>
+              </a>
+              <a class="hm-card" href="https://hotmart.com/pt-br/marketplace/produtos/emagrecimento-definitivo-o-guia-do-emagrecimento-saudavel-3/P7594655G" target="_blank" rel="noopener noreferrer">
+                <div class="hm-card__cover"><img src="./assets/marketplace/mkt-emagrecimento.jpg" alt="Capa: Emagrecimento Definitivo" width="300" height="300" loading="lazy"></div>
+                <p class="hm-card__rating"><span>★</span> 4.9 (218)</p>
+                <h4 class="hm-card__title">Emagrecimento Definitivo</h4>
+                <p class="hm-card__author">Caio Bottura</p>
+                <p class="hm-card__price">R$ 67,90</p>
+              </a>
+              <a class="hm-card" href="https://hotmart.com/pt-br/marketplace/produtos/confraria-analitica-2-0/J76233883T" target="_blank" rel="noopener noreferrer">
+                <div class="hm-card__cover"><img src="./assets/marketplace/mkt-confraria.jpg" alt="Capa: Confraria Analítica" width="300" height="300" loading="lazy"></div>
+                <p class="hm-card__rating"><span>★</span> 4.9 (109)</p>
+                <h4 class="hm-card__title">Confraria Analítica</h4>
+                <p class="hm-card__author">Dr. Lucas Nápoli</p>
+                <p class="hm-card__price">R$ 59,99</p>
+              </a>
+              <a class="hm-card" href="https://hotmart.com/pt-br/marketplace/produtos/curso-de-barbeiro-online-profissional2023/X11924653L" target="_blank" rel="noopener noreferrer">
+                <div class="hm-card__cover"><img src="./assets/marketplace/mkt-barbeiro.jpg" alt="Capa: Curso de Barbeiro" width="300" height="300" loading="lazy"></div>
+                <p class="hm-card__rating"><span>★</span> 4.6 (701)</p>
+                <h4 class="hm-card__title">Curso de Barbeiro Online</h4>
+                <p class="hm-card__author">MR VIRTUS CURSOS ONLINE</p>
+                <p class="hm-card__price">R$ 147,00</p>
+              </a>
+            </div>
+            <button type="button" class="hm-carousel__btn hm-carousel__btn--next" data-hm-next aria-label="Próximo">→</button>
+          </div>
+        </div>
+
+        <div class="hm-block">
+          <div class="hm-block__bar">
+            <h3 class="hm-block__title">Mais vendidos do Marketplace</h3>
+            <a class="hm-block__explore" href="https://hotmart.com/pt-br/marketplace" target="_blank" rel="noopener noreferrer">Explorar todos →</a>
+          </div>
+          <div class="hm-carousel" data-hm-carousel>
+            <button type="button" class="hm-carousel__btn hm-carousel__btn--prev" data-hm-prev aria-label="Anterior">←</button>
+            <div class="hm-carousel__track" data-hm-track>
+              <a class="hm-card" href="https://hotmart.com/pt-br/marketplace/produtos/formula-negocio-online-51/A1412453A" target="_blank" rel="noopener noreferrer">
+                <div class="hm-card__cover"><img src="./assets/marketplace/mkt-fno.jpg" alt="Capa: Fórmula Negócio Online" width="300" height="300" loading="lazy"></div>
+                <p class="hm-card__rating"><span>★</span> 4.6 (11.294)</p>
+                <h4 class="hm-card__title">Fórmula Negócio Online</h4>
+                <p class="hm-card__author">Alex Vargas</p>
+                <p class="hm-card__price">R$ 297,00</p>
+              </a>
+              <a class="hm-card" href="https://hotmart.com/pt-br/marketplace/produtos/maquiagemnaweb/J3864784O" target="_blank" rel="noopener noreferrer">
+                <div class="hm-card__cover"><img src="./assets/marketplace/mkt-maquiagem-web.jpg" alt="Capa: Maquiagem na Web" width="300" height="300" loading="lazy"></div>
+                <p class="hm-card__rating"><span>★</span> 4.6 (8.586)</p>
+                <h4 class="hm-card__title">Curso Maquiagem na Web</h4>
+                <p class="hm-card__author">Venturini Cursos Online</p>
+                <p class="hm-card__price">R$ 37,00</p>
+              </a>
+              <a class="hm-card" href="https://hotmart.com/pt-br/marketplace/produtos/fichas-de-treino-caio-bottura/P16761883J" target="_blank" rel="noopener noreferrer">
+                <div class="hm-card__cover"><img src="./assets/marketplace/mkt-fichas-treino.jpg" alt="Capa: Fichas de Treino" width="300" height="300" loading="lazy"></div>
+                <p class="hm-card__rating"><span>★</span> 4.7 (1.141)</p>
+                <h4 class="hm-card__title">Fichas de Treino Caio Bottura</h4>
+                <p class="hm-card__author">Caio Bottura</p>
+                <p class="hm-card__price">R$ 97,90</p>
+              </a>
+              <a class="hm-card" href="https://hotmart.com/pt-br/marketplace/produtos/guia-completo-para-uma-gestacao-segura-e-acolhedora/M100276987X" target="_blank" rel="noopener noreferrer">
+                <div class="hm-card__cover"><img src="./assets/marketplace/mkt-gestacao.jpg" alt="Capa: Gestação Segura" width="300" height="300" loading="lazy"></div>
+                <h4 class="hm-card__title">Guia da Gestação Segura</h4>
+                <p class="hm-card__author">Enfermeira Eduarda Dorneles</p>
+                <p class="hm-card__price">R$ 29,99</p>
+              </a>
+              <a class="hm-card" href="https://hotmart.com/pt-br/marketplace/produtos/powerbuilding-o-guia-completo-por-caio-bottura/L66795203Q" target="_blank" rel="noopener noreferrer">
+                <div class="hm-card__cover"><img src="./assets/marketplace/mkt-powerbuilding.jpg" alt="Capa: Powerbuilding" width="300" height="300" loading="lazy"></div>
+                <p class="hm-card__rating"><span>★</span> 5.0 (8)</p>
+                <h4 class="hm-card__title">POWERBUILDING</h4>
+                <p class="hm-card__author">Caio Bottura</p>
+                <p class="hm-card__price">R$ 67,90</p>
+              </a>
+              <a class="hm-card" href="https://hotmart.com/pt-br/marketplace/produtos/manual-dos-suplementos-guia-pratico-para-a-suplementacao-efetiva/P6325961R" target="_blank" rel="noopener noreferrer">
+                <div class="hm-card__cover"><img src="./assets/marketplace/mkt-suplementos.jpg" alt="Capa: Manual dos Suplementos" width="300" height="300" loading="lazy"></div>
+                <h4 class="hm-card__title">Manual Dos Suplementos</h4>
+                <p class="hm-card__author">Caio Bottura</p>
+                <p class="hm-card__price">R$ 57,90</p>
+              </a>
+              <a class="hm-card" href="https://hotmart.com/pt-br/marketplace/produtos/diario-de-um-atleta/Y9761621T" target="_blank" rel="noopener noreferrer">
+                <div class="hm-card__cover"><img src="./assets/marketplace/mkt-diario-atleta.jpg" alt="Capa: Diário de Um Atleta" width="300" height="300" loading="lazy"></div>
+                <p class="hm-card__rating"><span>★</span> 5.0 (15)</p>
+                <h4 class="hm-card__title">Diário de Um Atleta</h4>
+                <p class="hm-card__author">Caio Bottura</p>
+                <p class="hm-card__price">R$ 37,90</p>
+              </a>
+              <a class="hm-card" href="https://hotmart.com/pt-br/marketplace/produtos/ebook-psicanalise-em-humanes-lucas-napoli/P42041012E" target="_blank" rel="noopener noreferrer">
+                <div class="hm-card__cover"><img src="./assets/marketplace/mkt-psicanalise.jpg" alt="Capa: Psicanálise em Humanês" width="300" height="300" loading="lazy"></div>
+                <p class="hm-card__rating"><span>★</span> 4.7 (14)</p>
+                <h4 class="hm-card__title">Psicanálise em Humanês</h4>
+                <p class="hm-card__author">Dr. Lucas Nápoli</p>
+                <p class="hm-card__price">R$ 67,00</p>
+              </a>
+            </div>
+            <button type="button" class="hm-carousel__btn hm-carousel__btn--next" data-hm-next aria-label="Próximo">→</button>
+          </div>
+        </div>
+
+        <p class="hm-market__note">Exemplos do Marketplace Hotmart. Os links abrem a Hotmart — não são produtos nem depoimentos do Expert no Ar 12H.</p>
+        <div class="cta-center">
+          <a class="btn js-checkout-ena12h" href="https://pay.hotmart.com/R106938053M" data-cta="marketplace">Quero meu produto no ar por R$ 67</a>
+        </div>
       </div>
     </section>
 
     <!-- 6b Provas reais — produtos na Hotmart -->
     <section class="section section--ivory" id="provas-hotmart">
       <div class="container">
-        <h2>Produtos reais publicados na Hotmart</h2>
-        <p class="lead">Prova de execução: produtos estruturados e no ar — o mesmo tipo de resultado que a esteira entrega.</p>
+        <h2>Produtos reais publicados na Hotmart por nós nas últimas 72 horas.</h2>
+        <p class="lead">Produtos estruturados e no ar — o mesmo tipo de resultado que a esteira entrega.</p>
         <div class="proof-carousel" id="proofCarousel" aria-label="Produtos publicados na Hotmart">
           <div class="proof-track" id="proofTrack">
             <a class="proof-card" href="https://hotmart.com/pt-br/marketplace/produtos/contrate-sara-e-maria-sdrs-digitais-para-clinicas-agenda-follow-up/T106908369B" target="_blank" rel="noopener noreferrer">
-              <div class="proof-card__media"><img class="proof-card__img" src="./assets/proof/proof-sara-maria.png" alt="Print Hotmart: Contrate Sara e Maria" width="640" height="360" loading="lazy"></div>
+              <div class="proof-card__media"><img class="proof-card__img" src="./assets/proof/proof-sara-maria.png" alt="Contrate Sara e Maria na Hotmart" width="640" height="360" loading="lazy"></div>
               <div class="proof-card__body">
                 <h3 class="proof-card__title">Contrate Sara e Maria</h3>
                 <p class="proof-card__price">R$ 97</p>
@@ -1529,7 +1955,7 @@
               </div>
             </a>
             <a class="proof-card" href="https://hotmart.com/pt-br/marketplace/produtos/escritorio-de-agentes-ia-para-empresas-e-consultoria-by-paulo-linhares/S106176787G?sck=HOTMART_PRODUCT_PAGE" target="_blank" rel="noopener noreferrer">
-              <div class="proof-card__media"><img class="proof-card__img" src="./assets/proof/proof-gemeo-digital.png" alt="Print Hotmart: Seu Negócio Gêmeo Digital" width="640" height="360" loading="lazy"></div>
+              <div class="proof-card__media"><img class="proof-card__img" src="./assets/proof/proof-gemeo-digital.png" alt="Seu Negócio Gêmeo Digital na Hotmart" width="640" height="360" loading="lazy"></div>
               <div class="proof-card__body">
                 <h3 class="proof-card__title">Seu Negócio Gêmeo Digital</h3>
                 <p class="proof-card__price">R$ 2.890</p>
@@ -1537,7 +1963,7 @@
               </div>
             </a>
             <a class="proof-card" href="https://hotmart.com/pt-br/marketplace/produtos/contrate-seu-desenvolvedor-digital-profissional-web-completo-sem-salario-e-sem-mensalidade/T106883841N?sck=HOTMART_PRODUCT_PAGE" target="_blank" rel="noopener noreferrer">
-              <div class="proof-card__media"><img class="proof-card__img" src="./assets/proof/proof-dev-digital.png" alt="Print Hotmart: Contrate seu Desenvolvedor Digital" width="640" height="360" loading="lazy"></div>
+              <div class="proof-card__media"><img class="proof-card__img" src="./assets/proof/proof-dev-digital.png" alt="Contrate seu Desenvolvedor Digital na Hotmart" width="640" height="360" loading="lazy"></div>
               <div class="proof-card__body">
                 <h3 class="proof-card__title">Contrate seu Desenvolvedor Digital</h3>
                 <p class="proof-card__price">R$ 47</p>
@@ -1545,7 +1971,7 @@
               </div>
             </a>
             <a class="proof-card" href="https://hotmart.com/pt-br/marketplace/produtos/mapa-completo-da-sua-empresa-gemea-digital-o-organograma-dos-seus-funcionarios-digitais-e-o-primeiro-passo-antes-dessa-nova-fase-da-sua-empresa/J106841910I?sck=HOTMART_PRODUCT_PAGE" target="_blank" rel="noopener noreferrer">
-              <div class="proof-card__media"><img class="proof-card__img" src="./assets/proof/proof-4-funcionarios.png" alt="Print Hotmart: Seus 4 Primeiros Funcionários Digitais" width="640" height="360" loading="lazy"></div>
+              <div class="proof-card__media"><img class="proof-card__img" src="./assets/proof/proof-4-funcionarios.png" alt="Seus 4 Primeiros Funcionários Digitais na Hotmart" width="640" height="360" loading="lazy"></div>
               <div class="proof-card__body">
                 <h3 class="proof-card__title">Seus 4 Primeiros Funcionários Digitais</h3>
                 <p class="proof-card__price">R$ 38</p>
@@ -1553,7 +1979,7 @@
               </div>
             </a>
             <a class="proof-card" href="https://hotmart.com/pt-br/marketplace/produtos/expert-no-ar-12h/R106938053M?sck=HOTMART_PRODUCT_PAGE" target="_blank" rel="noopener noreferrer">
-              <div class="proof-card__media"><img class="proof-card__img" src="./assets/proof/proof-ena12h.png" alt="Print Hotmart: Expert no Ar 12H" width="640" height="360" loading="lazy"></div>
+              <div class="proof-card__media"><img class="proof-card__img" src="./assets/proof/proof-ena12h.png" alt="Expert no Ar 12H na Hotmart" width="640" height="360" loading="lazy"></div>
               <div class="proof-card__body">
                 <h3 class="proof-card__title">Expert no Ar 12H</h3>
                 <p class="proof-card__price">R$ 67</p>
@@ -1562,7 +1988,7 @@
             </a>
           </div>
         </div>
-        <p class="proof-note">Prints do Marketplace Hotmart. Não são depoimentos de alunos.</p>
+        <p class="proof-note">Produtos publicados por nós na Hotmart. Não são depoimentos de alunos.</p>
         <div class="cta-center">
           <a class="btn js-checkout-ena12h" href="https://pay.hotmart.com/R106938053M" data-cta="proof-hotmart">Quero meu produto no ar por R$ 67</a>
         </div>
@@ -1760,14 +2186,14 @@
 
         <figure class="esteira-visual">
           <img
-            src="./assets/ena12h-time-openclaw-paulo.jpg"
-            alt="Paulo Linhares e a camada de funcionários digitais OpenClaw que aceleram a esteira Expert no Ar 12H"
+            src="./assets/ena12h-hotmart-banner-16x9.jpg"
+            alt="Expert no Ar 12H"
             width="1024"
             height="576"
             loading="lazy"
             decoding="async"
           >
-          <figcaption>Ilustração da camada OpenClaw (funcionários digitais 24h). A entrega do Expert no Ar 12H segue as 7 funções da esteira abaixo — sob comando da Mr. Coder.</figcaption>
+          <figcaption>Expert no Ar 12H — a esteira da Mr. Coder que estrutura e publica seu produto na Hotmart.</figcaption>
         </figure>
 
         <ul class="role-grid" aria-label="Sete funções da esteira Expert no Ar 12H">
@@ -1793,11 +2219,11 @@
           </li>
           <li>
             <strong>Suporte WhatsApp</strong>
-            <span>Canal da esteira e dúvidas</span>
+            <span>Canal direto para dúvidas e acompanhamento</span>
           </li>
           <li>
-            <strong>QA / Readiness Gate</strong>
-            <span>Checklist, acessos e início do relógio de 12 horas</span>
+            <strong>Controle de qualidade</strong>
+            <span>Checklist, acessos e início do prazo de 12 horas</span>
           </li>
         </ul>
 
@@ -2236,6 +2662,25 @@
       syncHeroListenBtn();
     })();
 
+    (function initHmCarousels() {
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      document.querySelectorAll('[data-hm-carousel]').forEach(function (root) {
+        var track = root.querySelector('[data-hm-track]');
+        var prev = root.querySelector('[data-hm-prev]');
+        var next = root.querySelector('[data-hm-next]');
+        if (!track) return;
+        function step() {
+          var card = track.querySelector('.hm-card');
+          return card ? Math.max(card.getBoundingClientRect().width + 14, 160) : 180;
+        }
+        function go(dir) {
+          track.scrollBy({ left: dir * step(), behavior: reduce ? 'auto' : 'smooth' });
+        }
+        if (prev) prev.addEventListener('click', function () { go(-1); });
+        if (next) next.addEventListener('click', function () { go(1); });
+      });
+    })();
+
     document.querySelectorAll('.js-checkout-ena12h').forEach(function (el) {
       var href = withUtm(CHECKOUT);
       el.setAttribute('href', href);
@@ -2245,7 +2690,8 @@
           hero: 'hero_cta_click',
           mechanism: 'mechanism_cta_click',
           offer: 'offer_cta_click',
-          sticky: 'offer_cta_click'
+          sticky: 'offer_cta_click',
+          marketplace: 'marketplace_cta_click'
         };
         track(map[spot] || 'cta_click', { cta: spot, value: 67, currency: 'BRL' });
         track('checkout_start', { cta: spot, value: 67, currency: 'BRL' });
