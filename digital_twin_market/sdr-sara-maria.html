@@ -23,6 +23,14 @@
   Hotmart product id: 8203074 · Club: mr-coder-go-lt
   VSL áudio: ./voice/vsl-sdr-sara-maria.mp3 (~9:35) · Player: ./player-vsl/
   SSOT VSL: ./VSL_copy_sdr_sara_maria_6min.md · voice/: ./voice/
+  Hero #heroListenBtn → mesmo FLVslPlayer do FAB (engage/play; sem segundo áudio)
+
+  AnaLisa 2026-08-03 (80/100) → wave ENA-mirror:
+  - hero listen + demos (1ª dobra)
+  - #duo-tangivel (só Sara/Maria: capa Hotmart + selo + box arts — sem cruzar outros SKUs)
+  - .compare CLT/BPO vs duo R$97 (milhares/mês; sem faixa inventada)
+  - slot depoimento real em #sobre permanece vazio até prova autorizada
+  - NÃO exibir Dev / 4 funcionários / ENA12H / escada nesta LP
 -->
 <!doctype html>
 <html lang="pt-BR">
@@ -247,7 +255,53 @@
   .btn:hover{background:var(--color-green-hover)}
   .btn--secondary{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.28);box-shadow:none}
   .btn--secondary:hover{background:rgba(255,255,255,.06);border-color:rgba(192,168,122,.5)}
+  .btn--ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.28);box-shadow:none;cursor:pointer;font:inherit}
+  .btn--ghost:hover{background:rgba(255,255,255,.06);border-color:rgba(192,168,122,.5)}
+  .btn--ghost.is-playing{border-color:rgba(110,204,60,.55);color:#c8f5a8}
   .offer-lead{font-size:17px;margin:0 0 20px;color:var(--color-muted);line-height:1.55}
+  /* Hero listen — controls FAB VSL (same player, no second audio) */
+  .hero-listen{display:flex;align-items:center;gap:14px;margin-top:18px;padding:12px 14px;border:1px solid rgba(192,168,122,.35);border-radius:16px;background:rgba(255,255,255,.03);max-width:520px}
+  .hero-listen__cover{width:64px;height:64px;border-radius:12px;object-fit:cover;flex-shrink:0;border:1px solid rgba(255,255,255,.08)}
+  .hero-listen__body{min-width:0;flex:1}
+  .hero-listen__kicker{margin:0 0 8px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#b8b8b8}
+  .hero-listen .btn{min-height:48px;padding:12px 18px;font-size:15px;width:100%}
+  @media(min-width:520px){.hero-listen .btn{width:auto}}
+  /* Cost compare (ENA pattern) */
+  .compare{display:grid;gap:14px;margin:22px 0 8px}
+  @media(min-width:700px){.compare{grid-template-columns:1fr 1fr}}
+  .compare-col{border-radius:16px;padding:18px 18px 16px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03)}
+  .compare-col--old{border-color:rgba(239,68,68,.35);background:rgba(239,68,68,.06)}
+  .compare-col--new{border-color:rgba(110,204,60,.4);background:rgba(110,204,60,.08)}
+  .compare-col h3{font-size:15px;text-transform:uppercase;letter-spacing:.06em;margin:0 0 14px}
+  .compare-col--old h3{color:#fca5a5}
+  .compare-col--new h3{color:#c8f5a8}
+  .compare-col ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+  .compare-col li{font-size:14px;padding-left:18px;position:relative;color:var(--color-muted);line-height:1.45}
+  .compare-col--old li::before{content:"✕";position:absolute;left:0;color:#ef4444;font-weight:700}
+  .compare-col--new li::before{content:"✓";position:absolute;left:0;color:var(--color-green);font-weight:700}
+  .compare-note{margin:10px 0 0;font-size:13px;color:#888;text-align:center}
+  /* Proxy proof */
+  .proxy-grid{display:grid;gap:14px;margin:22px 0 8px}
+  @media(min-width:700px){.proxy-grid{grid-template-columns:1.2fr .8fr}}
+  .proxy-card{display:flex;flex-direction:column;border:1px solid rgba(192,168,122,.35);border-radius:16px;overflow:hidden;background:rgba(255,255,255,.03);text-decoration:none;color:inherit;transition:border-color .2s ease}
+  .proxy-card:hover{border-color:rgba(110,204,60,.5)}
+  .proxy-card__media{aspect-ratio:16/9;background:#000;overflow:hidden}
+  .proxy-card__media img{width:100%;height:100%;object-fit:cover;display:block}
+  .proxy-card__body{padding:14px 16px 16px;display:grid;gap:6px}
+  .proxy-card__title{margin:0;font-size:16px;font-weight:800}
+  .proxy-card__price{margin:0;font-size:14px;font-weight:800;color:var(--color-green)}
+  .proxy-card__link{margin:4px 0 0;font-size:13px;font-weight:700;color:var(--color-gold-light)}
+  .proxy-aside{display:grid;gap:12px}
+  .proxy-seal{margin:0;border-radius:16px;border:1px solid rgba(192,168,122,.35);background:rgba(0,0,0,.35);padding:14px;text-align:center}
+  .proxy-seal img{width:min(140px,60%);height:auto;display:block;margin:0 auto;filter:drop-shadow(0 8px 20px rgba(0,0,0,.45))}
+  .proxy-seal figcaption{margin:10px 0 0;font-size:12px;font-weight:700;color:var(--color-gold-light)}
+  .sibling-grid{display:grid;gap:10px;margin-top:18px}
+  @media(min-width:700px){.sibling-grid{grid-template-columns:repeat(3,1fr)}}
+  .sibling-card{display:block;padding:14px 16px;border-radius:14px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);text-decoration:none;color:inherit}
+  .sibling-card:hover{border-color:rgba(192,168,122,.45)}
+  .sibling-card strong{display:block;font-size:14px;margin-bottom:4px}
+  .sibling-card span{font-size:13px;color:var(--color-muted)}
+  .proxy-note{display:block;margin-top:16px;font-size:13px;color:#888;text-align:center}
   .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:20px}
   .cta-center{text-align:center;margin:clamp(24px,4vw,36px) 0 0;padding-bottom:4px}
   .list{display:grid;gap:12px;margin:18px 0 0;padding:0;list-style:none}
@@ -279,6 +333,20 @@
     border-radius: 18px;
     overflow: hidden;
     box-shadow: 0 8px 28px rgba(0, 0, 0, .4);
+  }
+  .vsl-fab.is-spotlight .fl-vsl {
+    border-color: var(--color-green);
+    box-shadow: 0 0 0 3px rgba(110, 204, 60, .45), 0 8px 28px rgba(0, 0, 0, .4);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .vsl-fab.is-spotlight .fl-vsl {
+      animation: vsl-fab-spotlight 1.5s ease-out 1;
+    }
+  }
+  @keyframes vsl-fab-spotlight {
+    0% { box-shadow: 0 0 0 0 rgba(110, 204, 60, .55), 0 8px 28px rgba(0, 0, 0, .4); }
+    40% { box-shadow: 0 0 0 6px rgba(110, 204, 60, .35), 0 8px 28px rgba(0, 0, 0, .4); }
+    100% { box-shadow: 0 0 0 3px rgba(110, 204, 60, .45), 0 8px 28px rgba(0, 0, 0, .4); }
   }
   .vsl-fab .fl-vsl__poster,
   .vsl-fab .fl-vsl__media {
@@ -437,6 +505,13 @@
           <a class="btn js-checkout-sdr-duo" href="https://pay.hotmart.com/T106908369B" data-cta-location="hero">Quero contratar Sara e Maria agora</a>
           <a class="btn btn--secondary" href="#oferta">Ver tudo o que está incluso</a>
         </div>
+        <div class="hero-listen" id="heroListen">
+          <img class="hero-listen__cover" src="./banner-sdr-sara-maria-hotmart-cover-600.jpg" alt="Capa Contrate Sara e Maria" width="64" height="64" decoding="async">
+          <div class="hero-listen__body">
+            <p class="hero-listen__kicker">Explicação em áudio · ~10 min</p>
+            <button type="button" class="btn btn--ghost" id="heroListenBtn" data-cta-location="hero-listen" aria-controls="vsl-player" aria-pressed="false">Ouvir a oferta</button>
+          </div>
+        </div>
         <p class="small" style="margin-top:12px">Checkout seguro Hotmart · acesso imediato · 30 dias de garantia, o risco é todo meu</p>
       </div>
       <div class="hero-visual" aria-label="Demo clínica + box arts Sara e Maria">
@@ -572,6 +647,47 @@
     </div>
   </section>
 
+  <!-- 3b. Tangível do duo (só Sara/Maria) — sem cruzar outros SKUs; sem jargão interno -->
+  <section class="section" id="duo-tangivel">
+    <div class="container">
+      <span class="eyebrow">Sara e Maria · para a sua clínica</span>
+      <h2>Não é chatbot. São <span class="gold">duas profissionais</span> digitais documentadas</h2>
+      <p class="lead muted">Você contrata o duo completo: Sara na agenda e Maria nos orçamentos — pacotes instaláveis, scripts e playbooks. Checkout Hotmart. Acesso imediato.</p>
+      <div class="proxy-grid">
+        <a class="proxy-card" href="https://hotmart.com/pt-br/marketplace/produtos/contrate-sara-e-maria-sdrs-digitais-para-clinicas-agenda-follow-up/T106908369B" target="_blank" rel="noopener noreferrer">
+          <div class="proxy-card__media">
+            <img src="./banner-sdr-sara-maria-hotmart-cover-600.jpg" alt="Contrate Sara e Maria na Hotmart" width="600" height="600" loading="lazy">
+          </div>
+          <div class="proxy-card__body">
+            <h3 class="proxy-card__title">Contrate Sara e Maria</h3>
+            <p class="proxy-card__price">R$ 97 · pagamento único</p>
+            <p class="proxy-card__link">Ver na Hotmart →</p>
+          </div>
+        </a>
+        <div class="proxy-aside">
+          <figure class="proxy-seal">
+            <img src="./selo-nao-e-chatbot-sdr-digital.png" alt="Não é chatbot — é SDR digital" width="280" height="280" loading="lazy">
+            <figcaption>Não é chatbot · profissionais digitais documentadas</figcaption>
+          </figure>
+          <div class="duo-visual" aria-label="Box arts Sara e Maria">
+            <figure>
+              <img src="./sara-sdr-1-atendimento-openclaw.png" alt="Sara — SDR de Atendimento" loading="lazy" width="512" height="512">
+              <figcaption>Sara · agenda</figcaption>
+            </figure>
+            <figure>
+              <img src="./maria-sdr-follow-up.png" alt="Maria — SDR de Follow-up" loading="lazy" width="512" height="512">
+              <figcaption>Maria · orçamentos</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+      <div class="cta-center">
+        <a class="btn js-checkout-sdr-duo" href="https://pay.hotmart.com/T106908369B" data-cta-location="duo_tangivel">Quero contratar Sara e Maria agora</a>
+        <p class="small" style="margin-top:10px">R$ 97 à vista · ou em até 4× no cartão · garantia de 30 dias</p>
+      </div>
+    </div>
+  </section>
+
   <!-- 4. OFERTA -->
   <section class="section" id="oferta">
     <div class="container">
@@ -599,6 +715,27 @@
         <div class="anchor-note">
           <p>R$ 97 é porta de entrada do time comercial digital — sem vagas fake e sem relógio mentiroso. <strong>O custo real de esperar</strong> é lead pago evaporando na entrada e na saída do funil.</p>
         </div>
+        <div class="compare" aria-label="Comparativo de custo CLT e mensalidade vs duo Sara e Maria">
+          <div class="compare-col compare-col--old">
+            <h3>Caminho caro (mensal)</h3>
+            <ul>
+              <li>Recepção / SDR CLT — salário + encargos · milhares/mês</li>
+              <li>BPO ou secretária virtual — mensalidade todo mês</li>
+              <li>Chatbot SaaS — mensalidade… e o lead ainda esfria</li>
+              <li>Orçamento “vou pensar” sem ninguém retomar com contexto</li>
+            </ul>
+          </div>
+          <div class="compare-col compare-col--new">
+            <h3>Duo Sara + Maria</h3>
+            <ul>
+              <li>R$ 97 uma vez — sem salário, sem mensalidade</li>
+              <li>Duas profissionais: agenda + follow-up</li>
+              <li>Scripts, playbooks, templates e guia</li>
+              <li>2 meses comigo no WhatsApp · garantia 30 dias</li>
+            </ul>
+          </div>
+        </div>
+        <p class="compare-note">Âncora com linguagem de dono (milhares/mês). Sem preço riscado inventado. Sem faixa CLT inventada.</p>
         <div class="price-block" style="margin-top:24px">
           <p class="price-lead">Contrate Sara e Maria — duo completo + acesso vitalício</p>
           <p class="price-main">R$ 97,00 à vista</p>
@@ -772,15 +909,20 @@
     }
 
     /* VSL FAB — floating BR; autoplay attempt; static poster (no teaser video).
-       MP3: ./voice/vsl-sdr-sara-maria.mp3 (~10 min). Milestones usam realRatio. */
+       MP3: ./voice/vsl-sdr-sara-maria.mp3 (~10 min). Milestones usam realRatio.
+       Hero #heroListenBtn controls the SAME player (no second audio). */
     (function initVslPlayer() {
       var root = document.getElementById('vsl-player');
       var statusEl = document.getElementById('vsl-audio-status');
+      var fabWrap = document.getElementById('vsl-audio-wrap');
+      var heroBtn = document.getElementById('heroListenBtn');
       if (!root || typeof FLVslPlayer === 'undefined') return;
 
       if (cfg.vslAudioUrl) root.setAttribute('data-src', cfg.vslAudioUrl);
       if (cfg.vslPosterUrl) root.setAttribute('data-poster', cfg.vslPosterUrl);
       root.removeAttribute('data-teaser-src');
+
+      var spotlightTimer = null;
 
       function setStatus(text, blocked) {
         if (!statusEl) return;
@@ -788,14 +930,92 @@
         statusEl.classList.toggle('is-blocked', !!blocked);
       }
 
-      FLVslPlayer.init(root);
+      function syncHeroListenBtn() {
+        if (!heroBtn || !player) return;
+        var media = player.media;
+        var blocked = root.classList.contains('is-blocked');
+        var engaged = !!player.engaged && !blocked;
+        var playing = engaged && media && !media.paused && !media.ended && !tracked.vsl_complete;
+        var label = 'Ouvir a oferta';
+        if (tracked.vsl_complete && (!media || media.paused || media.ended)) label = 'Ouvir novamente';
+        else if (playing) label = 'Ouvindo…';
+        else if (engaged && media && media.paused) label = 'Continuar ouvindo';
+        heroBtn.textContent = label;
+        heroBtn.setAttribute('aria-pressed', playing ? 'true' : 'false');
+        heroBtn.classList.toggle('is-playing', !!playing);
+      }
+
+      function spotlightFab() {
+        if (!fabWrap) return;
+        fabWrap.classList.add('is-spotlight');
+        clearTimeout(spotlightTimer);
+        spotlightTimer = setTimeout(function () {
+          fabWrap.classList.remove('is-spotlight');
+        }, 1600);
+      }
+
+      function isPlayingNow() {
+        var media = player && player.media;
+        return !!(
+          player &&
+          player.engaged &&
+          media &&
+          !media.paused &&
+          !media.ended &&
+          !root.classList.contains('is-blocked')
+        );
+      }
+
+      var player = FLVslPlayer.init(root);
+
+      if (heroBtn) {
+        heroBtn.addEventListener('click', function () {
+          if (!player) return;
+          var media = player.media;
+          var blocked = root.classList.contains('is-blocked');
+          var action = 'engage';
+          var pending = null;
+
+          /* Hero CTA = always ensure listening. Never pause here (FAB has pause). */
+          if (isPlayingNow()) {
+            action = 'focus';
+          } else if (!player.engaged || blocked) {
+            action = 'engage';
+            tracked.vsl_complete = false;
+            pending = player.engage();
+          } else if (tracked.vsl_complete || (media && media.ended)) {
+            action = 'replay';
+            tracked.vsl_complete = false;
+            try { if (media) media.currentTime = 0; } catch (e) {}
+            pending = player.play();
+          } else {
+            action = 'play';
+            pending = player.play();
+          }
+
+          spotlightFab();
+          track('vsl_hero_listen_click', {
+            media: 'audio',
+            placement: 'hero',
+            action: action
+          });
+
+          if (pending && typeof pending.then === 'function') {
+            pending.then(function () { syncHeroListenBtn(); });
+          } else {
+            syncHeroListenBtn();
+          }
+        });
+      }
 
       root.addEventListener('flvsl:blocked', function () {
         setStatus('Toque p/ ouvir', true);
+        syncHeroListenBtn();
       });
       root.addEventListener('flvsl:engage', function () {
         setStatus('Tocando');
         track('vsl_engage', { media: 'audio', start_mode: 'attempt', placement: 'fab' });
+        syncHeroListenBtn();
       });
       root.addEventListener('flvsl:start', function (e) {
         if (tracked.vsl_start) return;
@@ -806,12 +1026,15 @@
           duration_s: Math.round((e.detail && e.detail.duration) || 0)
         });
         setStatus('Tocando');
+        syncHeroListenBtn();
       });
       root.addEventListener('flvsl:play', function () {
         setStatus('Tocando');
+        syncHeroListenBtn();
       });
       root.addEventListener('flvsl:pause', function () {
         if (!tracked.vsl_complete) setStatus('Pausado');
+        syncHeroListenBtn();
       });
       root.addEventListener('flvsl:progress', function (e) {
         var ratio = (e.detail && e.detail.realRatio) || 0;
@@ -833,6 +1056,7 @@
         tracked.vsl_complete = true;
         track('vsl_complete', { media: 'audio', placement: 'fab' });
         setStatus('Concluído');
+        syncHeroListenBtn();
       });
     })();
 
