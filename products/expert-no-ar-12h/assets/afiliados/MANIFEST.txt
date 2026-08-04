@@ -1,0 +1,19 @@
+# MANIFEST — entrega-nexcreation-w4-afiliados
+
+stills/ena12h-aff-aff01-curso-1x1.png	121982
+stills/ena12h-aff-aff01-curso-4x5.png	154037
+stills/ena12h-aff-aff01-curso-9x16.png	194198
+stills/ena12h-aff-aff02-12h-1x1.png	120865
+stills/ena12h-aff-aff02-12h-4x5.png	153745
+stills/ena12h-aff-aff02-12h-9x16.png	192672
+stills/ena12h-aff-aff02-12h-story-a-9x16.png	197811
+stills/ena12h-aff-aff02-12h-story-b-9x16.png	138583
+stills/ena12h-aff-aff03-aprova-1x1.png	123623
+stills/ena12h-aff-aff03-aprova-4x5.png	157470
+stills/ena12h-aff-aff03-aprova-9x16.png	197167
+youtube/ena12h-aff-yt-curso-nao-saiu-16x9.png	398702
+youtube/ena12h-aff-yt-12h-hotmart-16x9.png	400448
+video/ena12h-aff-aff01-curso-9x16.mp4	656736
+video/ena12h-aff-aff02-12h-9x16.mp4	638986
+video/ena12h-aff-aff03-aprova-9x16.mp4	624747
+video/ena12h-aff-apresentacao-16x9.mp4	1080610
