@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>W1 Checklist t1–t14 · Expert no Ar 12H</title>
+  <link rel="canonical" href="https://www.paulolinhares-mrcoder.com.br/products/expert-no-ar-12h/wiki/w1-checklist.html">
+  <link rel="icon" href="https://www.paulolinhares-mrcoder.com.br/products/expert-no-ar-12h/assets/favicon.ico">
+  <link rel="stylesheet" href="./wiki.css">
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="./index.html">
+      <img src="https://www.paulolinhares-mrcoder.com.br/products/expert-no-ar-12h/assets/ena12h-hotmart-cover-600.jpg" width="48" height="48" alt="Expert no Ar 12H">
+      <span>
+        <strong>EXPERT NO AR <em>12H</em></strong>
+        <small>Wiki operacional · Window 1 · Launch Formula Expert</small>
+      </span>
+    </a>
+  </header>
+  <div class="shell">
+    <nav class="side" aria-label="Wiki">
+      <a href="index.html">Início</a>
+      <a href="windows.html">Windows</a>
+      <a href="window-1-gate-flow.html">Gate Flow W1</a>
+      <a href="w1-human-gos.html">Human GOs</a>
+      <a href="w1-checklist.html" class="is-active">Checklist t1–t14</a>
+      <p class="nav-label">Checklist</p>
+      <a href="w1-checklist.html#t1">t1</a>      <a href="w1-checklist.html#t2">t2</a>      <a href="w1-checklist.html#t3">t3</a>      <a href="w1-checklist.html#t4">t4</a>      <a href="w1-checklist.html#t5">t5</a>      <a href="w1-checklist.html#t6">t6</a>      <a href="w1-checklist.html#t7">t7</a>      <a href="w1-checklist.html#t8">t8</a>      <a href="w1-checklist.html#t9">t9</a>      <a href="w1-checklist.html#t10">t10</a>      <a href="w1-checklist.html#t11">t11</a>      <a href="w1-checklist.html#t12">t12</a>      <a href="w1-checklist.html#t13">t13</a>      <a href="w1-checklist.html#t14">t14</a>
+    </nav>
+    <main class="doc">
+<h1 id="ena12h-w1-checklist-t1t14">ENA12H W1 Checklist (t1–t14)</h1>
+<p>O que <strong>deve ser feito</strong> em cada item. Orquestração curta: <code>ENA12H_LT67_PRODUCT_BASE.md</code>. Contexto: <a href="window-1-gate-flow.html">ENA12H Window 1 Gate Flow</a> · GOs: <a href="w1-human-gos.html">ENA12H W1 Human GOs</a>.</p>
+<p>Cada etapa abaixo tem: objetivo, dono, canon, pré-requisitos, passos, arquivos no fim, done, e o que <strong>não</strong> fazer.</p>
+<hr />
+<h2 id="t1">t1 — Abrir case + missão</h2>
+<p><strong>Objetivo:</strong> não misturar este expert com outro. Criar IDs e a pasta de missão.</p>
+<p><strong>Dono:</strong> <code>jeff-operations-manager</code><br />
+<strong>Canon:</strong> <code>company/EXPERT_CASE_MEMORY.md</code> · <code>company/operations/_TEMPLATE/</code> · <code>REPO_BOUNDARY.md</code></p>
+<h3 id="pre-requisitos">Pré-requisitos</h3>
+<ul>
+<li>Trigger: CSV/Form LT67 <strong>ou</strong> comando humano “new expert ENA12H” (<a href="w1-human-gos.html">H1</a>)</li>
+<li>Nome do expert + e-mail (mínimo)</li>
+</ul>
+<h3 id="o-que-fazer">O que fazer</h3>
+<ol>
+<li>Definir <code>expert_slug</code> em <strong>kebab-case</strong> ASCII (sem acento, sem espaço). Ex.: <code>andrea-senna-funcionamento-borderline</code>.</li>
+<li>Alocar o próximo número em <code>EXPERT_CASE_MEMORY.md</code>:
+   - <code>expert_id: lfe-AAAA-NNNN</code>
+   - <code>launch_id: launch-&lt;expert-slug&gt;-AAAA-NN</code>
+   - <code>op_id: op-lfe-AAAA-NNNN</code></li>
+<li>Copiar <code>company/operations/_TEMPLATE/</code> → <code>company/operations/&lt;op_id&gt;/</code>.</li>
+<li>Preencher <code>MISSION.md</code>:</li>
+</ol>
+<pre><code class="language-text">sku: ENA12H-LT67
+semente_status: parked
+canon: company/playbooks/ENA12H_LT67_PRODUCT_BASE.md
+exec297_onboarding: HOLD_until_confirmed
+</code></pre>
+<ol start="5">
+<li>Seed de <code>PROGRESS.md</code> — copiar a tabela da <a href="window-1-gate-flow.html#seed-progress-copiar-para-novo-op_id">ENA12H Window 1 Gate Flow#seed-progress-copiar-para-novo-op_id</a>.</li>
+<li>Registrar o bloco do case em <code>company/EXPERT_CASE_MEMORY.md</code> (slug, IDs, path, <code>sku_origin: ENA12H-LT67</code>, <code>current_owner</code>, <code>mission_path</code>).</li>
+<li>Criar <code>TIMELINE.md</code> com o evento de abertura. <code>NEXT_STEPS.md</code> = t2.</li>
+</ol>
+<p><strong>Não</strong> dump de missão dentro de <code>experts/&lt;slug&gt;/</code>. Missão vive em <code>company/operations/&lt;op_id&gt;/</code>. Package vive em <code>experts/&lt;slug&gt;/</code>.</p>
+<h3 id="checklist">Checklist</h3>
+<ul>
+<li>[ ] <code>expert_slug</code> kebab-case</li>
+<li>[ ] <code>expert_id: lfe-AAAA-NNNN</code></li>
+<li>[ ] <code>launch_id: launch-&lt;slug&gt;-AAAA-NN</code></li>
+<li>[ ] <code>op_id: op-lfe-AAAA-NNNN</code></li>
+<li>[ ] <code>MISSION.md</code> com <code>sku: ENA12H-LT67</code> · <code>semente_status: parked</code></li>
+<li>[ ] Registrado em <code>company/EXPERT_CASE_MEMORY.md</code></li>
+<li>[ ] <code>PROGRESS.md</code> seed (t1–t13)</li>
+</ul>
+<h3 id="done-quando">Done quando</h3>
+<p>Existem pasta <code>company/operations/op-lfe-…/</code> com MISSION/PROGRESS/TIMELINE <strong>e</strong> IDs no Case Memory. Scaffold do package pode ser o passo seguinte (t2).</p>
+<h3 id="nao-faca">Não faça</h3>
+<ul>
+<li>Inventar slug em português com acento.</li>
+<li>Pular o <code>op_id</code>.</li>
+<li>Reusar IDs de outro expert.</li>
+<li>Abrir missão de Semente nesta mesma <code>op_id</code>.</li>
+</ul>
+<hr />
+<h2 id="t2">t2 — Scaffold package + park Semente</h2>
+<p><strong>Objetivo:</strong> criar o armário completo do expert (<code>experts/&lt;slug&gt;/</code>) <strong>sem</strong> encher CLI/pitch/ads.</p>
+<p><strong>Dono:</strong> Jeff<br />
+<strong>Canon:</strong> <code>.cursor/rules/create-expert.mdc</code> · <code>expert-skeleton.mdc</code> · <code>expert-launch-extructure.mdc</code><br />
+<strong>Clone baseline de árvore:</strong> <code>experts/protocolo-portela-de-lucro/</code> (estrutura, <strong>não</strong> copy).</p>
+<h3 id="pre-requisitos_1">Pré-requisitos</h3>
+<ul>
+<li>t1 IDs existem.</li>
+</ul>
+<h3 id="o-que-fazer_1">O que fazer</h3>
+<ol>
+<li>Criar a árvore completa de <code>expert-skeleton.mdc</code> em <code>experts/&lt;expert-slug&gt;/</code>.</li>
+<li>Definir <code>&lt;slug-part&gt;</code> curto (ex.: <code>senna</code>, <code>pallaro</code>, <code>portela</code>). Só <strong>4 arquivos</strong> usam esse token:
+   - <code>processed/&lt;slug-part&gt;-expert-intake-formated.md</code>
+   - <code>processed/&lt;slug-part&gt;-expert-profile.md</code>
+   - <code>lancamento-semente/&lt;slug-part&gt;-script-sales-pitch.md</code>
+   - <code>lancamento-semente/hotmart/&lt;slug-part&gt;-hotmart-content-pages-parts.md</code></li>
+<li>Preencher <code>course/course-config.md</code> com <code>slug</code> + <code>slug_part</code> (offer/preço podem ficar <code>pending</code> até t4).</li>
+<li>Stub <code>course/modules-and-lessons/README.md</code> (mapa TBD — bodies densos vêm do Agent em t6, <strong>não</strong> agora).</li>
+<li>Criar os 4 arquivos <code>&lt;slug-part&gt;</code> (pitch/CLI <strong>podem ficar vazios</strong>).</li>
+<li>Documentar <code>semente parked</code> no <code>README.md</code> do expert e no <code>MISSION.md</code>.</li>
+<li>Colocar CSV/raw do Form em <code>experts/&lt;slug&gt;/inputs/</code>.</li>
+</ol>
+<p><strong>Não editar</strong> <code>package-source/docs/expert-intake-master-form.md</code> (é o master do Google Form).</p>
+<h3 id="checklist_1">Checklist</h3>
+<ul>
+<li>[ ] Árvore completa <code>experts/&lt;slug&gt;/</code></li>
+<li>[ ] <code>course/course-config.md</code> com slug + slug_part</li>
+<li>[ ] <code>course/modules-and-lessons/README.md</code> stub</li>
+<li>[ ] 4 arquivos <code>&lt;slug-part&gt;</code> criados</li>
+<li>[ ] CLI/pitch/tráfego <strong>não</strong> populados como prioridade — parked no README / MISSION</li>
+<li>[ ] <code>inputs/</code> com CSV/raw do Form</li>
+</ul>
+<h3 id="done-quando_1">Done quando</h3>
+<p>Árvore existe; pitch/CLI podem estar vazios; <code>inputs/</code> tem o Form.</p>
+<h3 id="nao-faca_1">Não faça</h3>
+<ul>
+<li>Copiar textos da Portela/Marcos/Pallaro.</li>
+<li>Rodar fluxo Semente (pitch teleprompter, CLI creatives, LeadLovers) nesta missão.</li>
+<li>Escrever 24 aulas densas “na mão” no scaffold.</li>
+<li>Editar o master form.</li>
+</ul>
+<hr />
+<h2 id="t3">t3 — Intake formatado + profile</h2>
+<p><strong>Objetivo:</strong> transformar a bagunça do formulário em dois arquivos limpos, sem técnica de venda.</p>
+<p><strong>Dono:</strong> Jeff / ops<br />
+<strong>Canon:</strong> <code>create-expert</code> § Master vs Dedicated Form · <code>expert-launch-extructure</code> steps 1–3</p>
+<h3 id="pre-requisitos_2">Pré-requisitos</h3>
+<ul>
+<li>CSV/raw em <code>experts/&lt;slug&gt;/inputs/</code>.</li>
+</ul>
+<h3 id="o-que-fazer_2">O que fazer</h3>
+<ol>
+<li>Organizar o Form em <code>processed/&lt;slug-part&gt;-expert-intake-formated.md</code>:
+   - Corrigir gramática e acentuação PT-BR.
+   - Manter o que o expert disse (não “melhorar” Roma com sell technique).
+   - Não inventar prova, aluno, livro, ROI, CRM.</li>
+<li>Escrever <code>processed/&lt;slug-part&gt;-expert-profile.md</code> — recap rápido: quem é, nicho, avatar, Roma bruta, método, contato.</li>
+<li>Anotar <strong>WhatsApp + e-mail</strong> no profile e no case (MISSION / TIMELINE).</li>
+</ol>
+<h3 id="checklist_2">Checklist</h3>
+<ul>
+<li>[ ] <code>processed/&lt;slug-part&gt;-expert-intake-formated.md</code></li>
+<li>[ ] <code>processed/&lt;slug-part&gt;-expert-profile.md</code></li>
+<li>[ ] Contato WA + e-mail do expert no case</li>
+</ul>
+<h3 id="done-quando_2">Done quando</h3>
+<p>Os dois arquivos existem e o canal do expert está explícito.</p>
+<h3 id="nao-faca_2">Não faça</h3>
+<ul>
+<li>Inventar Roma nova, método de marca, ou prova social.</li>
+<li>Aplicar gatilhos mentais no intake.</li>
+<li>Deixar contato só no CSV.</li>
+</ul>
+<hr />
+<h2 id="t4">t4 — Readiness Gate LT + locks</h2>
+<p><strong>Objetivo:</strong> travar o que pode ser produzido <strong>antes</strong> de gastar o Agent GPT. Clock 12h começa aqui.</p>
+<p><strong>Dono:</strong> <code>eurico-roxi</code> (Jeff orquestra)<br />
+<strong>Artefato:</strong> <code>company/operations/&lt;op_id&gt;/READINESS_GATE.md</code><br />
+<strong>Também atualiza:</strong> <code>course/course-config.md</code> · <code>STRATEGY_NOTES.md</code> / <code>APPROVALS.md</code> do expert se o case usar.</p>
+<h3 id="pre-requisitos_3">Pré-requisitos</h3>
+<ul>
+<li>t3 intake + profile.</li>
+<li>H2 compra LT67 — ou <strong>ASSUMIDO</strong> pelo owner com nota para registrar transaction ID depois.</li>
+</ul>
+<h3 id="o-que-avaliar-e-se-bloqueia-html">O que avaliar (e se bloqueia HTML)</h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Bloqueia HTML denso / Order ZIP?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Compra LT67 (H2 / smoke)</td>
+<td>Sim produção <strong>pública</strong>; draft HTML pode ir com ASSUMIDO owner</td>
+</tr>
+<tr>
+<td>Intake Form OK</td>
+<td><strong>Sim</strong></td>
+</tr>
+<tr>
+<td>Escopo ≤6 módulos / ≤24 aulas</td>
+<td><strong>Sim</strong></td>
+</tr>
+<tr>
+<td>Locks: avatar, nome produto, Roma, método, módulos em <code>course-config</code></td>
+<td><strong>Sim</strong></td>
+</tr>
+<tr>
+<td>Aprovador + WhatsApp</td>
+<td><strong>Sim</strong> (canal)</td>
+</tr>
+<tr>
+<td>Materiais / direitos / marca / foto</td>
+<td>Não (residual WA)</td>
+</tr>
+<tr>
+<td>Preço buyer-facing / garantia comercial</td>
+<td>Fora do product-base (pode ficar draft)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="o-que-fazer_3">O que fazer</h3>
+<ol>
+<li>Jeff DELEGA para Eurico (template no fim desta página).</li>
+<li>Eurico escreve <code>READINESS_GATE.md</code> com:
+   - Status: <code>GO_PROVISIONAL</code> <strong>ou</strong> <code>NO-GO</code> + motivo
+   - Tabela de evidências (compra, form, escopo, canal, locks)
+   - <strong>Locks aprovados</strong> (avatar, não-avatar, nome do produto LT, Roma destino, eixo/método, currículo 6×N, anti-claims, prova permitida vs proibida)
+   - Residuais WA (foto, casos, garantia) — <strong>não</strong> inventar para preencher</li>
+<li>Propagar locks para <code>course/course-config.md</code> (não deixar um segundo currículo conflitante).</li>
+<li>TIMELINE: clock 12h <code>GO_PROVISIONAL</code> timestamp.</li>
+</ol>
+<p><strong>Resultado:</strong> <code>GO_PROVISIONAL</code> = pode redigir Order ZIP + colar Club <strong>draft</strong>. Link buyer / storefront só depois de assets + t12 (antes do H3). Publicação “entregue” ao expert como produto vivo = H3 com go/pay abertos; “missão entregue” comercial = H4.</p>
+<h3 id="checklist-mental-no-arquivo">Checklist mental no arquivo</h3>
+<ul>
+<li>[ ] Compra LT67 (GO / ASSUMIDO + follow-up)</li>
+<li>[ ] Form OK</li>
+<li>[ ] ≤6 / ≤24</li>
+<li>[ ] Locks no course-config</li>
+<li>[ ] Canal WA</li>
+<li>[ ] Resultado <code>GO_PROVISIONAL</code> ou <code>NO-GO</code></li>
+</ul>
+<h3 id="done-quando_3">Done quando</h3>
+<p><code>READINESS_GATE.md</code> existe com <code>GO_PROVISIONAL</code> (ou NO-GO bloqueando t5) e <code>course-config</code> espelha os locks.</p>
+<h3 id="nao-faca_3">Não faça</h3>
+<ul>
+<li>Seguir para Agent GPT com Roma/método/módulos soltos.</li>
+<li>Batizar “Método X” se o form disse que não se aplica.</li>
+<li>Inventar prova de aluno.</li>
+</ul>
+<hr />
+<h2 id="t5">t5 — Curriculum map + Order ZIP</h2>
+<p><strong>Objetivo:</strong> pedido curto e autocontido para o Agent GPT — <strong>não</strong> as aulas prontas.</p>
+<p><strong>Dono:</strong> <code>curriculum-architect</code><br />
+<strong>Canon:</strong> <code>.cursor/rules/fl-agent-gpt-arquiteto-hotmart.mdc</code> · <code>ORDER-REQUEST-TEMPLATE.md</code> · <code>expert-skeleton</code> § modules-and-lessons</p>
+<h3 id="pre-requisitos_4">Pré-requisitos</h3>
+<ul>
+<li>t4 <code>GO_PROVISIONAL</code>.</li>
+<li>Locks no <code>course-config</code>.</li>
+</ul>
+<h3 id="o-que-fazer_4">O que fazer</h3>
+<ol>
+<li>Alinhar mapa de módulos/aulas ao lock (teto <strong>6 módulos / 24 aulas</strong>). Títulos + objetivo de 1 linha por aula. Sem segundo currículo.</li>
+<li>Montar a pasta do pedido (poucos arquivos — ideal <strong>2–3</strong> <code>.md</code>, máximo ~5):</li>
+</ol>
+<pre><code class="language-text">experts/&lt;slug&gt;/raiz/low-tickets/&lt;fracao&gt;/pedido-arquiteto-hotmart-&lt;tema&gt;-w1/
+├── 00-LEIA-PRIMEIRO.md
+└── 01-PEDIDO-COMPLETO.md
+</code></pre>
+<ol start="3">
+<li><code>01-PEDIDO-COMPLETO.md</code> <strong>deve</strong> incluir:
+   - Identidade: nome Hotmart ≤100, <code>expert_slug</code>, <code>fraction_slug</code>/SKU, LT vs core, <code>product_id</code> se já existir
+   - Roma (1 frase), avatar (para quem / não para quem), anti-claims, tom
+   - Estrutura proposta (módulos + aulas)
+   - Base atual (outline ou texto embutido — <strong>não</strong> 20 HTMLs soltos)
+   - <strong>Inventário visual P0 obrigatório no mesmo pedido:</strong><ul>
+<li>Capa 1000×1000 + 600×600</li>
+<li>Horizontal 1280×720</li>
+<li>Banner Club 1920×400</li>
+<li>Thumb 1280×720 <strong>por aula</strong> (N = nº de aulas)</li>
+<li>Locks de marca + anti-claims <strong>visuais</strong> (sem certificado inventado, selo de órgão, ROI, prova fake, foto sem autorização, logo inventado)</li>
+<li>Direção visual 3–5 linhas</li>
+<li>Done criteria + “não inventar CRM/livros/cases/cura/diploma”</li>
+</ul>
+</li>
+<li>Zipar → <code>pedido-arquiteto-hotmart-&lt;tema&gt;-w1.zip</code>.</li>
+<li>Se o Agent já falhou CRC em run anterior: ZIP resilient <code>zip -0</code> + <code>base-light-html/</code> com <strong>1 HTML por aula</strong>.</li>
+</ol>
+<h3 id="checklist_3">Checklist</h3>
+<ul>
+<li>[ ] <code>course-config</code> alinhado aos locks (sem currículo conflitante)</li>
+<li>[ ] Mapa ≤6 / ≤24</li>
+<li>[ ] Order Request ZIP (brief + inventário visual P0)</li>
+<li>[ ] <strong>Não</strong> escrever bodies densos na mão no Cursor</li>
+</ul>
+<h3 id="done-quando_4">Done quando</h3>
+<p>ZIP versionado no package, autocontido, com visual P0 no mesmo pedido.</p>
+<h3 id="nao-faca_4">Não faça</h3>
+<ul>
+<li>Abrir Agent sem Roma / anti-claims / SKU / inventário visual (“capas depois”).</li>
+<li>Pedido Linhares Design como caminho padrão de capas.</li>
+<li>Dezenas de anexos soltos.</li>
+</ul>
+<hr />
+<h2 id="t6">t6 — Agent GPT → <code>ready_for_club</code></h2>
+<p><strong>Objetivo:</strong> receber HTML denso das aulas <strong>e</strong> pasta <code>10_ASSETS_VISUAIS/</code>, espelhar SSOT, REPORT para Hotmart.</p>
+<p><strong>Dono:</strong> <code>curriculum-architect</code> — sessão ChatGPT do <strong>time</strong> (nunca a conta do expert)<br />
+<strong>Canon:</strong> <code>package-source/fl-tools/agent-gpt-arquitector-course-hotmart/FLOW.md</code><br />
+<strong>Agent URL:</strong> ver <code>agent-gpt.md</code> (<code>agt_6a70eece61e08191b9b250c52f32a21d</code>)</p>
+<h3 id="pre-requisitos_5">Pré-requisitos</h3>
+<ul>
+<li>t5 Order ZIP.</li>
+</ul>
+<h3 id="o-que-fazer_5">O que fazer</h3>
+<ol>
+<li>Abrir o Agent <strong>Arquiteto de Cursos Hotmart</strong> (conta Team).</li>
+<li>Nova conversa. Anexar o ZIP: arrastar <strong>ou</strong> <code>+</code> → Adicionar arquivo.</li>
+<li>Prompt curto:</li>
+</ol>
+<pre><code class="language-text">Order Request em anexo. Construa/enriqueça o curso Hotmart Club E o pacote visual P0:
+capas produto/checkout, banner Club, thumb 1280x720 por aula.
+Devolva HTML Redactor-safe + pasta 10_ASSETS_VISUAIS com guia de upload.
+Não invente fatos nem claims visuais proibidos.
+</code></pre>
+<ol start="4">
+<li><strong>Aguardar entrega baixável.</strong> Resumo sem arquivo = <strong>void</strong> → nova conversa + re-anexar (ZIP resilient se CRC/sandbox).</li>
+<li>Salvar em:</li>
+</ol>
+<pre><code class="language-text">experts/&lt;slug&gt;/raiz/low-tickets/&lt;fracao&gt;/entrega-arquiteto-hotmart-w1/
+</code></pre>
+<ol start="6">
+<li>Validar contrato de pasta:</li>
+</ol>
+<pre><code class="language-text">entrega-arquiteto-hotmart-w1/&lt;PRODUTO&gt;/
+  05_AULAS_HTML/          # SSOT de colagem
+  10_ASSETS_VISUAIS/
+    00_GUIA_DE_ASSETS.md
+    00_PREVIA_GERAL.png   # conferência — NÃO sobe na Hotmart
+    01_PRODUTO_CHECKOUT/  # ou alias 03_CAPAS/
+    02_BANNER_CLUB/       # ou alias 04_BANNER/
+    03_THUMBS_AULAS/      # ou alias 05_AULAS/ — 1 PNG 1280×720 por aula
+</code></pre>
+<ol start="7">
+<li>Espelhar HTML <strong>verbatim</strong> de <code>05_AULAS_HTML/</code> → <code>members-area/</code> (e/ou <code>course/modules-and-lessons/</code>).</li>
+<li><strong>Quarentena anti-stub:</strong> HTML pré-Agent (&lt; ~2KB / placeholders) → <code>members-area-archive-stubs-pre-agent/</code>. Live SSOT = só densos Agent.</li>
+<li>Contagem thumbs = nº de aulas → senão HOLD visual ou re-pedir.</li>
+<li>Atualizar <code>pedido-arquiteto-hotmart-w1/STATUS.md</code>:</li>
+</ol>
+<pre><code class="language-text">ready_for_club: yes
+agent_chat: https://chatgpt.com/c/...
+delivery_path: experts/.../entrega-arquiteto-hotmart-w1/&lt;PRODUTO&gt;/
+visual_pack: &lt;path&gt; | PENDING + motivo
+</code></pre>
+<ol start="11">
+<li>REPORT na <code>TIMELINE.md</code> da missão:</li>
+</ol>
+<pre><code class="language-text">[REPORT op_id=…] status=done | ready_for_club=yes | Source: Agent GPT Arquiteto | entrega_path=… | visual_pack=…
+</code></pre>
+<p>Cursor <strong>não</strong> escreve body denso final. Claims proibidos na entrega → recusar trecho / re-pedir.</p>
+<h3 id="checklist_4">Checklist</h3>
+<ul>
+<li>[ ] Agent aberto + ZIP anexado</li>
+<li>[ ] Entrega salva em <code>entrega-arquiteto-hotmart-w1/</code></li>
+<li>[ ] <code>05_AULAS_HTML/</code> completo + quality report</li>
+<li>[ ] Mirror HTML verbatim → <code>members-area/</code></li>
+<li>[ ] Stubs pré-Agent arquivados</li>
+<li>[ ] Path <code>10_ASSETS_VISUAIS/</code> registrado</li>
+<li>[ ] <code>STATUS.md</code> <code>ready_for_club: yes</code> + <code>agent_chat</code> + <code>delivery_path</code></li>
+<li>[ ] REPORT <code>ready_for_club</code> (+ visual path ou <code>visual_pack=PENDING</code> + motivo)</li>
+</ul>
+<h3 id="done-quando_5">Done quando</h3>
+<p>Handoff para Hotmart traz <strong>obrigatoriamente</strong>:</p>
+<pre><code class="language-text">Source: Agent GPT Arquiteto
+entrega_path: experts/.../entrega-arquiteto-hotmart-w1/&lt;PRODUTO&gt;/
+</code></pre>
+<p>Sem isso, Hotmart <strong>recusa</strong> paste denso.</p>
+<h3 id="nao-faca_5">Não faça</h3>
+<ul>
+<li>Delegar “anexar ZIP” para humano genérico ou para o expert.</li>
+<li>Ingerir de resumo sem ZIP de entrega.</li>
+<li>Colar Club em paralelo com bodies inventados no Cursor.</li>
+<li>Tratar HTML light interim como SSOT final.</li>
+</ul>
+<p><strong>Cursor Task:</strong> colagem Club + upload visual (passo seguinte) → background <code>Task</code> <code>generalPurpose</code> como <code>hotmart-specialist</code> (rule <code>fl-cursor-task-hotmart-specialist.mdc</code>). Não rodar UI multi-aula no chat pai.</p>
+<hr />
+<h2 id="t7">t7 — Page-parts + publish checklist</h2>
+<p><strong>Objetivo:</strong> campos buyer-facing da Hotmart alinhados aos locks, <strong>sem</strong> inventar prova/escassez. Tráfego continua off; storefront vai ligar no t12 <strong>antes</strong> do H3.</p>
+<p><strong>Dono:</strong> <code>copy-chief</code> / <code>hotmart-specialist</code><br />
+<strong>Canon:</strong> <code>.cursor/rules/hotmart-setup-by-pass.mdc</code></p>
+<h3 id="pre-requisitos_6">Pré-requisitos</h3>
+<ul>
+<li>Locks t4 + nome do produto.</li>
+<li>Idealmente t6 (para não descrever um curso que o Agent ainda vai mudar). Pode rascunhar nome/descrição em paralelo se os locks estão firmes.</li>
+</ul>
+<h3 id="o-que-fazer_6">O que fazer</h3>
+<ol>
+<li>Preencher <code>lancamento-semente/hotmart/&lt;slug-part&gt;-hotmart-content-pages-parts.md</code> (ou fração LT equivalente):
+   - Nome do produto (≤100)
+   - Descrição / headline
+   - Slots de capa
+   - Preço <strong>draft</strong> do form/locks (não inventar desconto)
+   - Garantia só se lockada (senão <code>PENDENTE</code>)</li>
+<li>Criar <code>HOTMART_PUBLISH_CHECKLIST.md</code> em <code>company/operations/&lt;op_id&gt;/</code>:
+   - Tráfego <strong>off</strong>
+   - Storefront <strong>live pré-H3</strong> (não “esperar H4 para ligar go/pay”)
+   - Pixel/CAPI = HOLD até H5</li>
+<li>Sem prova social se o READINESS marcou inexistente.</li>
+</ol>
+<h3 id="checklist_5">Checklist</h3>
+<ul>
+<li>[ ] Page-parts no package</li>
+<li>[ ] <code>HOTMART_PUBLISH_CHECKLIST.md</code> no <code>op_id</code></li>
+<li>[ ] Nome, descrição, slots capas — sem prova/escassez inventada</li>
+</ul>
+<h3 id="done-quando_6">Done quando</h3>
+<p>Hotmart Specialist tem copy de campos para criar o produto sem inventar.</p>
+<h3 id="nao-faca_6">Não faça</h3>
+<ul>
+<li>“Últimas vagas”, certificado MEC, ROI, depoimentos fictícios.</li>
+</ul>
+<hr />
+<h2 id="t8">t8 — Draft Club (conta empresa)</h2>
+<p><strong>Objetivo:</strong> produto existe na Hotmart <strong>Packapps</strong>, aulas densas coladas e published, expert com free access. Sales pode ficar <strong>In draft só enquanto cola</strong>; Active Sales é t12 <strong>antes do H3</strong>.</p>
+<p><strong>Dono:</strong> <code>hotmart-specialist</code><br />
+<strong>Canon:</strong> <code>package-source/fl-tools/hotmart/PLAYBOOK-CLUB-IMPLANT-FAST.md</code><br />
+<strong>Gate paste:</strong> só após t6. Recusar stubs / HTML light.</p>
+<h3 id="pre-requisitos_7">Pré-requisitos</h3>
+<pre><code class="language-text">Source: Agent GPT Arquiteto
+entrega_path: …
+expert email (free access)
+page-parts / course-config
+</code></pre>
+<p>Conta: Colaborador Packapps — <strong>nunca</strong> senha do expert.</p>
+<h3 id="o-que-fazer-ordem">O que fazer (ordem)</h3>
+<ol>
+<li>Criar produto (conta empresa). Nome ≤100. Pix ON · 1x default. Tipo curso / members. Anotar <code>product_id</code>.</li>
+<li>Club subdomain — escolher slug com cuidado (<code>{expert-short}-lt</code>). Wizard bug: <code>…undefined</code> <strong>não dá para editar depois</strong> → recriar se quebrar.</li>
+<li>Skeleton: módulos + páginas vazias = outline. Expandir módulos (lazy load) antes de inventário.</li>
+<li>Colar HTML <strong>verbatim</strong> de <code>05_AULAS_HTML/</code> (Content API <code>PUT /v4/pages/{id}</code> + publish, ou UI). Se Club veio de fonte não-Agent → <strong>recolar</strong>.</li>
+<li>Publish por aula (ou bulk). Preview aluno mostra conteúdo.</li>
+<li>Free access no e-mail do expert — confirmar <strong>Finished</strong> no import history.</li>
+<li>Atualizar <code>HOTMART_SETUP.md</code> + <code>course-config</code>:</li>
+</ol>
+<pre><code class="language-text">content_source: Agent GPT Arquiteto
+recolar_at: YYYY-MM-DD
+product_id:
+club_subdomain:
+student_club_url:
+admin_modules_url:
+</code></pre>
+<ol start="8">
+<li>REPORT na TIMELINE.</li>
+</ol>
+<p>Longa UI Club → Cursor <code>Task</code> background (<code>hotmart-specialist</code>).</p>
+<h3 id="checklist_6">Checklist</h3>
+<ul>
+<li>[ ] Produto criado — <code>product_id</code> no SSOT</li>
+<li>[ ] Club subdomain (sem <code>undefined</code>)</li>
+<li>[ ] Módulos + aulas pasted <strong>from Agent densos</strong> + published</li>
+<li>[ ] Recolar se fonte não-Agent</li>
+<li>[ ] <code>HOTMART_SETUP.md</code>: <code>content_source</code> + <code>recolar_at</code></li>
+<li>[ ] sales = In draft <strong>só enquanto cola</strong>; Active Sales <strong>antes do H3</strong> (t12)</li>
+<li>[ ] Free access e-mail do expert (Finished)</li>
+<li>[ ] Paths atualizados</li>
+</ul>
+<h3 id="done-quando_7">Done quando</h3>
+<p>Expert consegue abrir o Club (free access) e o HTML é o do Agent. Storefront (go/pay) ainda pode estar draft <strong>somente</strong> se t9 visual não aplicou — mas <strong>não</strong> se vai mandar H3.</p>
+<h3 id="nao-faca_7">Não faça</h3>
+<ul>
+<li>Paste sem <code>Source</code> + <code>entrega_path</code>.</li>
+<li>Inventar body.</li>
+<li>Pedir senha Hotmart do expert.</li>
+<li>Deixar Club com HTML light e chamar de pronto.</li>
+</ul>
+<hr />
+<h2 id="t9">t9 — Visual pack upload</h2>
+<p><strong>Objetivo:</strong> capas, banner e thumbs do Agent aplicados nos slots Hotmart. Depois disto, <strong>ligar storefront (t12)</strong> antes do e-mail H3.</p>
+<p><strong>Dono:</strong> <code>hotmart-specialist</code><br />
+<strong>Fonte:</strong> <code>entrega-arquiteto-hotmart-w1/&lt;PRODUTO&gt;/10_ASSETS_VISUAIS/</code><br />
+<strong>Fallback Linhares:</strong> só com Jeff GO se o Agent falhar QA.</p>
+<h3 id="o-que-fazer_7">O que fazer</h3>
+<table>
+<thead>
+<tr>
+<th>Arquivo (pack)</th>
+<th>Slot Hotmart</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>*_CAPA_1000X1000.*</code> (e 600×600)</td>
+<td>Informações básicas / product picture</td>
+</tr>
+<tr>
+<td><code>*_CAPA_1280X720.*</code></td>
+<td>Vitrine / horizontal se a UI pedir</td>
+</tr>
+<tr>
+<td><code>*_BANNER_CLUB_1920X400.*</code></td>
+<td>Product Display / Banner Club</td>
+</tr>
+<tr>
+<td><code>03_THUMBS_AULAS/MODULO_NN/*</code> 1280×720</td>
+<td>Image / thumbnail <strong>de cada aula</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Não enviar <code>00_PREVIA_GERAL.png</code> à Hotmart (só conferência).</li>
+<li>Contagem thumbs = nº de aulas. Mapa título ↔ arquivo.</li>
+<li>Registrar upload status em <code>HOTMART_SETUP.md</code>.</li>
+</ul>
+<p>HTML para review factual <strong>pode</strong> seguir com <code>visual_pack=PENDING</code> + motivo no REPORT. <strong>Active Sales / H3 com go/pay</strong> exige pack aplicado (ou GO humano explícito).</p>
+<h3 id="checklist_7">Checklist</h3>
+<ul>
+<li>[ ] Capa 1000×1000 / 600×600</li>
+<li>[ ] Horizontal 1280×720 se UI pedir</li>
+<li>[ ] Banner Club 1920×400</li>
+<li>[ ] Thumbs 1280×720 por aula (contagem = nº aulas)</li>
+</ul>
+<h3 id="done-quando_8">Done quando</h3>
+<p>Slots visuais preenchidos <strong>ou</strong> REPORT <code>visual_pack=PENDING</code> + motivo (e então <strong>não</strong> ligar storefront sem GO humano).</p>
+<h3 id="nao-faca_8">Não faça</h3>
+<ul>
+<li>Gerar capas no Cursor / Canva “provisórias” como P0 comercial.</li>
+<li>Abrir pedido Linhares sem Jeff.</li>
+</ul>
+<hr />
+<h2 id="t10">t10 — E-mail revisão factual + ZIP</h2>
+<p><strong>Objetivo:</strong> rascunho branded pronto para o humano <strong>enviar</strong> (H3). O expert recebe produto <strong>vivo</strong> + ZIP para revisar fatos.</p>
+<p><strong>Dono:</strong> Jeff (draft) → <strong>H3</strong> humano send<br />
+<strong>Canon:</strong> <code>.cursor/rules/fl-email-ena12h-expert.mdc</code><br />
+<strong>Shell:</strong> <code>company/templates/email-ena12h-expert/TEMPLATE-EMAIL-EXPERT.html</code><br />
+<strong>Sender:</strong> <code>packapps.br@gmail.com</code></p>
+<h3 id="pre-requisitos_8">Pré-requisitos</h3>
+<ul>
+<li>t8 Club + free access</li>
+<li>t9 visual (ou GO explícito)</li>
+<li><strong>t12 storefront:</strong> go + pay + <code>?dp=1</code> <strong>abrem</strong> (não “no longer available”)</li>
+<li>Copy canônica: produto ativo + tráfego ainda não empurrado</li>
+</ul>
+<h3 id="o-que-fazer_8">O que fazer</h3>
+<ol>
+<li>Copiar o shell (não editar só o template da empresa). Destino típico:</li>
+</ol>
+<pre><code class="language-text">experts/&lt;slug&gt;/raiz/low-tickets/&lt;fracao&gt;/revisao-expert-w1/
+  EMAIL-REVISAO-FACTUAL.html
+  EMAIL-PARA-EXPERT.md
+  &lt;zip das aulas&gt;
+</code></pre>
+<ol start="2">
+<li>Substituir todos os <code>&lt;!-- REPLACE:... --&gt;</code>. Manter brand: cores <code>#0B0D12</code> <code>#151923</code> <code>#F6F2E9</code> <code>#FF5A2F</code>, logo absoluto <code>ena12h-hotmart-cover-600.jpg</code>, Arial, assinatura <code>Equipe Launch Formula Expert</code>.</li>
+<li>Links no corpo: Página (go) · Checkout (pay) · Club · preview <code>?dp=1</code>. <strong>Todos vivos.</strong></li>
+<li>ZIP = HTML/aulas (anexo Gmail, <strong>não</strong> embutido no HTML).</li>
+<li><code>EMAIL-PARA-EXPERT.md</code> aponta para o HTML (SSOT verbal).</li>
+<li>Montar rascunho Gmail (TrustedHTML: paste/<code>ClipboardEvent</code>; não <code>innerHTML</code>).</li>
+<li>Validar logo + links + chip do anexo.</li>
+<li><strong>Parar.</strong> Marcar <code>aguardando H3</code>. <strong>Não enviar.</strong></li>
+</ol>
+<p>Eyebrow típico W1: revisão factual · produto já ativo · tráfego ainda não.</p>
+<h3 id="checklist_8">Checklist</h3>
+<ul>
+<li>[ ] Shell copiado para o case</li>
+<li>[ ] <code>EMAIL-*.html</code> + <code>EMAIL-PARA-EXPERT.md</code></li>
+<li>[ ] ZIP das aulas</li>
+<li>[ ] Rascunho Gmail packapps; logo/links <strong>vivos</strong></li>
+<li>[ ] Copy: ativo + tráfego não empurrado</li>
+<li>[ ] <strong>Não</strong> enviado sem H3</li>
+</ul>
+<h3 id="done-quando_9">Done quando</h3>
+<p>Humano só precisa revisar e clicar Enviar. TIMELINE: <code>aguardando_entrega</code> / H3.</p>
+<h3 id="nao-faca_9">Não faça</h3>
+<ul>
+<li>Auto-send.</li>
+<li>Dizer que o checkout “não abre de propósito”.</li>
+<li>Usar template LeadLovers de funil.</li>
+<li>Shell de entrega V2 (P3) neste passo — isso é <strong>depois</strong> da W2.</li>
+</ul>
+<hr />
+<h2 id="t11">t11 — Factual expert (H4)</h2>
+<p><strong>Objetivo:</strong> 1 rodada de correções factuais (nome, módulos, marca, claims, erros). Isto <strong>encerra a W1 de produção</strong> e, se houver deltas, <strong>abre a W2</strong>.</p>
+<p><strong>Dono:</strong> expert + humano esteira<br />
+<strong>GO:</strong> <a href="w1-human-gos.html">H4</a></p>
+<h3 id="o-que-fazer_9">O que fazer</h3>
+<ol>
+<li>Acompanhar WA / reply do e-mail H3.</li>
+<li>Registrar na <code>TIMELINE.md</code> o que o expert disse (OK, lista de correções, ZIP devolvido, PDFs).</li>
+<li>Uma rodada de correções faz parte do contrato LT67.</li>
+<li>Se <strong>OK sem deltas densos:</strong> documentar W2 DONE (pode pular re-run do Agent) e seguir residual / tráfego H5 se GO.</li>
+<li>Se <strong>há correções:</strong> <strong>não</strong> reabrir Order ZIP de produção. Seguir Window 2:
+   - <code>FLOW-REVIEW.md</code>
+   - <code>REVIEW-ORDER-TEMPLATE.md</code>
+   - rule <code>fl-agent-gpt-arquiteto-hotmart-review.mdc</code></li>
+<li>Atualizar residual no <code>READINESS_GATE.md</code> (foto, casos, garantia se o expert respondeu).</li>
+</ol>
+<h3 id="checklist_9">Checklist</h3>
+<ul>
+<li>[ ] 1 rodada de correções factuais (ou OK registrado)</li>
+<li>[ ] GO expert para “conteúdo ok” / correções encaminhadas</li>
+<li>[ ] TIMELINE + residual READINESS</li>
+</ul>
+<h3 id="done-quando_10">Done quando</h3>
+<p>Há evidência na TIMELINE. Sem evidência ≠ aprovado.</p>
+<h3 id="nao-faca_10">Não faça</h3>
+<ul>
+<li>Inventar “ele já aprovou”.</li>
+<li>Usar W1 production Order como intake da reply.</li>
+<li>Empurrar ads neste passo.</li>
+</ul>
+<hr />
+<h2 id="t12">t12 — Storefront live (antes do H3) + tráfego (H5)</h2>
+<p><strong>Dono:</strong> <code>hotmart-specialist</code></p>
+<p>Duas camadas <strong>diferentes</strong>. Não colapse as duas.</p>
+<h3 id="a-storefront-default-pre-h3">A) Storefront (default, <strong>pré-H3</strong>)</h3>
+<p>Depois do visual pack (t9): Active Sales ON → <code>go.hotmart.com</code> + <code>pay.hotmart.com</code> + <code>?dp=1</code> abrem. <strong>Sem GO extra.</strong></p>
+<ul>
+<li>Checkout conforme escopo (1x + Pix)</li>
+<li>Oferta / preço draft dos locks</li>
+<li>Link buyer entra no e-mail H3</li>
+</ul>
+<h3 id="b-trafego-h5">B) Tráfego (H5)</h3>
+<p>Só <strong>pós H4</strong> + tracking. Pixel/CAPI se for ter ads; senão documentar HOLD. Afiliados Mercado só com playbook afiliados + status <code>APROVADO PARA AFILIADOS</code>. Ads só com H5.</p>
+<h3 id="checklist_10">Checklist</h3>
+<ul>
+<li>[ ] Checkout / oferta (1x + Pix)</li>
+<li>[ ] go + pay + <code>?dp=1</code> abrem (não “no longer available”)</li>
+<li>[ ] Pixel/CAPI se tráfego (senão HOLD)</li>
+<li>[ ] Link enviado ao buyer no H3</li>
+<li>[ ] Não abrir afiliados Mercado sem playbook + APROVADO</li>
+<li>[ ] Não empurrar ads até H5</li>
+</ul>
+<h3 id="done-quando-camada-a-obrigatoria-na-w1">Done quando (camada A, obrigatória na W1)</h3>
+<p>Preview e checkout abrem <strong>antes</strong> de pedir H3.</p>
+<h3 id="nao-faca_11">Não faça</h3>
+<ul>
+<li>Esperar H4 para ligar go/pay.</li>
+<li>Ligar tráfego no mesmo instante do storefront.</li>
+<li>Tokens CAPI no Git.</li>
+</ul>
+<hr />
+<h2 id="t13">t13 — EXEC297 onboarding (opcional)</h2>
+<p><strong>Fora da dívida W1</strong> se o buyer comprou só LT67. HOLD eterno neste <code>op_id</code> até EXEC.</p>
+<p><strong>Dono:</strong> Jeff / Hotmart<br />
+<strong>Canon:</strong> <code>ENA12H_EXPERT_HOTMART_ONBOARDING.md</code> · <a href="windows.html#w3">ENA12H Windows#w3</a><br />
+<strong>GO:</strong> H6</p>
+<h3 id="o-que-fazer-so-se-lt67-exec297">O que fazer (só se LT67 <strong>+</strong> EXEC297)</h3>
+<ol>
+<li><code>npm run smoke:sales-gate -- &lt;email&gt;</code> → <code>GATE=GO</code> nos dois SKUs (<code>8216218</code> e <code>8220552</code>).</li>
+<li>Humano GO → e-mail Fases 1–3 + DOCX (mesmo shell ENA12H, sender packapps).</li>
+<li>Colaborador na conta do expert → produto lá → Coprodução 20% (<code>packapps.br@gmail.com</code>).</li>
+</ol>
+<h3 id="checklist_11">Checklist</h3>
+<ul>
+<li>[ ] smoke:sales-gate GATE=GO em LT67 + EXEC297</li>
+<li>[ ] Humano GO → e-mail Fases 1–3 + DOCX</li>
+<li>[ ] Colaborador → produto conta expert → Coprodução 20%</li>
+</ul>
+<h3 id="nao-faca_12">Não faça</h3>
+<ul>
+<li>Enviar onboarding Coprodutor para LT-only.</li>
+<li>Pedir senha da Hotmart do expert.</li>
+</ul>
+<hr />
+<h2 id="t14">t14 — DoD missão</h2>
+<p><strong>Objetivo:</strong> closed-loop. Missão <strong>não</strong> termina porque o chat disse que acabou.</p>
+<p><strong>Dono:</strong> Jeff<br />
+<strong>Canon:</strong> <code>company/operations/DELEGATION_PROTOCOL.md</code></p>
+<h3 id="o-que-fazer_10">O que fazer</h3>
+<ol>
+<li><code>PROGRESS.md</code>: t1–t12 DONE (t13 HOLD se LT-only; t11 pode estar <code>aguardando</code> se H4 pendente — então missão = <code>aguardando_entrega</code>, não <code>concluida</code>).</li>
+<li><code>TIMELINE.md</code> com REPORTs.</li>
+<li>SSOT do expert: <code>product_id</code>, Club URL, go/pay, paths <code>entrega-arquiteto-hotmart-w1/</code>, <code>HOTMART_SETUP.md</code>.</li>
+<li>Flags:</li>
+</ol>
+<pre><code class="language-text">reported_to_requester: yes
+delivered_to_human: yes   # link + evidência (e-mail H3 / Club / go)
+</code></pre>
+<ol start="5">
+<li>Só então <code>mission_status: concluida</code> — em geral <strong>depois</strong> de H3 enviado (W1 de produção entregue ao expert). W2 é missão seguinte ou continuação explícita.</li>
+</ol>
+<h3 id="checklist_12">Checklist</h3>
+<ul>
+<li>[ ] PROGRESS + TIMELINE atualizados</li>
+<li>[ ] product_id / Club URL / paths no SSOT <code>experts/&lt;slug&gt;/</code></li>
+<li>[ ] <code>reported_to_requester: yes</code></li>
+<li>[ ] <code>delivered_to_human: yes</code> (link + evidência)</li>
+<li>[ ] missão <code>concluida</code> só com closed-loop</li>
+</ul>
+<h3 id="nao-faca_13">Não faça</h3>
+<ul>
+<li>Marcar <code>concluida</code> com Club stub, go/pay morto, ou e-mail não enviado.</li>
+<li>Dump da pasta <code>operations/</code> dentro do package do expert.</li>
+</ul>
+<hr />
+<h2 id="delegacao-tipica-jeff-specialists">DELEGAÇÃO típica (Jeff → specialists)</h2>
+<pre><code class="language-text">[DELEGAÇÃO op_id=&lt;op_id&gt;]
+Tarefa: Readiness Gate LT + locks course-config (avatar, nome, Roma, método, ≤6/≤24). Escrever READINESS_GATE.md → GO_PROVISIONAL ou NO-GO.
+Dono: eurico-roxi
+Prazo: &lt;curto&gt;
+Canon: company/playbooks/ENA12H_LT67_PRODUCT_BASE.md § t4
+RESPONDER OBRIGATÓRIO com REPORT em TIMELINE.md
+</code></pre>
+<pre><code class="language-text">[DELEGAÇÃO op_id=&lt;op_id&gt;]
+Tarefa: Order ZIP Agent GPT + operar Agent + mirror members-area + REPORT ready_for_club (path 10_ASSETS_VISUAIS).
+Dono: curriculum-architect
+Prazo: &lt;curto&gt;
+Canon: fl-agent-gpt-arquiteto-hotmart + FLOW.md
+RESPONDER OBRIGATÓRIO com REPORT em TIMELINE.md
+</code></pre>
+<pre><code class="language-text">[DELEGAÇÃO op_id=&lt;op_id&gt;]
+Tarefa: Hotmart Club product-base — paste HTML + visual pack + free access; Active Sales storefront antes do H3; tráfego HOLD. SSOT HOTMART_SETUP.
+Dono: hotmart-specialist
+Prazo: &lt;curto&gt;
+Canon: PLAYBOOK-CLUB-IMPLANT-FAST.md + ENA12H_LT67_PRODUCT_BASE.md § t8–t9
+RESPONDER OBRIGATÓRIO com REPORT em TIMELINE.md
+</code></pre>
+<p><strong>REPORT esperado:</strong></p>
+<pre><code class="language-text">[REPORT op_id=&lt;op_id&gt;] status=done|blocked|failed | o_que_foi_feito=... | evidencia=... | bloqueio=...
+</code></pre>
+<p>Voltar: <a href="index.html">Home</a> · <a href="window-1-gate-flow.html">ENA12H Window 1 Gate Flow</a></p>
+    </main>
+  </div>
+  <footer class="foot">
+    Expert no Ar 12H · orquestração jeff-operations-manager · atualizado 2026-08-17
+  </footer>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>W1 — Human GOs · Expert no Ar 12H</title>
+  <link rel="canonical" href="https://www.paulolinhares-mrcoder.com.br/products/expert-no-ar-12h/wiki/w1-human-gos.html">
+  <link rel="icon" href="https://www.paulolinhares-mrcoder.com.br/products/expert-no-ar-12h/assets/favicon.ico">
+  <link rel="stylesheet" href="./wiki.css">
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="./index.html">
+      <img src="https://www.paulolinhares-mrcoder.com.br/products/expert-no-ar-12h/assets/ena12h-hotmart-cover-600.jpg" width="48" height="48" alt="Expert no Ar 12H">
+      <span>
+        <strong>EXPERT NO AR <em>12H</em></strong>
+        <small>Wiki operacional · Window 1 · Launch Formula Expert</small>
+      </span>
+    </a>
+  </header>
+  <div class="shell">
+    <nav class="side" aria-label="Wiki">
+      <a href="index.html">Início</a>
+      <a href="windows.html">Windows</a>
+      <a href="window-1-gate-flow.html">Gate Flow W1</a>
+      <a href="w1-human-gos.html" class="is-active">Human GOs</a>
+      <a href="w1-checklist.html">Checklist t1–t14</a>
+      <p class="nav-label">Checklist</p>
+      <a href="w1-checklist.html#t1">t1</a>      <a href="w1-checklist.html#t2">t2</a>      <a href="w1-checklist.html#t3">t3</a>      <a href="w1-checklist.html#t4">t4</a>      <a href="w1-checklist.html#t5">t5</a>      <a href="w1-checklist.html#t6">t6</a>      <a href="w1-checklist.html#t7">t7</a>      <a href="w1-checklist.html#t8">t8</a>      <a href="w1-checklist.html#t9">t9</a>      <a href="w1-checklist.html#t10">t10</a>      <a href="w1-checklist.html#t11">t11</a>      <a href="w1-checklist.html#t12">t12</a>      <a href="w1-checklist.html#t13">t13</a>      <a href="w1-checklist.html#t14">t14</a>
+    </nav>
+    <main class="doc">
+<h1 id="ena12h-w1-human-gos">ENA12H W1 — Human GOs</h1>
+<p>Únicos interruptores humanos da Window 1. Tudo o mais o office faz sozinho (file-first + DELEGAÇÃO + REPORT).</p>
+<p>Ver também: <a href="window-1-gate-flow.html">ENA12H Window 1 Gate Flow</a> · <a href="w1-checklist.html">ENA12H W1 Checklist</a></p>
+<h2 id="tabela">Tabela</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>GO</th>
+<th>Quem</th>
+<th>Quando</th>
+<th>O que bloqueia se faltar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>H1</strong></td>
+<td>Prioridade / “new expert” explícito</td>
+<td>human-owner</td>
+<td>Antes de abrir <code>op_id</code> — se intake já está no drive/CSV, Jeff <strong>pode</strong> abrir e REPORT</td>
+<td>Não bloqueia se intake já chegou</td>
+</tr>
+<tr>
+<td><strong>H2</strong></td>
+<td>Compra LT67 confirmada</td>
+<td><code>smoke:sales-gate</code> ou Sales UI</td>
+<td>Preferir API; fallback UI se <code>unauthorized_client</code></td>
+<td>Produção <strong>pública</strong>; HTML draft pode ir com <strong>ASSUMIDO</strong> owner (registrar no READINESS)</td>
+</tr>
+<tr>
+<td><strong>H3</strong></td>
+<td>Enviar e-mail revisão factual</td>
+<td>humano no Gmail <code>packapps.br@gmail.com</code></td>
+<td>Draft HTML + ZIP prontos; <strong>go/pay já live</strong>; TrustedHTML — <strong>não auto-send</strong></td>
+<td>Expert não recebe o pedido de revisão</td>
+</tr>
+<tr>
+<td><strong>H4</strong></td>
+<td>Expert WA / OK factual</td>
+<td>expert</td>
+<td>1 rodada de correções</td>
+<td>Bloqueia “entregue” + <strong>tráfego</strong>. <strong>Não</strong> bloqueia storefront</td>
+</tr>
+<tr>
+<td><strong>H5</strong></td>
+<td>Tráfego / ads / afiliados / empurrar vendas</td>
+<td>human</td>
+<td>Só pós H4 + tracking. Storefront <strong>já</strong> estava live no H3</td>
+<td>Ads / afiliados Mercado</td>
+</tr>
+<tr>
+<td><strong>H6</strong></td>
+<td>Onboarding Coprodutor</td>
+<td>human</td>
+<td><strong>Só</strong> LT67 + EXEC297</td>
+<td>W3 / e-mail Fases 1–3</td>
+</tr>
+</tbody>
+</table>
+<h2 id="como-confirmar-h2-compra-lt67">Como confirmar H2 (compra LT67)</h2>
+<p>Na pasta <code>package-source/fl-tools/hotmart-api/</code>:</p>
+<pre><code class="language-bash">npm run smoke:sales-gate -- buyer@email.com
+npm run smoke:sales-gate -- --recent
+</code></pre>
+<ul>
+<li>Preferir API. Se retornar <code>403 unauthorized_client</code>, fallback: Sales UI Hotmart + registrar transaction ID no <code>READINESS_GATE.md</code> quando existir.</li>
+<li>SKU canônico: <code>ENA12H-LT67</code> product id <code>8216218</code>.</li>
+<li>EXEC297 (<code>8220552</code>) <strong>não</strong> é obrigatório para W1. Sem EXEC → t13 HOLD eterno.</li>
+</ul>
+<h2 id="como-executar-h3-enviar-e-mail">Como executar H3 (enviar e-mail)</h2>
+<ol>
+<li>Jeff deixa <code>EMAIL-REVISAO-FACTUAL.html</code> + <code>EMAIL-PARA-EXPERT.md</code> + ZIP na pasta <code>revisao-expert-w1/</code>.</li>
+<li>Humano abre Gmail <strong><code>packapps.br@gmail.com</code></strong>.</li>
+<li>Injeta HTML via paste/<code>ClipboardEvent</code> (Gmail TrustedHTML bloqueia <code>innerHTML</code> / <code>insertHTML</code> / <code>DOMParser</code>).</li>
+<li>Anexa o ZIP <strong>no Gmail</strong> (não dentro do HTML).</li>
+<li>Valida: logo ENA12H carrega, go + pay + Club <strong>abrem</strong>, chip do anexo presente.</li>
+<li>Só então envia.</li>
+</ol>
+<p>Canon: <code>.cursor/rules/fl-email-ena12h-expert.mdc</code><br />
+Template: <code>office/launch-formula-expert/company/templates/email-ena12h-expert/</code></p>
+<h2 id="o-que-h4-nao-e">O que H4 não é</h2>
+<ul>
+<li>H4 <strong>não</strong> é “ligar o checkout”. O checkout já estava live no H3.</li>
+<li>H4 <strong>não</strong> é Window 2. Window 2 começa quando o expert <strong>responde</strong> com correções (ou OK).</li>
+<li>Sem registro na <code>TIMELINE.md</code>, não inventar “ele já aprovou”.</li>
+</ul>
+<h2 id="proibido-em-qualquer-go">Proibido em qualquer GO</h2>
+<ul>
+<li>Pedir senha, 2FA ou documentos do expert.</li>
+<li>Inventar prova, CRM, preço, urgência falsa.</li>
+<li>Auto-send de e-mail.</li>
+<li>Empurrar tráfego antes de H5.</li>
+</ul>
+<p>Voltar: <a href="index.html">Home</a></p>
+    </main>
+  </div>
+  <footer class="foot">
+    Expert no Ar 12H · orquestração jeff-operations-manager · atualizado 2026-08-17
+  </footer>
+</body>
+</html>

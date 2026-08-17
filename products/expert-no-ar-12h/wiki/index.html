@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Wiki ENA12H · Expert no Ar 12H</title>
+  <link rel="canonical" href="https://www.paulolinhares-mrcoder.com.br/products/expert-no-ar-12h/wiki/index.html">
+  <link rel="icon" href="https://www.paulolinhares-mrcoder.com.br/products/expert-no-ar-12h/assets/favicon.ico">
+  <link rel="stylesheet" href="./wiki.css">
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="./index.html">
+      <img src="https://www.paulolinhares-mrcoder.com.br/products/expert-no-ar-12h/assets/ena12h-hotmart-cover-600.jpg" width="48" height="48" alt="Expert no Ar 12H">
+      <span>
+        <strong>EXPERT NO AR <em>12H</em></strong>
+        <small>Wiki operacional · Window 1 · Launch Formula Expert</small>
+      </span>
+    </a>
+  </header>
+  <div class="shell">
+    <nav class="side" aria-label="Wiki">
+      <a href="index.html" class="is-active">Início</a>
+      <a href="windows.html">Windows</a>
+      <a href="window-1-gate-flow.html">Gate Flow W1</a>
+      <a href="w1-human-gos.html">Human GOs</a>
+      <a href="w1-checklist.html">Checklist t1–t14</a>
+      <p class="nav-label">Checklist</p>
+      <a href="w1-checklist.html#t1">t1</a>      <a href="w1-checklist.html#t2">t2</a>      <a href="w1-checklist.html#t3">t3</a>      <a href="w1-checklist.html#t4">t4</a>      <a href="w1-checklist.html#t5">t5</a>      <a href="w1-checklist.html#t6">t6</a>      <a href="w1-checklist.html#t7">t7</a>      <a href="w1-checklist.html#t8">t8</a>      <a href="w1-checklist.html#t9">t9</a>      <a href="w1-checklist.html#t10">t10</a>      <a href="w1-checklist.html#t11">t11</a>      <a href="w1-checklist.html#t12">t12</a>      <a href="w1-checklist.html#t13">t13</a>      <a href="w1-checklist.html#t14">t14</a>
+    </nav>
+    <main class="doc">
+<h1 id="expert-launch-formula-wiki-ena12h">Expert Launch Formula — Wiki ENA12H</h1>
+<p>Documentação operacional do <strong>Expert no Ar 12H</strong> (ENA12H-LT67) para o office Launch Formula Expert.</p>
+<p>Esta wiki descreve o <strong>gate flow</strong> (o que deve estar feito, por quem, em que ordem) com o detalhe de cada item de checklist. O playbook no repositório continua sendo o SSOT curto de orquestração; aqui está o <strong>como executar</strong>.</p>
+<h2 id="comece-por-window-1">Comece por Window 1</h2>
+<p>Todo expert novo que comprou o <strong>ENA12H-LT67</strong> (<code>8216218</code>, R$67) entra na <strong>Window 1</strong> (product-base).</p>
+<ol>
+<li><a href="windows.html">ENA12H Windows</a> — mapa W1 / W2 / P3 / W3 (não misturar)</li>
+<li><a href="window-1-gate-flow.html">ENA12H Window 1 Gate Flow</a> — escopo, GOs humanos, storefront vs tráfego, ordem</li>
+<li><a href="w1-human-gos.html">ENA12H W1 Human GOs</a> — H1–H6 (únicos interruptores)</li>
+<li><a href="w1-checklist.html">ENA12H W1 Checklist</a> — <strong>t1–t14, o que fazer em cada item</strong></li>
+</ol>
+<h2 id="canon-no-repositorio">Canon no repositório</h2>
+<table>
+<thead>
+<tr>
+<th>O quê</th>
+<th>Path</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Playbook SSOT (orquestração)</td>
+<td><code>office/launch-formula-expert/company/playbooks/ENA12H_LT67_PRODUCT_BASE.md</code></td>
+</tr>
+<tr>
+<td>Vocabulário de janelas</td>
+<td><code>office/launch-formula-expert/company/playbooks/ENA12H_WINDOWS.md</code></td>
+</tr>
+<tr>
+<td>Agent GPT W1 (produção)</td>
+<td><code>package-source/fl-tools/agent-gpt-arquitector-course-hotmart/FLOW.md</code></td>
+</tr>
+<tr>
+<td>Agent GPT W2 (review)</td>
+<td><code>package-source/fl-tools/agent-gpt-arquitector-course-hotmart/FLOW-REVIEW.md</code></td>
+</tr>
+<tr>
+<td>Club Hotmart</td>
+<td><code>package-source/fl-tools/hotmart/PLAYBOOK-CLUB-IMPLANT-FAST.md</code></td>
+</tr>
+<tr>
+<td>E-mail → expert</td>
+<td><code>office/launch-formula-expert/company/templates/email-ena12h-expert/</code></td>
+</tr>
+<tr>
+<td>Orquestrador</td>
+<td><code>office/launch-formula-expert/agents/jeff-operations-manager/</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="regras-de-ouro">Regras de ouro</h2>
+<pre><code class="language-text">Files are system of record.
+Semente parked nesta missão.
+Bodies densos = Agent GPT (não Cursor).
+Storefront (go/pay) live no e-mail H3; tráfego HOLD até H5.
+Nunca senha / 2FA do expert.
+Não enviar e-mail sem GO humano (H3).
+</code></pre>
+<p><strong>Atualizado:</strong> 2026-08-17 · Owner orquestração: <code>jeff-operations-manager</code></p>
+    </main>
+  </div>
+  <footer class="foot">
+    Expert no Ar 12H · orquestração jeff-operations-manager · atualizado 2026-08-17
+  </footer>
+</body>
+</html>
